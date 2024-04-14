@@ -1,0 +1,1 @@
+ C:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness_tracking\\.dart_tool\\flutter_build\\47a000c706a29980549aee4a39f2f42e\\native_assets.yaml: 

@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-12:/values-af/values-af.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\db06c6de1649fcaf9ecd23e3a2b1d568\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-af\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "138",
+                        "endOffsets": "333"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "142",
+                        "endOffsets": "193"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\e7d448bedf457595d1da67f320b7b25d\\transformed\\core-1.6.0\\res\\values-af\\values-af.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "198",
+                        "endColumns": "100",
+                        "endOffsets": "294"
+                    }
+                }
+            ]
+        }
+    ]
+}
