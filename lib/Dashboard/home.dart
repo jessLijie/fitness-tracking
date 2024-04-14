@@ -31,11 +31,18 @@ class HomePage extends StatelessWidget {
             Container(
               child: const Column(
                 children: [
-                  Card(
-                    child: BmiCard(BMI: 22.35),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0), // Add vertical margin between cards
+                    child: Card(
+                      child: BmiCard(BMI: 22.35),
+                    ),
                   ),
-                  Card(
-                    child: CaloryCard(burnt: 100, goal: 200),
+                  
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0), // Add vertical margin between cards
+                    child: Card(
+                      child: CaloryCard(burnt: 40, goal: 200),
+                    ),
                   ),
                 ],
               ),
@@ -47,6 +54,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
+
 class CaloryCard extends StatelessWidget {
   const CaloryCard({Key? key, required this.burnt, required this.goal})
       : super(key: key);
@@ -54,64 +62,66 @@ class CaloryCard extends StatelessWidget {
   final int goal;
 
   @override
-  Widget build(BuildContext context) {
-    final double progressPercent = burnt / goal;
+Widget build(BuildContext context) {
+  final double progressPercent = burnt / goal;
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        gradient: const LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      gradient: const LinearGradient(
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
+        colors: [
+          Colors.yellow,
+          Color.fromARGB(255, 143, 231, 146),
+        ],
+      ),
+    ),
+    height: 120,
+    child: Center(
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("$burnt/ $goal k is burnt !"),
+                SizedBox(height: 25), 
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    return LinearPercentIndicator(
+                      barRadius: Radius.circular(6),
+                      animation: true,
+                      lineHeight: 20.0,
+                      animationDuration: 2000,
+                      percent: progressPercent,
+                      progressColor: Colors.greenAccent,
+                    );
+                  },
+                ),
+              ],
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 2000),
+              curve: Curves.easeInOut,
+              left: (MediaQuery.of(context).size.width - 65) * progressPercent,
+              top: 50,
+              child: Image.asset(
+                'assets/image/banana.png',
+                width: 35,
+                height: 35,
+              ),
+            ),
+            Positioned(
+              child: buildClickableText2(context),
+            ),
           ],
         ),
       ),
-      height: 120,
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Stack(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("$burnt/ $goal k is burnt !"),
-                  SizedBox(
-                      height:
-                          10), // Adding some space between text and progress indicator
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      return LinearPercentIndicator(
-                        barRadius: Radius.circular(6),
-                        animation: true,
-                        lineHeight: 20.0,
-                        animationDuration: 2000,
-                        percent: progressPercent,
-                        progressColor: Colors.greenAccent,
-                      );
-                    },
-                  ),
-                ],
-              ),
-              Positioned(
-                left:
-                    (MediaQuery.of(context).size.width - 65) * progressPercent,
-                top: 40,
-                child: Image.asset('assets/image/banana.png',
-                    width: 35, height: 35),
-              ),
-              const SizedBox(height: 18),
-              // Text("${(progressPercent * 100).toStringAsFixed(1)}%"),
-              buildClickableText2(context),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+    ),
+  );
+}
 }
 
 class BmiCard extends StatelessWidget {
@@ -199,7 +209,7 @@ GestureDetector buildClickableText2(BuildContext context) {
       );
     },
     child: Container(
-      alignment: Alignment.bottomRight, // Align text to the right
+      alignment: Alignment.bottomRight, 
       child: Text(
         "View more >",
         style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 22, 53, 21)),
