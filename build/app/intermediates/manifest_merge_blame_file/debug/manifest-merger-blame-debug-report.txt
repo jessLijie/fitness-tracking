@@ -13,13 +13,13 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->/Users/ngqianhui/fitness-tracking/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/Users/ngqianhui/fitness-tracking/android/app/src/debug/AndroidManifest.xml:6:22-64
 16
 17    <application
 18        android:name="android.app.Application"
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.6.0] C:\Users\jessm\.gradle\caches\transforms-3\e7d448bedf457595d1da67f320b7b25d\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.6.0] /Users/ngqianhui/.gradle/caches/transforms-3/d08c73bfb05384f2e52578171dbd141e/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
 22        android:label="fitness_tracking" >
@@ -57,59 +57,59 @@
 54            android:value="2" />
 55
 56        <service
-56-->[:firebase_core] C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+56-->[:firebase_core] /Users/ngqianhui/fitness-tracking/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
 57            android:name="com.google.firebase.components.ComponentDiscoveryService"
-57-->[:firebase_core] C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+57-->[:firebase_core] /Users/ngqianhui/fitness-tracking/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
 58            android:directBootAware="true"
-58-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:32:13-43
+58-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:32:13-43
 59            android:exported="false" >
-59-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:33:13-37
+59-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:33:13-37
 60            <meta-data
-60-->[:firebase_core] C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+60-->[:firebase_core] /Users/ngqianhui/fitness-tracking/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
 61                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-61-->[:firebase_core] C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+61-->[:firebase_core] /Users/ngqianhui/fitness-tracking/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
 62                android:value="com.google.firebase.components.ComponentRegistrar" />
-62-->[:firebase_core] C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness_tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+62-->[:firebase_core] /Users/ngqianhui/fitness-tracking/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 63            <meta-data
-63-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:35:13-37:85
+63-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:35:13-37:85
 64                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-64-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:36:17-109
+64-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:36:17-109
 65                android:value="com.google.firebase.components.ComponentRegistrar" />
-65-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:37:17-82
+65-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:37:17-82
 66        </service>
 67
 68        <provider
-68-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:23:9-28:39
+68-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:23:9-28:39
 69            android:name="com.google.firebase.provider.FirebaseInitProvider"
-69-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:24:13-77
+69-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:24:13-77
 70            android:authorities="com.example.fitness_tracking.firebaseinitprovider"
-70-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:25:13-72
+70-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:25:13-72
 71            android:directBootAware="true"
-71-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:26:13-43
+71-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:26:13-43
 72            android:exported="false"
-72-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:27:13-37
+72-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:27:13-37
 73            android:initOrder="100" />
-73-->[com.google.firebase:firebase-common:20.4.3] C:\Users\jessm\.gradle\caches\transforms-3\b34e8ceedbff23f186c04edc6a02dad7\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:28:13-36
+73-->[com.google.firebase:firebase-common:20.4.3] /Users/ngqianhui/.gradle/caches/transforms-3/dc0ab3983dbb0c1d6484f240444a6549/transformed/jetified-firebase-common-20.4.3/AndroidManifest.xml:28:13-36
 74
 75        <uses-library
-75-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+75-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 76            android:name="androidx.window.extensions"
-76-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+76-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
 77            android:required="false" />
-77-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+77-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
 78        <uses-library
-78-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+78-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
 79            android:name="androidx.window.sidecar"
-79-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+79-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
 80            android:required="false" />
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\jessm\.gradle\caches\transforms-3\d943c78a6995a024f7a7534709dfc0f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+80-->[androidx.window:window:1.0.0-beta04] /Users/ngqianhui/.gradle/caches/transforms-3/076eb9235982ee06112d76594ea8585f/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
 81
 82        <meta-data
-82-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\jessm\.gradle\caches\transforms-3\db06c6de1649fcaf9ecd23e3a2b1d568\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+82-->[com.google.android.gms:play-services-basement:18.3.0] /Users/ngqianhui/.gradle/caches/transforms-3/2971e8222b6d8953a900638ba0d233ca/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
 83            android:name="com.google.android.gms.version"
-83-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\jessm\.gradle\caches\transforms-3\db06c6de1649fcaf9ecd23e3a2b1d568\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+83-->[com.google.android.gms:play-services-basement:18.3.0] /Users/ngqianhui/.gradle/caches/transforms-3/2971e8222b6d8953a900638ba0d233ca/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
 84            android:value="@integer/google_play_services_version" />
-84-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\jessm\.gradle\caches\transforms-3\db06c6de1649fcaf9ecd23e3a2b1d568\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+84-->[com.google.android.gms:play-services-basement:18.3.0] /Users/ngqianhui/.gradle/caches/transforms-3/2971e8222b6d8953a900638ba0d233ca/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
 85    </application>
 86
 87</manifest>

@@ -4,7 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-12:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\e7d448bedf457595d1da67f320b7b25d\\transformed\\core-1.6.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/d08c73bfb05384f2e52578171dbd141e/transformed/core-1.6.0/res/values-zh-rTW/values-zh-rTW.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\db06c6de1649fcaf9ecd23e3a2b1d568\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-zh-rTW\\values.xml",
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/2971e8222b6d8953a900638ba0d233ca/transformed/jetified-play-services-basement-18.3.0/res/values-zh-rTW/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
