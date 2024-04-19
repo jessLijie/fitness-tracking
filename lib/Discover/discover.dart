@@ -4,8 +4,8 @@ class DiscoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Discover')),
-      body: Center(
+      appBar: AppBar(title: const Text('Discover')),
+      body: const Center(
         child: Text('Discover Page'),
       ),
     );
