@@ -1,10 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness_tracking/Profile/signin.dart';
+import 'package:fitness_tracking/Profile/signup.dart';
 import 'package:flutter/material.dart';
 
 import 'Dashboard/home.dart';
 import 'Discover/discover.dart';
 import 'Forum/forum.dart';
 import 'Profile/profile.dart';
+import 'Profile/welcome_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
