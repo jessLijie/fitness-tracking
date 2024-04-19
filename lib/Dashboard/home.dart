@@ -87,7 +87,7 @@ class CaloryCard extends StatelessWidget {
       height: 120,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Stack(
             children: [
               Column(
