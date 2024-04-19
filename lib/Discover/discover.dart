@@ -6,7 +6,7 @@ class DiscoverPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Discover')),
       body: const Center(
-        child: Text('Discover Page'),
+        child: Text('Discover Page o'),
       ),
     );
   }
