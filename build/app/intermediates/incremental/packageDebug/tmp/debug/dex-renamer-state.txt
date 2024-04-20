@@ -1,4 +1,4 @@
-#Fri Apr 19 01:05:37 SGT 2024
-base.0=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness_tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
+#Sat Apr 20 14:11:05 MYT 2024
+base.0=/Users/ngqianhui/fitness-tracking/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
