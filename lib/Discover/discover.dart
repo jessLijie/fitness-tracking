@@ -47,16 +47,19 @@ class WorkoutCard extends StatelessWidget {
   final String title, description, image;
 
   const WorkoutCard({super.key, required this.title, required this.description, required this.image});
-
+  
   @override
+  
   Widget build(BuildContext context) {
+  // Color color = Color.fromRGBO(239, 255, 224, 1.0);
+
     return Center(
       child: Container(
         height: 160,
         width: MediaQuery.of(context).size.width - 30,
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: Colors.green[100], 
+          color: Colors.green[100],
           borderRadius: BorderRadius.circular(10)),
        child: Row(
           children: [
