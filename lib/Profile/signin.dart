@@ -1,7 +1,64 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness_tracking/Profile/forgot_pw_page.dart';
+import 'package:fitness_tracking/main.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key});
+class SignInPage extends StatefulWidget {
+  SignInPage({Key? key});
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future<void> signUserIn() async{
+    //loading circle
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    );
+    //signin
+    try{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+      );
+    //pop loading circle
+    Navigator.pop(context);
+      Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => NavigationBarApp()),
+    );
+    } on FirebaseAuthException catch (e) {
+      //pop loading circle
+      Navigator.pop(context);
+      
+      showErrorMessage(e.code);
+    }    
+  }
+
+  void showErrorMessage(String message){
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              message,
+            )
+          )
+        );
+      }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +87,7 @@ class SignInPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       prefixIcon: Icon(Icons.email, color: Colors.black),
@@ -42,6 +100,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   TextField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Password',
@@ -56,7 +115,10 @@ class SignInPage extends StatelessWidget {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      // Add functionality for forgot password
+                      Navigator.push(context, 
+                      MaterialPageRoute(builder: (context){
+                        return ForgotPasswordPage();
+                      }));
                     },
                     child: Text(
                       'Forgot Password',
@@ -68,9 +130,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
-                      // Add your sign up button functionality here
-                    },
+                    onPressed: () {signUserIn();},
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Color(0xFFC0FE87),

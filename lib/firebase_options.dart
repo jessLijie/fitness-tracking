@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'fitness-tracking-7d769.firebaseapp.com',
     storageBucket: 'fitness-tracking-7d769.appspot.com',
   );
+
 }

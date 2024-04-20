@@ -1,3 +1,5 @@
+import 'package:fitness_tracking/Profile/signin.dart';
+import 'package:fitness_tracking/Profile/signup.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -26,7 +28,10 @@ class WelcomeScreen extends StatelessWidget {
           // Sign Up Button
           ElevatedButton(
             onPressed: () {
-              // Add your sign up button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpPage()),
+              );
             },
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
@@ -46,7 +51,10 @@ class WelcomeScreen extends StatelessWidget {
           // Log In Button
           ElevatedButton(
             onPressed: () {
-              // Add your log in button functionality here
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignInPage()),
+              );
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,
