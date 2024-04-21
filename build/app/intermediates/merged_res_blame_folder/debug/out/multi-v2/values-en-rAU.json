@@ -4,17 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-14:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\beadee67a7ecdfc1d6ba53abb28cf30c\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,153,250,359",
-                        "endColumns": "97,96,108,98",
-                        "endOffsets": "148,245,354,453"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\e3d694962041f09185dc2e3710fe14be\\transformed\\core-1.6.0\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/dde19023263d450928487554607a3937/transformed/core-1.6.0/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -28,6 +18,16 @@
                         "startOffsets": "458",
                         "endColumns": "100",
                         "endOffsets": "554"
+                    }
+                },
+                {
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/02a215e455292f3a823922da6452b253/transformed/browser-1.4.0/res/values-en-rAU/values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,153,250,359",
+                        "endColumns": "97,96,108,98",
+                        "endOffsets": "148,245,354,453"
                     }
                 }
             ]
