@@ -61,7 +61,7 @@ class WorkoutCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width - 30,
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: Colors.green[100],
+          color: Color.fromARGB(255, 200, 230, 201),
           borderRadius: BorderRadius.circular(10)),
        child: Row(
           children: [
