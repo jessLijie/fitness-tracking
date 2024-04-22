@@ -1,8 +1,13 @@
 // This is a generated file; do not edit or check into version control.
+<<<<<<< HEAD
 FLUTTER_ROOT=C:\flutter
 FLUTTER_APPLICATION_PATH=C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking
+=======
+FLUTTER_ROOT=/Applications/development/flutter
+FLUTTER_APPLICATION_PATH=/Users/ngqianhui/Documents/GitHub/fitness-tracking
+>>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib\main.dart
+FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1

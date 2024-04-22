@@ -4,6 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-14:/values-bn/values-bn.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\3182888c8a22a9c242cbf25bd3ba6461\\transformed\\core-1.6.0\\res\\values-bn\\values-bn.xml",
                     "from": {
                         "startLines": "2",
@@ -22,6 +23,9 @@
                 },
                 {
                     "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\b6921df971f0c377a2a1d2fe51a38b37\\transformed\\browser-1.4.0\\res\\values-bn\\values-bn.xml",
+=======
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/02a215e455292f3a823922da6452b253/transformed/browser-1.4.0/res/values-bn/values-bn.xml",
+>>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -38,7 +42,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\42fc57bd0662c57e92eb36d18b4edbf7\\transformed\\jetified-play-services-base-18.0.1\\res\\values-bn\\values.xml",
+=======
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/8ee540175abbcc2c0fb4e24666289a47/transformed/jetified-play-services-base-18.0.1/res/values-bn/values.xml",
+>>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +63,28 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\8f817bf59c6fda79d34296a1089a25ac\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-bn\\values.xml",
+=======
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/dde19023263d450928487554607a3937/transformed/core-1.6.0/res/values-bn/values-bn.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "24",
+                        "startColumns": "4",
+                        "startOffsets": "2645",
+                        "endColumns": "100",
+                        "endOffsets": "2741"
+                    }
+                },
+                {
+                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/64a24588c249f1c457d5f33aa58f1aef/transformed/jetified-play-services-basement-18.3.0/res/values-bn/values.xml",
+>>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
