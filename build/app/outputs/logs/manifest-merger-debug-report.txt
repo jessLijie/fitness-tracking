@@ -63,6 +63,7 @@ MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\darre\.gradle\
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\darre\.gradle\caches\transforms-3\9fa30bcaba980726f48a3723914e3ef8\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\33583dd6916f61c883ee691871b80e51\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\0bf107bae57295d6af9867f1126c6b4d\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\darre\.gradle\caches\transforms-3\7b7a2db39542874c5920e11a6f0c05eb\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\darre\.gradle\caches\transforms-3\9cd9d353daf04c9e5d33879c715ba632\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:15:1-25:12
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\darre\.gradle\caches\transforms-3\a9c8aa4b4fdc86eec1bf879955a4f859\transformed\jetified-firebase-database-collection-18.0.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\darre\.gradle\caches\transforms-3\c51b479d87bc4aa07a94f6f988b6a06a\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
@@ -141,6 +142,8 @@ MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\ca
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\33583dd6916f61c883ee691871b80e51\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\0bf107bae57295d6af9867f1126c6b4d\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\0bf107bae57295d6af9867f1126c6b4d\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\darre\.gradle\caches\transforms-3\7b7a2db39542874c5920e11a6f0c05eb\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\darre\.gradle\caches\transforms-3\7b7a2db39542874c5920e11a6f0c05eb\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\darre\.gradle\caches\transforms-3\9cd9d353daf04c9e5d33879c715ba632\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\darre\.gradle\caches\transforms-3\9cd9d353daf04c9e5d33879c715ba632\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] C:\Users\darre\.gradle\caches\transforms-3\a9c8aa4b4fdc86eec1bf879955a4f859\transformed\jetified-firebase-database-collection-18.0.1\AndroidManifest.xml:5:5-7:41

@@ -79,8 +79,8 @@ class CaloryCard extends StatelessWidget {
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -146,8 +146,8 @@ class BmiCard extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -242,8 +242,8 @@ class _CalculatorState extends State<Calculator> {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -266,11 +266,11 @@ class _CalculatorState extends State<Calculator> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "${_calculateBMI(_height, _weight)}",
+                        "${getBMIvalue(_height, _weight)}",
                         style: TextStyle(fontSize: 24),
                       ),
                       Text(
-                        "~${getBMIvalue(_height, _weight)}",
+                        "= ${_calculateBMI(_height, _weight)}",
                         style: TextStyle(fontSize: 24),
                       ),
                     ],

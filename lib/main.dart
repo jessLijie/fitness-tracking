@@ -1,11 +1,11 @@
-import 'package:fitness_tracking/Profile/auth_page.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fitness_tracking/Profile/welcome_screen.dart'; // Import WelcomeScreen here
+import 'package:fitness_tracking/Profile/auth_page.dart';
+import 'package:fitness_tracking/Profile/profile.dart';
+import 'package:flutter/material.dart';
+
 import 'Dashboard/home.dart';
 import 'Discover/discover.dart';
 import 'Forum/forum.dart';
-import 'Profile/profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: AuthPage(), 
+      home: AuthPage(),
     );
   }
 }
