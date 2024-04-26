@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'Dashboard/home.dart';
 import 'Discover/discover.dart';
-import 'Forum/forum.dart';
+import 'Forum/forumPage.dart';
+import 'Forum/detailsPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: AuthPage(),
+      home: HomePage(),
     );
   }
 }

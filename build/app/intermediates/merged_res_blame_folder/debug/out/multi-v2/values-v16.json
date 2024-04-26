@@ -4,11 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-14:/values-v16/values-v16.xml",
             "map": [
                 {
-<<<<<<< HEAD
-                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\3182888c8a22a9c242cbf25bd3ba6461\\transformed\\core-1.6.0\\res\\values-v16\\values-v16.xml",
-=======
-                    "source": "/Users/ngqianhui/.gradle/caches/transforms-3/dde19023263d450928487554607a3937/transformed/core-1.6.0/res/values-v16/values-v16.xml",
->>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
+                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\149d8983cc42e3067df97ce0401e49ed\\transformed\\core-1.6.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

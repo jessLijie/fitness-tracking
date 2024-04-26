@@ -1,47 +1,20 @@
-<<<<<<< HEAD
-com.example.fitness_tracking.app-jetified-annotation-experimental-1.1.0-0 C:\Users\jessm\.gradle\caches\transforms-3\06cc3e832b17a0c6bffe016fe2ff144b\transformed\jetified-annotation-experimental-1.1.0\res
-com.example.fitness_tracking.app-jetified-window-java-1.0.0-beta04-1 C:\Users\jessm\.gradle\caches\transforms-3\1ff451ef3974b101df433af7be5cccc4\transformed\jetified-window-java-1.0.0-beta04\res
-com.example.fitness_tracking.app-jetified-window-1.0.0-beta04-2 C:\Users\jessm\.gradle\caches\transforms-3\22ff2317d37ea6753b9d6653836c2a92\transformed\jetified-window-1.0.0-beta04\res
-com.example.fitness_tracking.app-core-1.6.0-3 C:\Users\jessm\.gradle\caches\transforms-3\3182888c8a22a9c242cbf25bd3ba6461\transformed\core-1.6.0\res
-com.example.fitness_tracking.app-jetified-play-services-base-18.0.1-4 C:\Users\jessm\.gradle\caches\transforms-3\42fc57bd0662c57e92eb36d18b4edbf7\transformed\jetified-play-services-base-18.0.1\res
-com.example.fitness_tracking.app-jetified-firebase-common-20.4.3-5 C:\Users\jessm\.gradle\caches\transforms-3\73bbe6ab73bdf6f045c8e849866c1c9c\transformed\jetified-firebase-common-20.4.3\res
-com.example.fitness_tracking.app-jetified-play-services-basement-18.3.0-6 C:\Users\jessm\.gradle\caches\transforms-3\8f817bf59c6fda79d34296a1089a25ac\transformed\jetified-play-services-basement-18.3.0\res
-com.example.fitness_tracking.app-browser-1.4.0-7 C:\Users\jessm\.gradle\caches\transforms-3\b6921df971f0c377a2a1d2fe51a38b37\transformed\browser-1.4.0\res
-com.example.fitness_tracking.app-debug-8 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\android\app\src\debug\res
-com.example.fitness_tracking.app-main-9 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\android\app\src\main\res
-com.example.fitness_tracking.app-google-services-10 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\generated\res\google-services\debug
-com.example.fitness_tracking.app-pngs-11 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\generated\res\pngs\debug
-com.example.fitness_tracking.app-resValues-12 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\generated\res\resValues\debug
-com.example.fitness_tracking.app-rs-13 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\generated\res\rs\debug
-com.example.fitness_tracking.app-mergeDebugResources-14 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.fitness_tracking.app-mergeDebugResources-15 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.fitness_tracking.app-merged_res-16 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\app\intermediates\merged_res\debug
-com.example.fitness_tracking.app-packaged_res-17 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\cloud_firestore\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-18 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\desktop_webview_auth\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-19 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\firebase_auth\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-20 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\firebase_core\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-21 C:\Users\jessm\OneDrive\Desktop\work\MAP\fitness-tracking\build\firebase_dynamic_links\intermediates\packaged_res\debug
-=======
-com.example.fitness_tracking.app-browser-1.4.0-0 /Users/ngqianhui/.gradle/caches/transforms-3/02a215e455292f3a823922da6452b253/transformed/browser-1.4.0/res
-com.example.fitness_tracking.app-jetified-window-java-1.0.0-beta04-1 /Users/ngqianhui/.gradle/caches/transforms-3/1df059c41a28b6fdf9502ca1903d1307/transformed/jetified-window-java-1.0.0-beta04/res
-com.example.fitness_tracking.app-jetified-window-1.0.0-beta04-2 /Users/ngqianhui/.gradle/caches/transforms-3/556754c0e5b35b3c0e01180d754c0257/transformed/jetified-window-1.0.0-beta04/res
-com.example.fitness_tracking.app-jetified-play-services-basement-18.3.0-3 /Users/ngqianhui/.gradle/caches/transforms-3/64a24588c249f1c457d5f33aa58f1aef/transformed/jetified-play-services-basement-18.3.0/res
-com.example.fitness_tracking.app-jetified-firebase-common-20.4.3-4 /Users/ngqianhui/.gradle/caches/transforms-3/7f8b2ede2a15b8a5d1a9cb293792c69a/transformed/jetified-firebase-common-20.4.3/res
-com.example.fitness_tracking.app-jetified-play-services-base-18.0.1-5 /Users/ngqianhui/.gradle/caches/transforms-3/8ee540175abbcc2c0fb4e24666289a47/transformed/jetified-play-services-base-18.0.1/res
-com.example.fitness_tracking.app-jetified-annotation-experimental-1.1.0-6 /Users/ngqianhui/.gradle/caches/transforms-3/d997b849cdd3ac8c5d1ec83b72618632/transformed/jetified-annotation-experimental-1.1.0/res
-com.example.fitness_tracking.app-core-1.6.0-7 /Users/ngqianhui/.gradle/caches/transforms-3/dde19023263d450928487554607a3937/transformed/core-1.6.0/res
-com.example.fitness_tracking.app-debug-8 /Users/ngqianhui/Documents/GitHub/fitness-tracking/android/app/src/debug/res
-com.example.fitness_tracking.app-main-9 /Users/ngqianhui/Documents/GitHub/fitness-tracking/android/app/src/main/res
-com.example.fitness_tracking.app-google-services-10 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/generated/res/google-services/debug
-com.example.fitness_tracking.app-pngs-11 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/generated/res/pngs/debug
-com.example.fitness_tracking.app-resValues-12 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/generated/res/resValues/debug
-com.example.fitness_tracking.app-rs-13 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/generated/res/rs/debug
-com.example.fitness_tracking.app-mergeDebugResources-14 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.example.fitness_tracking.app-mergeDebugResources-15 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.example.fitness_tracking.app-merged_res-16 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/merged_res/debug
-com.example.fitness_tracking.app-packaged_res-17 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/cloud_firestore/intermediates/packaged_res/debug
-com.example.fitness_tracking.app-packaged_res-18 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/desktop_webview_auth/intermediates/packaged_res/debug
-com.example.fitness_tracking.app-packaged_res-19 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/firebase_auth/intermediates/packaged_res/debug
-com.example.fitness_tracking.app-packaged_res-20 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/firebase_core/intermediates/packaged_res/debug
-com.example.fitness_tracking.app-packaged_res-21 /Users/ngqianhui/Documents/GitHub/fitness-tracking/build/firebase_dynamic_links/intermediates/packaged_res/debug
->>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
+com.example.fitness_tracking.app-jetified-play-services-basement-18.3.0-0 C:\Users\Jason Tan\.gradle\caches\transforms-3\13dc8654ca6cbbbea3fb27e5b90a69e4\transformed\jetified-play-services-basement-18.3.0\res
+com.example.fitness_tracking.app-core-1.6.0-1 C:\Users\Jason Tan\.gradle\caches\transforms-3\149d8983cc42e3067df97ce0401e49ed\transformed\core-1.6.0\res
+com.example.fitness_tracking.app-jetified-window-java-1.0.0-beta04-2 C:\Users\Jason Tan\.gradle\caches\transforms-3\6bf28d3103608bfc08968ba11d3df7f2\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.fitness_tracking.app-browser-1.4.0-3 C:\Users\Jason Tan\.gradle\caches\transforms-3\8029019684b4e98e9f7e7bfd1c167887\transformed\browser-1.4.0\res
+com.example.fitness_tracking.app-jetified-window-1.0.0-beta04-4 C:\Users\Jason Tan\.gradle\caches\transforms-3\9d5325a8c69a529e12b8f58683a5320a\transformed\jetified-window-1.0.0-beta04\res
+com.example.fitness_tracking.app-jetified-firebase-common-20.4.3-5 C:\Users\Jason Tan\.gradle\caches\transforms-3\bed7b3b3dae889128612a28432102494\transformed\jetified-firebase-common-20.4.3\res
+com.example.fitness_tracking.app-jetified-annotation-experimental-1.1.0-6 C:\Users\Jason Tan\.gradle\caches\transforms-3\c585e7f3f040b9812e08d74fc98e8778\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.fitness_tracking.app-jetified-play-services-base-18.0.1-7 C:\Users\Jason Tan\.gradle\caches\transforms-3\d60a3ea35821b98e1383a1aaaeee3e07\transformed\jetified-play-services-base-18.0.1\res
+com.example.fitness_tracking.app-debug-8 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\debug\res
+com.example.fitness_tracking.app-main-9 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\main\res
+com.example.fitness_tracking.app-google-services-10 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\google-services\debug
+com.example.fitness_tracking.app-pngs-11 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\pngs\debug
+com.example.fitness_tracking.app-resValues-12 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\resValues\debug
+com.example.fitness_tracking.app-rs-13 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\rs\debug
+com.example.fitness_tracking.app-mergeDebugResources-14 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.fitness_tracking.app-mergeDebugResources-15 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.fitness_tracking.app-merged_res-16 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\merged_res\debug
+com.example.fitness_tracking.app-packaged_res-17 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\cloud_firestore\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-18 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_auth\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-19 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_core\intermediates\packaged_res\debug
