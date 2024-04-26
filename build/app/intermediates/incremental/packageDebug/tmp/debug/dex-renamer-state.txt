@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-#Mon Apr 22 12:06:26 SGT 2024
-base.2=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+#Thu Apr 25 10:23:20 SGT 2024
+base.2=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
-base.1=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+base.1=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 path.1=classes2.dex
-base.0=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+base.0=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex
-=======
-#Sun Apr 21 16:06:57 MYT 2024
-base.0=/Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-base.1=/Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
-base.2=/Users/ngqianhui/Documents/GitHub/fitness-tracking/build/app/intermediates/dex/debug/mergeDexDebug/classes3.dex
-path.0=classes.dex
-path.1=classes2.dex
-path.2=classes3.dex
-renamed.0=classes.dex
-renamed.1=classes2.dex
-renamed.2=classes3.dex
->>>>>>> 8710069c578c6211c08f55811bd70a2cd65da4dd
