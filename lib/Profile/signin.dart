@@ -32,11 +32,14 @@ class _SignInPageState extends State<SignInPage> {
       password: passwordController.text,
       );
     //pop loading circle
-    Navigator.pop(context);
-      Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => NavigationBarApp()),
-    );
+    //Navigator.pop(context);
+    //   Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => NavigationBarApp()),
+    // );
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return  NavigationBarApp();
+    }));
     } on FirebaseAuthException catch (e) {
       //pop loading circle
       Navigator.pop(context);
