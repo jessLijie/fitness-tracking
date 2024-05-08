@@ -13,14 +13,16 @@ class SignUpPage extends StatelessWidget {
     String height,
     String weight,
     int age,
+    String gender,
   ) async {
     await FirebaseFirestore.instance.collection('users').add({
       'full name': fullName,
       'phone number': phoneNumber,
       'email': email,
-      'height': height, // Add height field with default value
-      'weight': weight, // Add weight field with default value
-      'age': age,       // Add age field with default value
+      'height': height, 
+      'weight': weight, 
+      'age': age,       
+      'gender' : gender, 
     });
   }
 
@@ -56,6 +58,7 @@ class SignUpPage extends StatelessWidget {
       String height,
       String weight,
       int age,
+      String gender,
     ) async {
       showDialog(
         context: context, 
@@ -82,6 +85,7 @@ class SignUpPage extends StatelessWidget {
             'N/A', // Default height
             'N/A', // Default weight
             0,     // Default age
+            '',
           );
 
           // Pop loading circle
@@ -206,6 +210,7 @@ class SignUpPage extends StatelessWidget {
                         'N/A', // Default height
                         'N/A', // Default weight
                         0,     // Default age
+                        'N/A', // Default gender
                       );
                     },
                     style: ElevatedButton.styleFrom(
