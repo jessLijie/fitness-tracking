@@ -1,15 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness_tracking/Profile/auth_page.dart';
+import 'package:fitness_tracking/Profile/profile.dart';
+import 'package:fitness_tracking/Forum/forumPage.dart';
 import 'package:flutter/material.dart';
 
 import 'Dashboard/home.dart';
 import 'Discover/discover.dart';
-import 'Forum/forum.dart';
-import 'Profile/profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(NavigationBarApp());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: AuthPage(),
+    );
+  }
 }
 
 class NavigationBarApp extends StatefulWidget {
@@ -34,48 +47,43 @@ class _NavigationBarAppState extends State<NavigationBarApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
+    return Scaffold(
+      body: Stack(
+        children: _pages.asMap().entries.map((entry) {
+          final index = entry.key;
+          final page = entry.value;
+          return Offstage(
+            offstage: _selectedIndex != index,
+            child: TickerMode(
+              enabled: _selectedIndex == index,
+              child: page,
+            ),
+          );
+        }).toList(),
       ),
-      home: Scaffold(
-        body: Stack(
-          children: _pages.asMap().entries.map((entry) {
-            final index = entry.key;
-            final page = entry.value;
-            return Offstage(
-              offstage: _selectedIndex != index,
-              child: TickerMode(
-                enabled: _selectedIndex == index,
-                child: page,
-              ),
-            );
-          }).toList(),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: 'Discover',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.forum),
-              label: 'Forum',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Discover',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.forum),
+            label: 'Forum',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }

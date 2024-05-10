@@ -1,3 +1,4 @@
+import 'package:fitness_tracking/Dashboard/calendar.dart';
 import 'package:fitness_tracking/Discover/discover.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -52,6 +53,10 @@ class HomePage extends StatelessWidget {
                       child: Calculator(height: 175, weight: 60),
                     ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text("WorkOut Diary >"),
+                  )
                 ],
               ),
             ),
@@ -75,12 +80,12 @@ class CaloryCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -142,12 +147,12 @@ class BmiCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -238,12 +243,12 @@ class _CalculatorState extends State<Calculator> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            Colors.yellow,
-            Color.fromARGB(255, 143, 231, 146),
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
           ],
         ),
       ),
@@ -266,12 +271,12 @@ class _CalculatorState extends State<Calculator> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "${_calculateBMI(_height, _weight)}",
+                        "${getBMIvalue(_height, _weight)}",
                         style: TextStyle(fontSize: 24),
                       ),
                       Text(
-                        "~${getBMIvalue(_height, _weight)}",
-                        style: TextStyle(fontSize: 24),
+                        "= ${_calculateBMI(_height, _weight)}",
+                        style: TextStyle(fontSize: 20),
                       ),
                     ],
                   ),
@@ -343,7 +348,7 @@ class _CalculatorState extends State<Calculator> {
 
   double getBMIvalue(double height, double weight) {
     double bmi = (weight / ((height / 100) * (height / 100)));
-     return double.parse(bmi.toStringAsFixed(2));
+    return double.parse(bmi.toStringAsFixed(2));
   }
 }
 
