@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness_tracking/Forum/forumPage.dart';
 import 'package:fitness_tracking/Profile/auth_page.dart';
 import 'package:fitness_tracking/Profile/profile.dart';
-import 'package:fitness_tracking/Forum/forumPage.dart';
+import 'package:fitness_tracking/Router/router.dart' as myRouter;
 import 'package:flutter/material.dart';
 
 import 'Dashboard/home.dart';
@@ -14,6 +15,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
+  final myRouter.Router _router = myRouter.Router();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,6 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: AuthPage(),
+      onGenerateRoute: _router.createRoute,
     );
   }
 }
