@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Sat May 18 15:12:05 MYT 2024
 base.0=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
@@ -6,6 +7,17 @@ base.3=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermedia
 base.4=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 base.5=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
 base.6=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+=======
+#Sat May 18 13:30:05 SGT 2024
+base.2=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+path.2=classes3.dex
+base.1=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+path.1=classes2.dex
+base.0=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+>>>>>>> 661f38819c000ba6d4b7fd3998d11467afb2fec1
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=0/classes.dex

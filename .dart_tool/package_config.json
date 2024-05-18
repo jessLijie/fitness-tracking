@@ -80,6 +80,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "easy_date_timeline",
+      "rootUri": "file:///C:/Users/darre/AppData/Local/Pub/Cache/hosted/pub.dev/easy_date_timeline-1.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "email_validator",
       "rootUri": "file:///C:/Users/darre/AppData/Local/Pub/Cache/hosted/pub.dev/email_validator-2.1.17",
       "packageUri": "lib/",
@@ -398,7 +404,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-05-18T07:11:10.718333Z",
+  "generated": "2024-05-18T10:29:31.267949Z",
   "generator": "pub",
   "generatorVersion": "3.5.0-129.0.dev",
   "flutterRoot": "file:///C:/Users/darre/Desktop/flutter",

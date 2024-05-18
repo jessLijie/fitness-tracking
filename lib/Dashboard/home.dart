@@ -33,25 +33,22 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 10.0), 
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
                       child: BmiCard(BMI: 22.35),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 10.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
                       child: CaloryCard(burnt: 100, goal: 200),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.0,
-                        vertical: 10.0), 
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
                       child: Calculator(height: 175, weight: 60),
                     ),
@@ -314,7 +311,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                       Text(
                         "= ${_calculateBMI(_height, _weight)}",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 15),
                       ),
                     ],
                   ),
@@ -330,37 +327,47 @@ class _CalculatorState extends State<Calculator> {
                     "Height",
                     style: TextStyle(fontSize: 16),
                   ),
-                  Slider(
-                    value: _height,
-                    min: 80,
-                    max: 200,
-                    onChanged: (value) {
-                      setState(() {
-                        _height = value;
-                      });
-                    },
-                    divisions: 200,
-                    label: "$_height cm",
-                    activeColor: Colors.blue,
-                    inactiveColor: Colors.grey,
+                  SliderTheme(
+                    data: SliderThemeData(
+                      trackHeight: 10,
+                    ),
+                    child: Slider(
+                      value: _height,
+                      min: 80,
+                      max: 200,
+                      onChanged: (value) {
+                        setState(() {
+                          _height = value;
+                        });
+                      },
+                      divisions: 200,
+                      label: "${_height.toInt()} cm",
+                      activeColor: Color.fromARGB(255, 40, 138, 29),
+                      inactiveColor: Colors.grey,
+                    ),
                   ),
                   Text(
                     "Weight",
                     style: TextStyle(fontSize: 16),
                   ),
-                  Slider(
-                    value: _weight,
-                    min: 30,
-                    max: 300,
-                    onChanged: (value) {
-                      setState(() {
-                        _weight = value;
-                      });
-                    },
-                    divisions: 300,
-                    label: "$_weight kg",
-                    activeColor: Colors.blue,
-                    inactiveColor: Colors.grey,
+                  SliderTheme(
+                    data: SliderThemeData(
+                      trackHeight: 10,
+                    ),
+                    child: Slider(
+                      value: _weight,
+                      min: 30,
+                      max: 300,
+                      onChanged: (value) {
+                        setState(() {
+                          _weight = value;
+                        });
+                      },
+                      divisions: 300,
+                      label: "${_weight.toInt()} kg",
+                      activeColor: Color.fromARGB(255, 40, 138, 29),
+                      inactiveColor: Colors.grey,
+                    ),
                   ),
                 ],
               ),
