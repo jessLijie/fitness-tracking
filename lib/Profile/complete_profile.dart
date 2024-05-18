@@ -1,17 +1,27 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_tracking/Profile/goal.dart';
+import 'package:fitness_tracking/services/auth.dart';
 
-class CompleteProfile extends StatelessWidget {
-  const CompleteProfile({super.key});
+class CompleteProfile extends StatefulWidget {
+  final String uid;
+  CompleteProfile({Key? key, required this.uid}) : super(key: key);
+
+  @override
+  _CompleteProfileState createState() => _CompleteProfileState();
+}
+
+class _CompleteProfileState extends State<CompleteProfile> {
+  String selectedGender = 'Male'; // Default selected gender
+
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController weightController = TextEditingController();
+  final TextEditingController heightController = TextEditingController();
+
+  // Define options for gender dropdown
+  final List<String> genderOptions = ['Male', 'Female'];
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController genderController = TextEditingController();
-    TextEditingController ageController = TextEditingController();
-    TextEditingController weightController = TextEditingController();
-    TextEditingController heightController = TextEditingController();
-
     return Scaffold(
       backgroundColor: Color(0xFFF3FFE0),
       body: SingleChildScrollView(
@@ -22,7 +32,6 @@ class CompleteProfile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: 90),
-
               Text(
                 'Let\'s complete your profile',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -32,8 +41,22 @@ class CompleteProfile extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
-                    controller: genderController,
+                  DropdownButtonFormField<String>(
+                    value: selectedGender,
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        // Update the selected gender
+                        setState(() {
+                          selectedGender = newValue;
+                        });
+                      }
+                    },
+                    items: genderOptions.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
                     decoration: InputDecoration(
                       hintText: 'Choose Gender',
                       prefixIcon: Icon(Icons.person, color: Colors.black),
@@ -49,59 +72,55 @@ class CompleteProfile extends StatelessWidget {
                     controller: ageController,
                     decoration: InputDecoration(
                       hintText: 'Your Age',
-                      prefixIcon: Icon(Icons.phone, color: Colors.black),
+                      prefixIcon: Icon(Icons.calendar_month, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
+                    keyboardType: TextInputType.number, // Allow only numeric input
                   ),
                   SizedBox(height: 20),
                   TextField(
                     controller: weightController,
                     decoration: InputDecoration(
-                      hintText: 'Your Weight',
-                      prefixIcon: Icon(Icons.email, color: Colors.black),
+                      hintText: 'Your Weight(kg)',
+                      prefixIcon: Icon(Icons.line_weight, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
+                    keyboardType: TextInputType.numberWithOptions(decimal: true), // Allow numeric input with decimals
                   ),
                   SizedBox(height: 20),
                   TextField(
                     controller: heightController,
-                    obscureText: true,
                     decoration: InputDecoration(
-                      hintText: 'Your Height',
-                      prefixIcon: Icon(Icons.lock, color: Colors.black),
+                      hintText: 'Your Height(m)',
+                      prefixIcon: Icon(Icons.height, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  TextField(
-                    controller: heightController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Goal',
-                      prefixIcon: Icon(Icons.lock, color: Colors.black),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      fillColor: Color(0xFFF7F8F8),
-                      filled: true,
-                    ),
+                    keyboardType: TextInputType.numberWithOptions(decimal: true), // Allow numeric input with decimals
                   ),
                   SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () {
-                      
+                      // Update user profile in Firestore and navigate to the next page
+                      AuthService().updateUserProfile(
+                        widget.uid,
+                        selectedGender,
+                        ageController.text,
+                        weightController.text,
+                        heightController.text,
+                        context,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -113,7 +132,7 @@ class CompleteProfile extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                       child: Text(
-                        'Register',
+                        'Next',
                         style: TextStyle(fontSize: 18),
                       ),
                     ),

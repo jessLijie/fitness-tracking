@@ -1,30 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_tracking/Profile/complete_profile.dart';
+import 'package:fitness_tracking/services/auth.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key});
-
-  // Function to add user details to Firestore
-  Future<void> addUserDetails(
-    String fullName,
-    String phoneNumber,
-    String email,
-    String height,
-    String weight,
-    int age,
-    String gender,
-  ) async {
-    await FirebaseFirestore.instance.collection('users').add({
-      'full name': fullName,
-      'phone number': phoneNumber,
-      'email': email,
-      'height': height, 
-      'weight': weight, 
-      'age': age,       
-      'gender' : gender, 
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,80 +12,6 @@ class SignUpPage extends StatelessWidget {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController confirmPasswordController = TextEditingController();
-    
-    void showErrorMessage(String message){
-      showDialog(
-        context: context, 
-        builder: (context) {
-          return AlertDialog(
-            title: Center(
-              child: Text(
-                message,
-              )
-            )
-          );
-        }
-      );
-    }
-
-    Future<void> signUpWithEmailAndPassword(
-      String fullName,
-      String phoneNumber,
-      String email,
-      String password,
-      String confirmPassword,
-      String height,
-      String weight,
-      int age,
-      String gender,
-    ) async {
-      showDialog(
-        context: context, 
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      );
-      try {
-        // Check if password is confirmed password
-        if (passwordController.text.trim() == confirmPasswordController.text.trim()) {
-          // Sign up user
-          UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          );
-
-          // Add user details with default values for height, weight, and age
-          await addUserDetails(
-            fullNameController.text.trim(),
-            phoneNumberController.text.trim(),
-            emailController.text.trim(),
-            'N/A', // Default height
-            'N/A', // Default weight
-            0,     // Default age
-            '',
-          );
-
-          // Pop loading circle
-          Navigator.pop(context);
-        } else {
-          // Pop loading circle
-          Navigator.pop(context);
-          // Show error message
-          showErrorMessage("Passwords don't match");
-          return;
-        }
-        // Pop loading circle
-        Navigator.pop(context);
-        // Navigate to the next screen or perform any other desired action
-      } catch (e) {
-        // Pop loading circle
-        Navigator.pop(context);
-        
-        showErrorMessage('$e');
-      }
-    }
 
     return Scaffold(
       backgroundColor: Color(0xFFF3FFE0),
@@ -201,16 +106,13 @@ class SignUpPage extends StatelessWidget {
                   SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () {
-                      signUpWithEmailAndPassword(
+                      AuthService().signUpWithEmailAndPassword(
                         fullNameController.text,
                         phoneNumberController.text,
                         emailController.text,
                         passwordController.text,
                         confirmPasswordController.text,
-                        'N/A', // Default height
-                        'N/A', // Default weight
-                        0,     // Default age
-                        'N/A', // Default gender
+                        context,
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -221,7 +123,8 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                       child: Text(
                         'Register',
                         style: TextStyle(fontSize: 18),
