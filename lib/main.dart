@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_tracking/Profile/auth_page.dart';
 import 'package:fitness_tracking/Profile/complete_profile.dart';
+import 'package:fitness_tracking/Profile/goal.dart';
 import 'package:fitness_tracking/Profile/profile.dart';
 import 'package:fitness_tracking/Forum/forumPage.dart';
 import 'package:flutter/material.dart';

@@ -1,20 +1,31 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_tracking/Profile/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness_tracking/Profile/edit_profile.dart';
+import 'package:fitness_tracking/services/auth.dart';
+import 'package:fitness_tracking/services/database.dart';
 
-class ProfilePage extends StatelessWidget {
-  //sign user out method
-  void signUserOut(BuildContext context) {
-    FirebaseAuth.instance.signOut().then((_) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        '/', // Replace this with the route name of your WelcomeScreen
-        (route) => false, // Remove all routes until the new route
-      );
-    }).catchError((error) {
-      print("Error signing out: $error");
-      // Handle sign-out error if needed
-    });
+class ProfilePage extends StatefulWidget {
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late Future<Map<String, dynamic>> _userProfileFuture;
+  final AuthService _authService = AuthService();
+  final DatabaseService _databaseService = DatabaseService();
+
+  @override
+  void initState() {
+    super.initState();
+    _userProfileFuture = _getUserProfileData();
+  }
+
+  Future<Map<String, dynamic>> _getUserProfileData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return _databaseService.getUserProfileData(user.uid);
+    }
+    return {}; // Return an empty map if user is not authenticated
   }
 
   @override
@@ -30,7 +41,7 @@ class ProfilePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => signUserOut(context),
+            onPressed: () => _authService.signOut(context),
             icon: Icon(Icons.logout),
           )
         ],
@@ -38,78 +49,114 @@ class ProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Profile Picture and Name with Edit Button
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          child: FutureBuilder<Map<String, dynamic>>(
+            future: _userProfileFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator()); // Placeholder until data is fetched
+              }
+              if (snapshot.hasError || !snapshot.hasData) {
+                return Center(child: Text('Error fetching user data')); // Error message if data retrieval fails
+              }
+              Map<String, dynamic> userData = snapshot.data!;
+              
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Profile Picture
-                  CircleAvatar(
-                    radius: 50,
-                    // Placeholder image or load the actual profile image
-                    backgroundImage: AssetImage('assets/profile_image_placeholder.png'),
-                  ),
-                  SizedBox(width: 20),
-                  // Name and Edit Button
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 16),
-                        Text(
-                          'John Doe',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  // Profile Picture and Name with Edit Button
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Profile Picture
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.grey,
+                        child: userData['profileImageUrl'] != null
+                            ? ClipOval(
+                                child: Image.network(
+                                  userData['profileImageUrl'],
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : Icon(
+                                Icons.person,
+                                size: 50,
+                                color: Colors.white,
+                              ),
+                      ),
+                      SizedBox(width: 20),
+                      // Name and Edit Button
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 16),
+                            Text(
+                              userData['full name'] ?? 'N/A',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              userData['goal'] ?? 'N/A',
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 5),
-                        Text(
-                          'Lose a fat program',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          // Navigate to EditProfilePage and wait for the result
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditProfilePage(userData: userData),
+                            ),
+                          );
+                          // Refresh the profile data
+                          setState(() {
+                            _userProfileFuture = _getUserProfileData();
+                          });
+                        },
+                        icon: Icon(Icons.edit),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {
-                      // Handle edit name button click
-                    },
-                    icon: Icon(Icons.edit),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
+                  SizedBox(height: 20),
 
-              // 4 boxes
-              Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                children: [
-                  ProfileBox(label: 'Height', value: '180 cm'),
-                  ProfileBox(label: 'Weight', value: '75 kg'),
-                  ProfileBox(label: 'BMI', value: '24.2'),
-                  ProfileBox(label: 'Age', value: '30 years'),
+                  // 4 boxes
+                  Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: [
+                      ProfileBox(label: 'Height', value: '${userData['height']} m'),
+                      ProfileBox(label: 'Weight', value: '${userData['weight']} kg'),
+                      ProfileBox(label: 'BMI', value: '${userData['bmi']?.toStringAsFixed(2) ?? 'N/A'}'),
+                      ProfileBox(label: 'Age', value: '${userData['age']} years old'),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  // Register as Trainer Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle register as trainer button click
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color(0xFFC0FE87),
+                    ),
+                    child: Text('Register as Trainer'),
+                  ),
                 ],
-              ),
-              SizedBox(height: 20),
-              // Register as Trainer Button
-              ElevatedButton(
-                onPressed: () {
-                  // Handle register as trainer button click
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor:  Color(0xFFC0FE87),
-                ),
-                child: Text('Register as Trainer'),
-              ),
-            ],
+              );
+            },
           ),
         ),
       ),
@@ -133,7 +180,7 @@ class ProfileBox extends StatelessWidget {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color:Color.fromARGB(255, 200, 230, 201),
+        color: Color.fromARGB(255, 200, 230, 201),
       ),
       child: Column(
         children: [
