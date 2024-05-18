@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
           children: [
@@ -30,32 +30,70 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: const Column(
+              child: Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 10.0), // Add vertical margin between cards
+                        horizontal: 10.0,
+                        vertical: 10.0), 
                     child: Card(
                       child: BmiCard(BMI: 22.35),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 10.0), // Add vertical margin between cards
+                        horizontal: 10.0,
+                        vertical: 10.0),
                     child: Card(
-                      child: CaloryCard(burnt: 50, goal: 200),
+                      child: CaloryCard(burnt: 100, goal: 200),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 10.0), // Add vertical margin between cards
+                        horizontal: 10.0,
+                        vertical: 10.0), 
                     child: Card(
                       child: Calculator(height: 175, weight: 60),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    child: Text("WorkOut Diary >"),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 0.0), // Add vertical margin between cards
+                    child: ButtonBar(
+                      alignment: MainAxisAlignment
+                          .center, // Center the button horizontally
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CalendarPage()),
+                            );
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                                horizontal: 20.0), // Padding inside the button
+                            backgroundColor: Color.fromARGB(255, 200, 200,
+                                200), // Background color of the button
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  10.0), // Rounded corners
+                            ),
+                            shadowColor: Colors.black26, // Shadow color
+                            elevation: 4, // Shadow elevation
+                          ),
+                          child: Text(
+                            "Workout Diary >",
+                            style: TextStyle(
+                              fontSize: 16, // Increased font size
+                              color: Color.fromARGB(255, 22, 53, 21),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -68,7 +106,7 @@ class HomePage extends StatelessWidget {
 }
 
 class CaloryCard extends StatelessWidget {
-  const CaloryCard({Key? key, required this.burnt, required this.goal})
+  CaloryCard({Key? key, required this.burnt, required this.goal})
       : super(key: key);
   final int burnt;
   final int goal;
@@ -115,7 +153,7 @@ class CaloryCard extends StatelessWidget {
                 ],
               ),
               AnimatedPositioned(
-                duration: const Duration(milliseconds: 2000),
+                duration: Duration(milliseconds: 2000),
                 curve: Curves.easeInOut,
                 left:
                     (MediaQuery.of(context).size.width - 65) * progressPercent,
@@ -138,7 +176,7 @@ class CaloryCard extends StatelessWidget {
 }
 
 class BmiCard extends StatelessWidget {
-  const BmiCard({super.key, required this.BMI});
+  BmiCard({super.key, required this.BMI});
   final double BMI;
   final String imagePath = 'assets/image/meter.png';
 
@@ -161,7 +199,7 @@ class BmiCard extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10.0),
               child: Image.asset(
                 imagePath,
               ),
@@ -175,16 +213,16 @@ class BmiCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
+                      Text(
                         "Your BMI is",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 12),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8),
                       Text(
                         BMI.toStringAsFixed(1),
                         style: TextStyle(fontSize: 25),
                       ),
-                      const SizedBox(height: 18),
+                      SizedBox(height: 18),
                       buildClickableText(context),
                     ],
                   ),
@@ -214,7 +252,7 @@ class BmiCard extends StatelessWidget {
 }
 
 class Calculator extends StatefulWidget {
-  const Calculator({
+  Calculator({
     Key? key,
     required this.height,
     required this.weight,
@@ -265,11 +303,11 @@ class _CalculatorState extends State<Calculator> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
+                      Text(
                         "Result:",
                         style: TextStyle(fontSize: 18),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8),
                       Text(
                         "${getBMIvalue(_height, _weight)}",
                         style: TextStyle(fontSize: 24),
