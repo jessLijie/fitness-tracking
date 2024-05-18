@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Profile/forgot_pw_page.dart';
+import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:fitness_tracking/main.dart';
 import 'package:flutter/material.dart';
 
@@ -11,53 +12,56 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Future<void> signUserIn() async{
+  Future<void> signUserIn() async {
     //loading circle
-    showDialog(
-      context: context, 
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      }
-    );
-    //signin
-    try{
+    try {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          });
+      //signin
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
+        email: emailController.text,
+        password: passwordController.text,
       );
-    //pop loading circle
-    Navigator.pop(context);
+      //pop loading circle
+      // Navigator.pop(context);
+      //   Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => NavigationBarApp()),
+      // );
+      //   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      //   return  NavigationBarApp();
+      // }));
+      Navigator.pop(context);
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => NavigationBarApp()),
-    );
+          context, MaterialPageRoute(builder: (context) => bottomNavigationBar()));
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       //pop loading circle
       Navigator.pop(context);
-      
+
       showErrorMessage(e.code);
-    }    
+    }
   }
 
-  void showErrorMessage(String message){
+  void showErrorMessage(String message) {
     showDialog(
-      context: context, 
-      builder: (context) {
-        return AlertDialog(
-          title: Center(
-            child: Text(
-              message,
-            )
-          )
-        );
-      }
-    );
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Center(
+                  child: Text(
+            message,
+          )));
+        });
   }
 
   @override
@@ -115,8 +119,8 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context, 
-                      MaterialPageRoute(builder: (context){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
                         return ForgotPasswordPage();
                       }));
                     },
@@ -130,7 +134,9 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {signUserIn();},
+                    onPressed: () {
+                      signUserIn();
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Color(0xFFC0FE87),
@@ -139,7 +145,8 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                       child: Text(
                         'Log In',
                         style: TextStyle(fontSize: 18),
