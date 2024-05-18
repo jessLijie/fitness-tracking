@@ -29,10 +29,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   void initState() {
     super.initState();
-    fullNameController = TextEditingController(text: widget.userData['full name']);
-    heightController = TextEditingController(text: widget.userData['height'].toString());
-    weightController = TextEditingController(text: widget.userData['weight'].toString());
-    ageController = TextEditingController(text: widget.userData['age'].toString());
+    fullNameController =
+        TextEditingController(text: widget.userData['full name']);
+    heightController =
+        TextEditingController(text: widget.userData['height'].toString());
+    weightController =
+        TextEditingController(text: widget.userData['weight'].toString());
+    ageController =
+        TextEditingController(text: widget.userData['age'].toString());
     selectedGender = widget.userData['gender'] ?? '';
     selectedGoal = widget.userData['goal'] ?? '';
     _profileImageUrl = widget.userData['profileImageUrl'];
@@ -49,7 +53,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   Future<void> pickImage() async {
     try {
-      final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
         setState(() {
           _imageFile = File(pickedFile.path);
@@ -65,9 +70,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      Reference storageReference = FirebaseStorage.instance
-          .ref()
-          .child('profile_images/${user.uid}');
+      Reference storageReference =
+          FirebaseStorage.instance.ref().child('profile_images/${user.uid}');
       UploadTask uploadTask = storageReference.putFile(_imageFile!);
       await uploadTask.whenComplete(() => null);
 
@@ -92,7 +96,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
       await uploadImage();
 
       // Update user profile
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({
         'full name': fullNameController.text,
         'gender': selectedGender,
         'height': height,
@@ -122,7 +129,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +185,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   });
                 },
                 decoration: _inputDecoration('Gender'),
-                items: ['Male', 'Female'].map<DropdownMenuItem<String>>((String value) {
+                items: ['Male', 'Female']
+                    .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -195,7 +202,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   });
                 },
                 decoration: _inputDecoration('Goal'),
-                items: ['Improve Shape', 'Maintain Weight', 'Lose Fat'].map<DropdownMenuItem<String>>((String value) {
+                items: ['Improve Shape', 'Maintain Weight', 'Lose Fat']
+                    .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -204,67 +212,68 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               SizedBox(height: 30),
               Row(
-  children: [
-    Expanded(
-      child: ElevatedButton(
-        onPressed: saveProfile,
-        style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.black,
-          backgroundColor: Color.fromARGB(255, 200, 230, 201),
-          padding: EdgeInsets.symmetric(vertical: 15),
-          textStyle: TextStyle(fontSize: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: Text('Save'),
-      ),
-    ),
-    SizedBox(width: 15),
-    Expanded(
-      child: ElevatedButton(
-        onPressed: () async {
-          bool confirmDelete = await showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Confirm Deletion'),
-                content: Text('Are you sure you want to delete your account? This action cannot be undone.'),
-                actions: <Widget>[
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    },
-                    child: Text('Cancel'),
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: saveProfile,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Color.fromARGB(255, 200, 230, 201),
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        textStyle: TextStyle(fontSize: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text('Save'),
+                    ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    },
-                    child: Text('Delete'),
+                  SizedBox(width: 15),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        bool confirmDelete = await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Confirm Deletion'),
+                              content: Text(
+                                  'Are you sure you want to delete your account? This action cannot be undone.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(false);
+                                  },
+                                  child: Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(true);
+                                  },
+                                  child: Text('Delete'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        if (confirmDelete) {
+                          await AuthService().deleteAccount(context);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.red,
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        textStyle: TextStyle(fontSize: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text('Delete Account'),
+                    ),
                   ),
                 ],
-              );
-            },
-          );
-          if (confirmDelete) {
-            await AuthService().deleteAccount(context);
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.red,
-          padding: EdgeInsets.symmetric(vertical: 15),
-          textStyle: TextStyle(fontSize: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: Text('Delete Account'),
-      ),
-    ),
-  ],
-),
+              ),
             ],
           ),
         ),
