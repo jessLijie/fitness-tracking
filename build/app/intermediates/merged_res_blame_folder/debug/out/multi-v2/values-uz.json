@@ -4,45 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-25:/values-uz/values-uz.xml",
             "map": [
                 {
-<<<<<<< HEAD
                     "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\8bdd25dcef99c2e7d1427772f5709be3\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-uz\\values.xml",
-=======
-                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\9517eed74903f8562e2c68ff8d8c4aae\\transformed\\core-1.10.1\\res\\values-uz\\values-uz.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,157,259,360,460,568,672,791",
-                        "endColumns": "101,101,100,99,107,103,118,100",
-                        "endOffsets": "152,254,355,455,563,667,786,887"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,31",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,157,259,360,460,568,672,3475",
-                        "endColumns": "101,101,100,99,107,103,118,100",
-                        "endOffsets": "152,254,355,455,563,667,786,3571"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\b6921df971f0c377a2a1d2fe51a38b37\\transformed\\browser-1.4.0\\res\\values-uz\\values-uz.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,173,282,392",
-                        "endColumns": "117,108,109,105",
-                        "endOffsets": "168,277,387,493"
-                    },
-                    "to": {
-                        "startLines": "27,28,29,30",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "3032,3150,3259,3369",
-                        "endColumns": "117,108,109,105",
-                        "endOffsets": "3145,3254,3364,3470"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\8f817bf59c6fda79d34296a1089a25ac\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-uz\\values.xml",
->>>>>>> chunming
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -59,7 +21,6 @@
                     }
                 },
                 {
-<<<<<<< HEAD
                     "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\ba39060c86cec55c68920e80a345f9ee\\transformed\\browser-1.4.0\\res\\values-uz\\values-uz.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -95,9 +56,6 @@
                 },
                 {
                     "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\8286cbacf3ced0aeaed2eb7ee25064cd\\transformed\\jetified-play-services-base-18.1.0\\res\\values-uz\\values.xml",
-=======
-                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\c6a2c63c96f3b88f2a99a8d9a36bce86\\transformed\\jetified-play-services-base-18.1.0\\res\\values-uz\\values.xml",
->>>>>>> chunming
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

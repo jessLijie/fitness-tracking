@@ -1,5 +1,6 @@
 import 'package:fitness_tracking/Profile/goal.dart';
 import 'package:fitness_tracking/Profile/welcome_screen.dart';
+import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:fitness_tracking/main.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -152,7 +153,7 @@ class AuthService {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => NavigationBarApp(),
+          builder: (context) => bottomNavigationBar(),
         ),
       );
     }

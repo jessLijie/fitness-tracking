@@ -4,11 +4,7 @@
             "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-25:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-<<<<<<< HEAD
                     "source": "C:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\android\\app\\src\\main\\res\\values-night\\styles.xml",
-=======
-                    "source": "C:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\android\\app\\src\\main\\res\\values-night\\styles.xml",
->>>>>>> chunming
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
