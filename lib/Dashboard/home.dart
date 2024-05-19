@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
-                      child: CaloryCard(burnt: 100, goal: 200),
+                      child: CaloryCard(burnt: 50, goal: 200),
                     ),
                   ),
                   Padding(
@@ -143,7 +143,7 @@ class CaloryCard extends StatelessWidget {
                         lineHeight: 20.0,
                         animationDuration: 2000,
                         percent: progressPercent,
-                        progressColor: Colors.greenAccent,
+                        progressColor: Color.fromARGB(255, 40, 138, 29),
                       );
                     },
                   ),
@@ -357,7 +357,7 @@ class _CalculatorState extends State<Calculator> {
                     child: Slider(
                       value: _weight,
                       min: 30,
-                      max: 300,
+                      max: 200,
                       onChanged: (value) {
                         setState(() {
                           _weight = value;

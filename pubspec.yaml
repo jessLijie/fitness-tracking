@@ -44,6 +44,7 @@ dependencies:
   provider: ^6.1.2
   firebase_ui_auth: ^1.13.1
   easy_date_timeline: ^1.0.3
+  fl_chart: ^0.68.0
 
 dev_dependencies:
   flutter_test:
