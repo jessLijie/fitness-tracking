@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Sat May 18 19:15:47 MYT 2024
 base.0=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
@@ -20,3 +21,15 @@ renamed.3=classes4.dex
 renamed.4=classes5.dex
 renamed.5=classes6.dex
 renamed.6=classes7.dex
+=======
+#Sun May 19 03:46:18 SGT 2024
+base.2=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+path.2=classes3.dex
+base.1=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+path.1=classes2.dex
+base.0=C\:\\Users\\Jason Tan\\OneDrive\\Desktop\\Education\\MAP Project\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
+>>>>>>> chunming

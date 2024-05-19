@@ -16,10 +16,21 @@
         "source": "com.example.fitness_tracking.app-main-20:/mipmap-hdpi/ic_launcher.png"
     },
     {
+<<<<<<< HEAD
         "merged": "com.example.fitness_tracking.app-merged_res-27:/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "com.example.fitness_tracking.app-main-20:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
+=======
+        "merged": "com.example.fitness_tracking.app-merged_res-27:/drawable_launch_background.xml.flat",
+        "source": "com.example.fitness_tracking.app-main-20:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.example.fitness_tracking.app-merged_res-27:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.fitness_tracking.app-main-20:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+>>>>>>> chunming
         "merged": "com.example.fitness_tracking.app-merged_res-27:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.example.fitness_tracking.app-main-20:/mipmap-mdpi/ic_launcher.png"
     }
