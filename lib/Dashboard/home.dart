@@ -25,77 +25,69 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: BmiCard(BMI: 22.35),
+      body: SingleChildScrollView( // Added SingleChildScrollView here
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                      child: Card(
+                        child: BmiCard(BMI: 22.35),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: CaloryCard(burnt: 100, goal: 200),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                      child: Card(
+                        child: CaloryCard(burnt: 100, goal: 200),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: Calculator(height: 175, weight: 60),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                      child: Card(
+                        child: Calculator(height: 175, weight: 60),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 0.0), // Add vertical margin between cards
-                    child: ButtonBar(
-                      alignment: MainAxisAlignment
-                          .center, // Center the button horizontally
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CalendarPage()),
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 20.0), // Padding inside the button
-                            backgroundColor: Color.fromARGB(255, 200, 200,
-                                200), // Background color of the button
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10.0), // Rounded corners
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 0.0), // Add vertical margin between cards
+                      child: ButtonBar(
+                        alignment: MainAxisAlignment.center, // Center the button horizontally
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => CalendarPage()),
+                              );
+                            },
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0), // Padding inside the button
+                              backgroundColor: Color.fromARGB(255, 200, 200, 200), // Background color of the button
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                              ),
+                              shadowColor: Colors.black26, // Shadow color
+                              elevation: 4, // Shadow elevation
                             ),
-                            shadowColor: Colors.black26, // Shadow color
-                            elevation: 4, // Shadow elevation
-                          ),
-                          child: Text(
-                            "Workout Diary >",
-                            style: TextStyle(
-                              fontSize: 16, // Increased font size
-                              color: Color.fromARGB(255, 22, 53, 21),
+                            child: Text(
+                              "Workout Diary >",
+                              style: TextStyle(
+                                fontSize: 16, // Increased font size
+                                color: Color.fromARGB(255, 22, 53, 21),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -152,8 +144,7 @@ class CaloryCard extends StatelessWidget {
               AnimatedPositioned(
                 duration: Duration(milliseconds: 2000),
                 curve: Curves.easeInOut,
-                left:
-                    (MediaQuery.of(context).size.width - 65) * progressPercent,
+                left: (MediaQuery.of(context).size.width - 65) * progressPercent,
                 top: 50,
                 child: Image.asset(
                   'assets/image/banana.png',
