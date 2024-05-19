@@ -1,33 +1,40 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-14:/values-pt/values-pt.xml",
+            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-25:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\b6921df971f0c377a2a1d2fe51a38b37\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\5005b45d02325998fc1eddb2eab15e7d\\transformed\\core-1.10.1\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,353,453,560,670,790",
+                        "endColumns": "96,101,98,99,106,109,119,100",
+                        "endOffsets": "147,249,348,448,555,665,785,886"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,353,453,560,670,1222",
+                        "endColumns": "96,101,98,99,106,109,119,100",
+                        "endOffsets": "147,249,348,448,555,665,785,1318"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\ba39060c86cec55c68920e80a345f9ee\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
                         "startOffsets": "55,170,269,381",
                         "endColumns": "114,98,111,105",
                         "endOffsets": "165,264,376,482"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\jessm\\.gradle\\caches\\transforms-3\\3182888c8a22a9c242cbf25bd3ba6461\\transformed\\core-1.6.0\\res\\values-pt\\values-pt.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "487",
-                        "endColumns": "100",
-                        "endOffsets": "583"
+                        "startLines": "9,10,11,12",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "790,905,1004,1116",
+                        "endColumns": "114,98,111,105",
+                        "endOffsets": "900,999,1111,1217"
                     }
                 }
             ]
