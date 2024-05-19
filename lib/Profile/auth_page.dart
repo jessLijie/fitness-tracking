@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Dashboard/home.dart';
 import 'package:fitness_tracking/Profile/signin.dart';
 import 'package:fitness_tracking/Profile/welcome_screen.dart';
+import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:fitness_tracking/main.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot){
           //user is logged in
           if (snapshot.hasData) {
-            
-            return NavigationBarApp();
+            return bottomNavigationBar();
           }
 
           //user is not logged in

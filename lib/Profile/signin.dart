@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Profile/forgot_pw_page.dart';
+import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:fitness_tracking/main.dart';
 import 'package:fitness_tracking/services/auth.dart';
 
@@ -32,7 +33,7 @@ class _SignInPageState extends State<SignInPage> {
       Navigator.pop(context);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => NavigationBarApp()),
+        MaterialPageRoute(builder: (context) => bottomNavigationBar()),
       );
     } catch (e) {
       showErrorMessage(e.toString());
@@ -102,8 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return ForgotPasswordPage();
                       }));
                     },
@@ -128,8 +128,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                       child: Text(
                         'Log In',
                         style: TextStyle(fontSize: 18),
