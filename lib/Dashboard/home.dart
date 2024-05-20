@@ -1,11 +1,33 @@
 import 'package:fitness_tracking/Dashboard/calendar.dart';
 import 'package:fitness_tracking/Discover/discover.dart';
+import 'package:fitness_tracking/Profile/profile.dart';
+import 'package:fitness_tracking/services/connection.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../Profile/profile.dart';
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-class HomePage extends StatelessWidget {
+class _HomePageState extends State<HomePage> {
+  final Connection _connection = Connection();
+  Map<String, dynamic> userData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  Future<void> _fetchUserData() async {
+    Map<String, dynamic> data = await _connection.getUserProfileData();
+    setState(() {
+      print(userData);
+      userData = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +41,7 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             Text(
-              'name',
+              userData['full name'] ?? 'User',
               style: TextStyle(fontSize: 16),
             ),
           ],
@@ -36,29 +58,31 @@ class HomePage extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
-                      child: BmiCard(BMI: 22.35),
+                      child: BmiCard(
+                        BMI: userData['bmi'] != null
+                            ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
+                            : 0.0,
+                      ),
                     ),
                   ),
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
-                      child: CaloryCard(burnt: 50, goal: 200),
+                      child: CaloryCard(burnt: 100, goal: 200),
                     ),
                   ),
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                     child: Card(
-                      child: Calculator(height: 175, weight: 60),
+                      child: Calculator(height: (userData['height']*100), weight: userData['weight']),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 0.0), // Add vertical margin between cards
+                    padding: EdgeInsets.symmetric(vertical: 0.0),
                     child: ButtonBar(
-                      alignment: MainAxisAlignment
-                          .center, // Center the button horizontally
+                      alignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
                           onPressed: () {
@@ -70,22 +94,19 @@ class HomePage extends StatelessWidget {
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 20.0), // Padding inside the button
-                            backgroundColor: Color.fromARGB(255, 200, 200,
-                                200), // Background color of the button
+                                vertical: 10.0, horizontal: 20.0),
+                            backgroundColor: Color.fromARGB(255, 40, 138, 29),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
-                            shadowColor: Colors.black26, // Shadow color
-                            elevation: 4, // Shadow elevation
+                            shadowColor: Colors.black26,
+                            elevation: 4,
                           ),
                           child: Text(
                             "Workout Diary >",
                             style: TextStyle(
-                              fontSize: 16, // Increased font size
-                              color: Color.fromARGB(255, 22, 53, 21),
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 200, 230, 201),
                             ),
                           ),
                         ),
@@ -102,15 +123,62 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class CaloryCard extends StatelessWidget {
-  CaloryCard({Key? key, required this.burnt, required this.goal})
-      : super(key: key);
+class CaloryCard extends StatefulWidget {
   final int burnt;
   final int goal;
 
+  CaloryCard({Key? key, required this.burnt, required this.goal})
+      : super(key: key);
+
+  @override
+  _CaloryCardState createState() => _CaloryCardState();
+}
+
+class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 0, end: widget.burnt / widget.goal).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ))..addListener(() {
+        setState(() {});
+      });
+
+    _controller.forward();
+  }
+
+  @override
+  void didUpdateWidget(CaloryCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.burnt != widget.burnt || oldWidget.goal != widget.goal) {
+      _animation = Tween<double>(begin: 0, end: widget.burnt / widget.goal).animate(CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ));
+      _controller
+        ..reset()
+        ..forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final double progressPercent = burnt / goal;
+    final double progressPercent = _animation.value;
 
     return Container(
       decoration: BoxDecoration(
@@ -133,15 +201,14 @@ class CaloryCard extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("$burnt/ $goal k is burnt !"),
+                  Text("${widget.burnt}/ ${widget.goal} k is burnt!"),
                   SizedBox(height: 25),
                   LayoutBuilder(
                     builder: (context, constraints) {
                       return LinearPercentIndicator(
                         barRadius: Radius.circular(6),
-                        animation: true,
+                        animation: false,
                         lineHeight: 20.0,
-                        animationDuration: 2000,
                         percent: progressPercent,
                         progressColor: Color.fromARGB(255, 40, 138, 29),
                       );
@@ -150,7 +217,7 @@ class CaloryCard extends StatelessWidget {
                 ],
               ),
               AnimatedPositioned(
-                duration: Duration(milliseconds: 2000),
+                duration: Duration(milliseconds: 10),
                 curve: Curves.easeInOut,
                 left:
                     (MediaQuery.of(context).size.width - 65) * progressPercent,
@@ -170,8 +237,12 @@ class CaloryCard extends StatelessWidget {
       ),
     );
   }
-}
 
+  Widget buildClickableText2(BuildContext context) {
+    // Placeholder for the actual implementation of buildClickableText2
+    return Container(); // Implement your clickable text here
+  }
+}
 class BmiCard extends StatelessWidget {
   BmiCard({super.key, required this.BMI});
   final double BMI;
@@ -216,7 +287,7 @@ class BmiCard extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        BMI.toStringAsFixed(1),
+                        BMI.toString(),
                         style: TextStyle(fontSize: 25),
                       ),
                       SizedBox(height: 18),

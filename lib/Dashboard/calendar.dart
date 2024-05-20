@@ -1,5 +1,4 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -41,20 +40,17 @@ class CalendarPage extends StatefulWidget {
 class _CalendarPageState extends State<CalendarPage> {
   List<DateTime> _generateDisabledDates(int days) {
     List<DateTime> disabledDates = [];
-    DateTime currentDate =
-        DateTime.now().add(Duration(days: 1)); // Start from tomorrow
+    DateTime currentDate = DateTime.now().add(Duration(days: 1)); // Start from tomorrow
     for (int i = 0; i < days; i++) {
       disabledDates.add(currentDate);
       currentDate = currentDate.add(Duration(days: 1));
     }
     return disabledDates;
   }
-
   final EasyInfiniteDateTimelineController _controller =
       EasyInfiniteDateTimelineController();
   DateTime? _selectedDate =
       DateTime.now(); // Initialize with current date and time
-  String _selectedFilter = 'Daily';
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +83,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   _selectedDate = selectedDate;
                 });
               },
+              
               activeColor: const Color(0xff85A389),
               dayProps: const EasyDayProps(
                 todayHighlightStyle: TodayHighlightStyle.withBackground,
@@ -102,31 +99,9 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
             SizedBox(height: 20),
             if (_selectedDate != null) _buildSelectedDateActivities(),
-            SizedBox(height: 20),
-            _buildFilterDropdown(),
-            SizedBox(height: 20),
-            _buildCaloriesGraph(),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildFilterDropdown() {
-    return DropdownButton<String>(
-      value: _selectedFilter,
-      items:
-          <String>['Daily', 'Weekly', 'Monthly', 'Yearly'].map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-      onChanged: (String? newValue) {
-        setState(() {
-          _selectedFilter = newValue!;
-        });
-      },
     );
   }
 
@@ -167,97 +142,5 @@ class _CalendarPageState extends State<CalendarPage> {
     } else {
       return Container(); // Return an empty container if no date selected
     }
-  }
-
-  Widget _buildCaloriesGraph() {
-    List<FlSpot> spots = [];
-    DateTime startDate = DateTime.now();
-    DateTime endDate = DateTime.now();
-
-    // Determine the range of dates based on the selected filter
-    switch (_selectedFilter) {
-      case 'Daily':
-        startDate = DateTime.now().subtract(Duration(days: 1));
-        endDate = DateTime.now();
-        break;
-      case 'Weekly':
-        startDate = DateTime.now().subtract(Duration(days: 7));
-        endDate = DateTime.now();
-        break;
-      case 'Monthly':
-        startDate = DateTime.now().subtract(Duration(days: 30));
-        endDate = DateTime.now();
-        break;
-      case 'Yearly':
-        startDate = DateTime.now().subtract(Duration(days: 365));
-        endDate = DateTime.now();
-        break;
-    }
-
-    // Generate the data points
-    for (DateTime date = startDate;
-        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
-        date = date.add(Duration(days: 1))) {
-      int totalCaloriesBurnt = 0;
-      final activities = MockData.activities[date] ?? [];
-      for (var activity in activities) {
-        totalCaloriesBurnt += activity.caloriesBurnt;
-      }
-      spots.add(FlSpot(date.difference(startDate).inDays.toDouble(),
-          totalCaloriesBurnt.toDouble()));
-    }
-
-    return Container(
-      height: 200,
-      padding: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: LineChart(
-        LineChartData(
-          gridData: FlGridData(show: false),
-          titlesData: FlTitlesData(
-            leftTitles: AxisTitles(
-              sideTitles: SideTitles(showTitles: true),
-            ),
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(showTitles: true),
-            ),
-          ),
-          borderData: FlBorderData(
-            show: true,
-            border: Border.all(color: const Color(0xff37434d)),
-          ),
-          minX: 0,
-          maxX: endDate.difference(startDate).inDays.toDouble(),
-          minY: 0,
-          lineBarsData: [
-            LineChartBarData(
-              spots: spots,
-              isCurved: true,
-              // colors: [Colors.green],
-              barWidth: 3,
-              isStrokeCapRound: true,
-              dotData: FlDotData(show: false),
-              belowBarData: BarAreaData(
-                show: true,
-                // colors: [
-                //   Colors.green.withOpacity(0.3),
-                // ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-#Sun May 19 09:26:28 SGT 2024
+#Sun May 19 21:11:29 SGT 2024
 base.2=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
@@ -8,27 +7,4 @@ base.0=C\:\\Users\\jessm\\OneDrive\\Desktop\\work\\MAP\\fitness-tracking\\build\
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-=======
-#Sat May 18 19:15:47 MYT 2024
-base.0=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.3=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.4=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.5=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.6=C\:\\Users\\darre\\Desktop\\MAP\\fitness-tracking\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
->>>>>>> c60cd684c5dd6388b3d19722f1d20bdce09d6b31
 path.0=classes.dex
-path.1=0/classes.dex
-path.2=0/classes.dex
-path.3=11/classes.dex
-path.4=1/classes.dex
-path.5=7/classes.dex
-path.6=classes2.dex
-renamed.0=classes.dex
-renamed.1=classes2.dex
-renamed.2=classes3.dex
-renamed.3=classes4.dex
-renamed.4=classes5.dex
-renamed.5=classes6.dex
-renamed.6=classes7.dex
