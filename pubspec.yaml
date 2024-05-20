@@ -45,11 +45,8 @@ dependencies:
   firebase_storage: ^11.7.5
   image_picker: ^1.1.1
   easy_date_timeline: ^1.0.3
-<<<<<<< HEAD
   fl_chart: ^0.68.0
-=======
-  carousel_slider: ^4.2.1
->>>>>>> 47ac46fb42acb00b84dd792975fe2e572fb18c8a
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:

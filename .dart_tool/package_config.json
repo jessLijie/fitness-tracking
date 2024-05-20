@@ -33,7 +33,7 @@
     },
     {
       "name": "carousel_slider",
-      "rootUri": "file:///C:/Users/darre/AppData/Local/Pub/Cache/hosted/pub.dev/carousel_slider-4.2.1",
+      "rootUri": "file:///C:/Users/jessm/AppData/Local/Pub/Cache/hosted/pub.dev/carousel_slider-4.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -536,11 +536,7 @@
       "languageVersion": "3.2"
     }
   ],
-<<<<<<< HEAD
-  "generated": "2024-05-19T01:43:41.554260Z",
-=======
-  "generated": "2024-05-19T02:00:40.327252Z",
->>>>>>> 47ac46fb42acb00b84dd792975fe2e572fb18c8a
+  "generated": "2024-05-20T06:50:15.885845Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

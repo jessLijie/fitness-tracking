@@ -23,7 +23,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> _fetchUserData() async {
     Map<String, dynamic> data = await _connection.getUserProfileData();
     setState(() {
-      print(userData);
       userData = data;
     });
   }
@@ -51,71 +50,67 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              child: Column(
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: BmiCard(
-                        BMI: userData['bmi'] != null
-                            ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
-                            : 0.0,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                      child: Card(
-                        child: CaloryCard(burnt: 100, goal: 200),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: Calculator(height: (userData['height']*100), weight: userData['weight']),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0.0),
-                    child: ButtonBar(
-                      alignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CalendarPage()),
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 20.0),
-                            backgroundColor: Color.fromARGB(255, 40, 138, 29),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            shadowColor: Colors.black26,
-                            elevation: 4,
-                          ),
-                          child: Text(
-                            "Workout Diary >",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 200, 230, 201),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Card(
+                child: BmiCard(
+                  BMI: userData['bmi'] != null
+                      ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
+                      : 0.0,
                 ),
               ),
-            ],
-          ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Card(
+                child: CaloryCard(burnt: 100, goal: 200),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Card(
+                child: Calculator(
+                  height: (userData['height']*100) ,
+                  weight: userData['weight'] ,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 0.0),
+              child: ButtonBar(
+                alignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CalendarPage(),
+                        ),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      backgroundColor: Color.fromARGB(255, 40, 138, 29),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      shadowColor: Colors.black26,
+                      elevation: 4,
+                    ),
+                    child: Text(
+                      "Workout Diary >",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 200, 230, 201),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -241,6 +236,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
     return Container(); // Implement your clickable text here
   }
 }
+
 class BmiCard extends StatelessWidget {
   BmiCard({super.key, required this.BMI});
   final double BMI;
