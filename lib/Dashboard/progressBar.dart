@@ -16,7 +16,7 @@ class progressBar extends StatefulWidget {
       ];
 
   final Color barBackgroundColor = Colors.white10;
-  final Color barColor = Colors.black;
+  final Color barColor = Color.fromARGB(255, 40, 138, 29);
   final Color touchedBarColor = Colors.green;
 
   @override
@@ -41,7 +41,17 @@ class progressBarState extends State<progressBar> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                
+                const Text(
+                  'Weekly Calories Burnt',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 40, 138, 29),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -233,7 +243,7 @@ class progressBarState extends State<progressBar> {
 
   Widget getTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Colors.white,
+      color: Colors.black,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );

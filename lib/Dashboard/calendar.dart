@@ -2,6 +2,7 @@ import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:fitness_tracking/Dashboard/progressbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:fitness_tracking/services/connection.dart';
 
 class Activity {
   final String name;
@@ -30,6 +31,14 @@ class MockData {
       Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
       Activity(name: 'Walking', sets: 1, caloriesBurnt: 5),
     ],
+    DateTime(2024, 5, 19): [
+      Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
+      Activity(name: 'Swim', sets: 1, caloriesBurnt: 5),
+    ],
+    DateTime(2024, 5, 20): [
+      Activity(name: 'Gym', sets: 5, caloriesBurnt: 5),
+    ],
+    
   };
 }
 
@@ -39,6 +48,22 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  final Connection _connection = Connection();
+  Map<String, dynamic> userData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  Future<void> _fetchUserData() async {
+    Map<String, dynamic> data = await _connection.getUserProfileData();
+    setState(() {
+      userData = data;
+    });
+  }
+
   List<DateTime> _generateDisabledDates(int days) {
     List<DateTime> disabledDates = [];
     DateTime currentDate = DateTime.now().add(Duration(days: 1)); // Start from tomorrow
@@ -54,26 +79,27 @@ class _CalendarPageState extends State<CalendarPage> {
       DateTime.now(); // Initialize with current date and time
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          textBaseline: TextBaseline.alphabetic,
-          children: [
-            Text(
-              'Welcome back, ',
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              'name',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
+ Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Row(
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.alphabetic,
+        children: [
+          Text(
+            'Welcome back, ',
+            style: TextStyle(fontSize: 20),
+          ),
+          Text(
+            userData['full name'] ?? 'User',
+            style: TextStyle(fontSize: 16),
+          ),
+        ],
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+    ),
+    body: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             EasyDateTimeLine(
@@ -84,7 +110,6 @@ class _CalendarPageState extends State<CalendarPage> {
                   _selectedDate = selectedDate;
                 });
               },
-              
               activeColor: const Color(0xff85A389),
               dayProps: const EasyDayProps(
                 todayHighlightStyle: TodayHighlightStyle.withBackground,
@@ -100,14 +125,17 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
             SizedBox(height: 20),
             if (_selectedDate != null) _buildSelectedDateActivities(),
-            progressBar(),
-
+            SizedBox(height: 20),
+            SizedBox(
+              height: 300, // Adjust the height as needed
+              child: progressBar(),
+            ),
           ],
         ),
-        
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildSelectedDateActivities() {
     if (_selectedDate != null) {
