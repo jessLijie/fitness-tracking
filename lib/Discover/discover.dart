@@ -25,7 +25,7 @@ class Workout extends StatelessWidget {
             title: "Full Body Workout", 
             description: "11 Exercises | 32 mins", 
             image:  "assets/image/Discover/full_body.png",
-            route: 'Discover/fullbody' ,
+            route: 'Discover/fullbodyOverview' ,
             
           ), 
           SizedBox(height: 30),
@@ -58,7 +58,7 @@ class WorkoutCard extends StatelessWidget {
   @override
   
   Widget build(BuildContext context) {
-  // Color color = Color.fromRGBO(239, 255, 224, 1.0);
+  Color color = Color.fromRGBO(239, 255, 224, 1.0);
 
     return GestureDetector(
       onTap: (){
@@ -70,7 +70,7 @@ class WorkoutCard extends StatelessWidget {
           width: MediaQuery.of(context).size.width - 30,
           padding: const EdgeInsets.all(25),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 200, 230, 201),
+            color: color,
             borderRadius: BorderRadius.circular(10)),
          child: Row(
             children: [
