@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               child: Card(
-                child: CaloryCard(burnt: 100, goal: 200),
+                child: CaloryCard(burnt: 100, goal: userData['goalCal']),
               ),
             ),
             Padding(
@@ -195,7 +195,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("${widget.burnt}/ ${widget.goal} k is burnt!"),
+                  Text("${widget.burnt}/ ${widget.goal} k is burnt today!"),
                   SizedBox(height: 25),
                   LayoutBuilder(
                     builder: (context, constraints) {
@@ -213,7 +213,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
               AnimatedPositioned(
                 duration: Duration(milliseconds: 10),
                 curve: Curves.easeInOut,
-                left: (MediaQuery.of(context).size.width - 65) * progressPercent,
+                left: (MediaQuery.of(context).size.width - 60) * progressPercent,
                 top: 50,
                 child: Image.asset(
                   'assets/image/banana.png',
@@ -232,8 +232,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
   }
 
   Widget buildClickableText2(BuildContext context) {
-    // Placeholder for the actual implementation of buildClickableText2
-    return Container(); // Implement your clickable text here
+    return Container();
   }
 }
 
