@@ -284,6 +284,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "gauge_indicator",
+      "rootUri": "file:///C:/Users/jessm/AppData/Local/Pub/Cache/hosted/pub.dev/gauge_indicator-0.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/Users/jessm/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
@@ -536,7 +542,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-05-20T06:50:15.885845Z",
+  "generated": "2024-05-20T07:44:33.972869Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

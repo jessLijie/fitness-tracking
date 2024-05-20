@@ -3,6 +3,7 @@ import 'package:fitness_tracking/Discover/discover.dart';
 import 'package:fitness_tracking/Profile/profile.dart';
 import 'package:fitness_tracking/services/connection.dart';
 import 'package:flutter/material.dart';
+import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -240,6 +241,18 @@ class BmiCard extends StatelessWidget {
   BmiCard({super.key, required this.BMI});
   final double BMI;
   final String imagePath = 'assets/image/meter.png';
+ 
+  String _getBMICategoryText(double bmi) {
+    if (bmi >= 18.5 && bmi <= 25) {
+      return "Normal";
+    } else if (bmi > 25 && bmi <= 30) {
+      return "Overweight";
+    } else if (bmi > 30) {
+      return "Obesity";
+    } else {
+      return "Underweight";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -260,9 +273,62 @@ class BmiCard extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Image.asset(
-                imagePath,
+              // padding: EdgeInsets.all(10.0),
+              // child: Image.asset(
+              //   imagePath,
+              // ),
+               padding: EdgeInsets.all(10.0),
+              child: AnimatedRadialGauge(
+                
+                duration: const Duration(seconds: 3),
+                curve: Curves.elasticOut,
+                radius: 100.0, 
+                value: BMI,
+                axis: GaugeAxis(
+                  min: 0,
+                  max: 35, 
+                  degrees: 270,
+                  style: const GaugeAxisStyle(
+                    thickness: 20,
+                    background: Color(0xFFDFE2EC),
+                    segmentSpacing: 0,
+                  ),
+                  pointer: GaugePointer.needle(
+                    height: 66,
+                    width: 10,
+                    color: Color.fromARGB(225, 0, 0, 0),
+                    borderRadius: 16,
+                  ),
+                  progressBar: GaugeProgressBar.rounded(
+                    color:Colors.transparent,
+                  ),
+                  segments: [
+                    GaugeSegment(
+                      from: 0,
+                      to: 18.5,
+                      color: Colors.blue,
+                      cornerRadius: Radius.circular(5),
+                    ),
+                    GaugeSegment(
+                      from: 18.5,
+                      to: 25,
+                      color: Colors.green,
+                      cornerRadius: Radius.circular(5),
+                    ),
+                    GaugeSegment(
+                      from: 25,
+                      to: 30,
+                      color: Colors.orange,
+                      cornerRadius: Radius.circular(5),
+                    ),
+                    GaugeSegment(
+                      from: 30,
+                      to: 35,
+                      color: Colors.red,
+                      cornerRadius: Radius.circular(5),
+                    ),
+                  ],
+                )
               ),
             ),
             Expanded(

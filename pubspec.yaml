@@ -47,6 +47,7 @@ dependencies:
   easy_date_timeline: ^1.0.3
   fl_chart: ^0.68.0
   carousel_slider: ^4.0.0
+  gauge_indicator: ^0.4.3
 
 dev_dependencies:
   flutter_test:

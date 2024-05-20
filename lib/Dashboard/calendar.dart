@@ -101,6 +101,7 @@ class _CalendarPageState extends State<CalendarPage> {
             if (_selectedDate != null) _buildSelectedDateActivities(),
           ],
         ),
+        
       ),
     );
   }
@@ -140,7 +141,7 @@ class _CalendarPageState extends State<CalendarPage> {
         );
       }
     } else {
-      return Container(); // Return an empty container if no date selected
+      return Container(); 
     }
   }
 }
