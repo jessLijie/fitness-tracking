@@ -1,4 +1,6 @@
+import 'package:fitness_tracking/Providers/timer_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FullbodyOverview extends StatefulWidget {
   const FullbodyOverview({super.key});
@@ -8,10 +10,10 @@ class FullbodyOverview extends StatefulWidget {
 }
 
 class _FullbodyOverviewState extends State<FullbodyOverview> {
-  // Color color = Color.fromRGBO(11, 220, 132, 1.0);
-
   @override
   Widget build(BuildContext context) {
+    final TimerProvider timerProvider = Provider.of<TimerProvider>(context);
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -139,6 +141,8 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
         child: FloatingActionButton.extended(
           onPressed: () {
             Navigator.pushNamed(context, 'Discover/fullbodyWorkout');
+            timerProvider.startTimer();
+            
           },
           backgroundColor: Colors.green[300],
           label: const Text(

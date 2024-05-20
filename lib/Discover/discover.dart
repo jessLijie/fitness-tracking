@@ -58,7 +58,7 @@ class WorkoutCard extends StatelessWidget {
   @override
   
   Widget build(BuildContext context) {
-  Color color = Color.fromRGBO(239, 255, 224, 1.0);
+  Color color = const Color.fromRGBO(239, 255, 224, 1.0);
 
     return GestureDetector(
       onTap: (){
