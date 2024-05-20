@@ -64,12 +64,11 @@ class _HomePageState extends State<HomePage> {
                             : 0.0,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Card(
-                      child: CaloryCard(burnt: 100, goal: 200),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                      child: Card(
+                        child: CaloryCard(burnt: 100, goal: 200),
+                      ),
                     ),
                   ),
                   Padding(
@@ -109,14 +108,14 @@ class _HomePageState extends State<HomePage> {
                               color: Color.fromARGB(255, 200, 230, 201),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -219,8 +218,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
               AnimatedPositioned(
                 duration: Duration(milliseconds: 10),
                 curve: Curves.easeInOut,
-                left:
-                    (MediaQuery.of(context).size.width - 65) * progressPercent,
+                left: (MediaQuery.of(context).size.width - 65) * progressPercent,
                 top: 50,
                 child: Image.asset(
                   'assets/image/banana.png',
