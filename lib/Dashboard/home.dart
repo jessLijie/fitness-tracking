@@ -285,6 +285,7 @@ class BmiCard extends StatelessWidget {
                 radius: 100.0, 
                 value: BMI,
                 axis: GaugeAxis(
+                  
                   min: 0,
                   max: 35, 
                   degrees: 270,
@@ -327,7 +328,11 @@ class BmiCard extends StatelessWidget {
                       color: Colors.red,
                       cornerRadius: Radius.circular(5),
                     ),
+                    
                   ],
+                  
+                  
+                  
                 )
               ),
             ),

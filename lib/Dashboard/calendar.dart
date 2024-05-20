@@ -1,4 +1,5 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
+import 'package:fitness_tracking/Dashboard/progressbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -99,6 +100,8 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
             SizedBox(height: 20),
             if (_selectedDate != null) _buildSelectedDateActivities(),
+            progressBar(),
+
           ],
         ),
         
