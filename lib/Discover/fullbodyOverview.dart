@@ -141,8 +141,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
         child: FloatingActionButton.extended(
           onPressed: () {
             Navigator.pushNamed(context, 'Discover/fullbodyWorkout');
-            timerProvider.startTimer();
-            
+            timerProvider.startTimer();   
           },
           backgroundColor: Colors.green[300],
           label: const Text(

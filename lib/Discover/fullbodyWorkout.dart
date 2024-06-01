@@ -10,13 +10,14 @@ class FullbodyWorkout extends StatefulWidget {
 }
 
 class _FullbodyWorkoutState extends State<FullbodyWorkout> {
-  Color color = const Color.fromRGBO(239, 255, 224, 1.0);
 
+  Color color = const Color.fromRGBO(239, 255, 224, 1.0);
+  bool isPaused = false;
   
   @override
   Widget build(BuildContext context) {
     final TimerProvider timerProvider = Provider.of<TimerProvider>(context);
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fullbody Workout'),
@@ -56,21 +57,35 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
           const SizedBox(height: 60),
           GestureDetector(
             onTap: (){
-              timerProvider.pauseTimer();
+              setState((){
+                if(isPaused){
+                  timerProvider.resumeTimer();
+                }else{
+                  timerProvider.pauseTimer();
+                }
+
+                // toggle the value of isPaused (if tap, false to true)
+                isPaused = !isPaused;
+              });      
             },
             child: Container(
               height: 50,
               width: MediaQuery.of(context).size.width*0.8,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.green[300],
+                color: isPaused ? Colors.green[300] : Colors.white,
+                border: !isPaused ? 
+                    Border.all(
+                    color: Colors.green[300]!,
+                    width: 2,
+                  ):null
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  "|| Pause",
+                  isPaused ? "Resume " : "|| Pause",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: isPaused ? Colors.white: Colors.green[300],
                     fontWeight: FontWeight.bold,
                   )
                 ),
