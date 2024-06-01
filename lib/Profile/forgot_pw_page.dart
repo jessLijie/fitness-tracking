@@ -1,16 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness_tracking/services/auth.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  const ForgotPasswordPage({super.key});
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPassPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPassPageState extends State<ForgotPasswordPage> {
-
-  final _emailController = TextEditingController();
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   void dispose() {
@@ -18,26 +17,17 @@ class _ForgotPassPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
-  Future passwordReset() async {
+  Future<void> passwordReset(BuildContext context) async {
     try {
-      await FirebaseAuth.instance
-      .sendPasswordResetEmail(email: _emailController.text.trim());
+      await AuthService().sendPasswordResetEmail(_emailController.text.trim(), context);
+    } catch (e) {
       showDialog(
-        context: context, 
-        builder: (context){
+        context: context,
+        builder: (context) {
           return AlertDialog(
-            content: Text('Password reset link sent, check your email'),
+            content: Text(e.toString()),
           );
-        }
-      );
-    } on FirebaseAuthException catch (e) {
-      showDialog(
-        context: context, 
-        builder: (context){
-          return AlertDialog(
-            content: Text(e.message.toString()),
-          );
-        }
+        },
       );
     }
   }
@@ -76,9 +66,8 @@ class _ForgotPassPageState extends State<ForgotPasswordPage> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  
                   ElevatedButton(
-                    onPressed: passwordReset,
+                    onPressed: () => passwordReset(context),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Color(0xFFC0FE87),
