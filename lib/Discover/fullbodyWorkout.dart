@@ -1,9 +1,18 @@
 import 'package:fitness_tracking/Providers/timer_provider.dart';
+import 'package:fitness_tracking/data/model/fullbody.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FullbodyWorkout extends StatefulWidget {
-  const FullbodyWorkout({super.key});
+  // final Fullbody fullbodyWorkout;
+  final List<Fullbody> fullbodyWorkout;
+  int currentIndex;
+
+  FullbodyWorkout({
+    Key? key,
+    required this.fullbodyWorkout,
+    required this.currentIndex
+    }):super(key: key);
 
   @override
   State<FullbodyWorkout> createState() => _FullbodyWorkoutState();
@@ -35,15 +44,15 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
           const SizedBox(height: 50),
           Center(
             child: Image.asset(
-              "assets/image/Discover/FullBody_GIF/VCrunch.gif",
+              widget.fullbodyWorkout[widget.currentIndex].gif,
               height: 250,
               width: 250,
             ),
           ),
           const SizedBox(height: 40),
-          const Text(
-            "VCrunch",
-            style: TextStyle(
+          Text(
+            widget.fullbodyWorkout[widget.currentIndex].name,
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -123,7 +132,20 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
                 const SizedBox(width: 15),
                 GestureDetector(
                   onTap: (){
-            
+                    int nextIndex = widget.currentIndex + 1 ;
+                    if (nextIndex < widget.fullbodyWorkout.length) {
+                      Navigator.pushNamed(
+                        context, 
+                        'Discover/fullbodyWorkout',
+                        arguments: {
+                          'workouts': widget.fullbodyWorkout,
+                          'currentIndex': nextIndex,
+                        }
+                      );
+                      timerProvider.resetTimer();
+                    }else{
+
+                    }             
                   },
                   child: Container(
                     height: 50,
