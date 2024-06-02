@@ -78,6 +78,8 @@ flutter:
   assets:
     - assets/image/
     - assets/image/Discover/
+    - assets/image/Discover/FullBody/
+    - assets/image/Discover/FullBody_GIF/
     - assets/image/salad.jpg
 
 
