@@ -15,20 +15,23 @@ com.example.fitness_tracking.app-jetified-annotation-experimental-1.3.0-13 C:\Us
 com.example.fitness_tracking.app-core-runtime-2.2.0-14 C:\Users\Jason Tan\.gradle\caches\transforms-3\b596ca23f2f8023e4ae934dbb6d0d0ee\transformed\core-runtime-2.2.0\res
 com.example.fitness_tracking.app-browser-1.4.0-15 C:\Users\Jason Tan\.gradle\caches\transforms-3\b6921df971f0c377a2a1d2fe51a38b37\transformed\browser-1.4.0\res
 com.example.fitness_tracking.app-lifecycle-runtime-2.6.1-16 C:\Users\Jason Tan\.gradle\caches\transforms-3\c4fdaea9ef9df9492de3cad94aef456b\transformed\lifecycle-runtime-2.6.1\res
-com.example.fitness_tracking.app-jetified-play-services-base-18.1.0-17 C:\Users\Jason Tan\.gradle\caches\transforms-3\c6a2c63c96f3b88f2a99a8d9a36bce86\transformed\jetified-play-services-base-18.1.0\res
-com.example.fitness_tracking.app-jetified-savedstate-1.2.1-18 C:\Users\Jason Tan\.gradle\caches\transforms-3\f30ead691837e9d997471b143104dca0\transformed\jetified-savedstate-1.2.1\res
-com.example.fitness_tracking.app-debug-19 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\debug\res
-com.example.fitness_tracking.app-main-20 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\main\res
-com.example.fitness_tracking.app-google-services-21 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\google-services\debug
-com.example.fitness_tracking.app-pngs-22 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\pngs\debug
-com.example.fitness_tracking.app-resValues-23 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\resValues\debug
-com.example.fitness_tracking.app-rs-24 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\rs\debug
-com.example.fitness_tracking.app-mergeDebugResources-25 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.fitness_tracking.app-mergeDebugResources-26 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.fitness_tracking.app-merged_res-27 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\merged_res\debug
-com.example.fitness_tracking.app-packaged_res-28 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\cloud_firestore\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-29 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_auth\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-30 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_core\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-31 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_storage\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-32 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
-com.example.fitness_tracking.app-packaged_res-33 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\image_picker_android\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-jetified-exoplayer-core-2.18.7-17 C:\Users\Jason Tan\.gradle\caches\transforms-3\c50315d0fc4ffe75fe05de2f74b8936f\transformed\jetified-exoplayer-core-2.18.7\res
+com.example.fitness_tracking.app-jetified-play-services-base-18.1.0-18 C:\Users\Jason Tan\.gradle\caches\transforms-3\c6a2c63c96f3b88f2a99a8d9a36bce86\transformed\jetified-play-services-base-18.1.0\res
+com.example.fitness_tracking.app-jetified-savedstate-1.2.1-19 C:\Users\Jason Tan\.gradle\caches\transforms-3\f30ead691837e9d997471b143104dca0\transformed\jetified-savedstate-1.2.1\res
+com.example.fitness_tracking.app-debug-20 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\debug\res
+com.example.fitness_tracking.app-main-21 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\android\app\src\main\res
+com.example.fitness_tracking.app-google-services-22 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\google-services\debug
+com.example.fitness_tracking.app-pngs-23 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\pngs\debug
+com.example.fitness_tracking.app-resValues-24 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\resValues\debug
+com.example.fitness_tracking.app-rs-25 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\generated\res\rs\debug
+com.example.fitness_tracking.app-mergeDebugResources-26 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.fitness_tracking.app-mergeDebugResources-27 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.fitness_tracking.app-merged_res-28 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\app\intermediates\merged_res\debug
+com.example.fitness_tracking.app-packaged_res-29 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\cloud_firestore\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-30 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_auth\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-31 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_core\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-32 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\firebase_storage\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-33 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-34 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\image_picker_android\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-35 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\video_player_android\intermediates\packaged_res\debug
+com.example.fitness_tracking.app-packaged_res-36 C:\Users\Jason Tan\OneDrive\Desktop\Education\MAP Project\fitness-tracking\build\video_thumbnail\intermediates\packaged_res\debug
