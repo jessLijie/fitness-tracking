@@ -43,7 +43,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
                             fontSize: 18
                           ),
                         ),
-                        Text("11 Exercises | 32mins | 320 Calories Burned", 
+                        Text("10 Exercises | 10 mins | 220 Calories Burned", 
                           style: TextStyle(
                             color: Colors.grey
                           )

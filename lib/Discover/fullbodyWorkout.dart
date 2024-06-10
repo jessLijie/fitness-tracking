@@ -6,6 +6,7 @@ import 'package:fitness_tracking/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 class FullbodyWorkout extends StatefulWidget {
   // final Fullbody fullbodyWorkout;
   final List<Fullbody> fullbodyWorkout;
@@ -229,8 +230,15 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
             TextButton(
               onPressed: () {
                 sendCaloriesToFirebase(totalCaloriesBurned); // Send the total calories burned to firebase
-                Navigator.of(context).pop(); // Close the dialog
-                Navigator.of(context).popUntil((route) => route.isFirst); // Go back to the first screen
+
+                // Navigator.push(
+                //   context, MaterialPageRoute(
+                //     builder: (context) => const FullbodyOverview(), 
+                //     settings: const RouteSettings(name: "Discover/fullbodyOverview")
+                //   )
+                // );
+
+                Navigator.popUntil(context, (route) => route.settings.name == "Discover/fullbodyOverview");
               },
               child: Text('Confirm', 
                 style: TextStyle(
