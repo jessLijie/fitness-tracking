@@ -6,6 +6,7 @@ class DatabaseService {
     String phoneNumber,
     String email,
     String uid,
+    
   ) async {
     await FirebaseFirestore.instance.collection('users').doc(uid).set({
       'full name': fullName,
@@ -14,6 +15,7 @@ class DatabaseService {
       'gender': '',  // Initialize with empty or default values
       'age': 0,
       'weight': 0.0,
+      'goalCal':0,
       'height': 0.0,
       'bmi': 0.0,
       'goal': '',
@@ -26,9 +28,11 @@ class DatabaseService {
     String age,
     String weight,
     String height,
+    String goalCal,
   ) async {
     // Validate inputs
     int parsedAge = int.tryParse(age) ?? 0;
+    int parsedGoalCal = int.tryParse(goalCal) ?? 0;
     double parsedWeight = double.tryParse(weight) ?? 0;
     double parsedHeight = double.tryParse(height) ?? 0;
 
@@ -43,6 +47,7 @@ class DatabaseService {
         'weight': parsedWeight,
         'height': parsedHeight,
         'bmi': bmi,
+        'goalCal':parsedGoalCal,
       });
     } catch (error) {
       print("Error updating user profile: $error");

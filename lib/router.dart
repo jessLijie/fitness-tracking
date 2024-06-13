@@ -1,3 +1,6 @@
+import 'package:fitness_tracking/Discover/fullbodyOverview.dart';
+import 'package:fitness_tracking/Discover/fullbodyWorkout.dart';
+import 'package:fitness_tracking/data/model/fullbody.dart';
 import 'package:fitness_tracking/Dashboard/home.dart';
 import 'package:fitness_tracking/Discover/discover.dart';
 import 'package:fitness_tracking/Forum/addForumPage.dart';
@@ -8,9 +11,7 @@ import 'package:fitness_tracking/Profile/signup.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
-  int categoryindex = 0;
   Route? onGenerateRoute(RouteSettings routeSettings) {
-    int categoryindex = 0;
     switch (routeSettings.name) {
       case '/forumHome':
         return MaterialPageRoute(
@@ -40,7 +41,20 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => SignInPage(),
         );
-
+      case 'Discover/fullbodyOverview':
+        return MaterialPageRoute(
+          builder: (context) => const FullbodyOverview(),
+        );
+      case 'Discover/fullbodyWorkout':
+        final Map<String, dynamic> args = routeSettings.arguments as Map<String, dynamic>;
+        final List<Fullbody> workouts = args['workouts'] as List<Fullbody>;
+        final int currentIndex = args['currentIndex'] as int;
+        return MaterialPageRoute(
+          builder: (context) => FullbodyWorkout(
+            fullbodyWorkout: workouts,
+            currentIndex: currentIndex,
+          ),
+        );
       default:
         return null;
     }

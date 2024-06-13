@@ -69,6 +69,8 @@ MERGED from [:firebase_storage] C:\Users\darre\Desktop\MAP\fitness-tracking\buil
 MERGED from [:firebase_core] C:\Users\darre\Desktop\MAP\fitness-tracking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:image_picker_android] C:\Users\darre\Desktop\MAP\fitness-tracking\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-36:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\darre\Desktop\MAP\fitness-tracking\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:video_player_android] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:video_thumbnail] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_thumbnail\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-firestore:24.11.1] C:\Users\darre\.gradle\caches\transforms-3\76ffff8c3e6b890c233d03affd167375\transformed\jetified-firebase-firestore-24.11.1\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\darre\.gradle\caches\transforms-3\1d75d4ae37d81b6024a4db16a0545796\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.firebase:firebase-dynamic-links:21.2.0] C:\Users\darre\.gradle\caches\transforms-3\1ea5fca955a45258e4a3b8b1c2a57924\transformed\jetified-firebase-dynamic-links-21.2.0\AndroidManifest.xml:15:1-33:12
@@ -88,6 +90,10 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users
 MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\darre\.gradle\caches\transforms-3\8bdd25dcef99c2e7d1427772f5709be3\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\darre\.gradle\caches\transforms-3\74b3c5f59ed99ff7b94774ed3a141873\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\darre\.gradle\caches\transforms-3\a1bcea3840b8e042063a5df3206de9a7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\2932d7a6a6a8fb6286732e48a673bab7\transformed\jetified-exoplayer-hls-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\ac387c2d6d336dad2fb70652e9aea72e\transformed\jetified-exoplayer-dash-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\6b33d363f89ad57a8a3c7553897b5823\transformed\jetified-exoplayer-smoothstreaming-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\db60dacdf6b1929955b8d61fd2fe05f7\transformed\jetified-exoplayer-core-2.18.7\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\389f830bcb90ddfcc74be7cb2be43a0e\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\darre\.gradle\caches\transforms-3\ba39060c86cec55c68920e80a345f9ee\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\darre\.gradle\caches\transforms-3\ab3ae28451127c0af60b37ec014ef501\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -111,6 +117,11 @@ MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\darre\.gra
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\darre\.gradle\caches\transforms-3\3e60ebe38e9841cf76a08459ab29a3bb\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\darre\.gradle\caches\transforms-3\7561a626cf6e217f835de713faa86459\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\darre\.gradle\caches\transforms-3\7bf265b9453f5c6aba00f226fe1337df\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\4b30044d08f910ee6042c5c1a58cfbbb\transformed\jetified-exoplayer-datasource-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\8a2f5cee84d7ff369497d82b211c510f\transformed\jetified-exoplayer-extractor-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\c97ef3df8717b12f54a13a9998df274a\transformed\jetified-exoplayer-decoder-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\a503b5014e85d29e70ad623f260547e7\transformed\jetified-exoplayer-database-2.18.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\53cb9de013cd7ea79b09c49939ac1ef1\transformed\jetified-exoplayer-common-2.18.7\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\darre\.gradle\caches\transforms-3\3798784741dff053a1ba89fcce55d2d0\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\darre\.gradle\caches\transforms-3\acbd3215babe1266f04417f035a7aa45\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\darre\.gradle\caches\transforms-3\5dd95257bdd94176bd4ee33bfee6ce43\transformed\jetified-grpc-android-1.57.2\AndroidManifest.xml:2:1-9:12
@@ -152,6 +163,10 @@ MERGED from [:image_picker_android] C:\Users\darre\Desktop\MAP\fitness-tracking\
 MERGED from [:image_picker_android] C:\Users\darre\Desktop\MAP\fitness-tracking\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\darre\Desktop\MAP\fitness-tracking\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\darre\Desktop\MAP\fitness-tracking\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:video_player_android] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:video_player_android] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_player_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:video_thumbnail] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_thumbnail\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:video_thumbnail] C:\Users\darre\Desktop\MAP\fitness-tracking\build\video_thumbnail\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-firestore:24.11.1] C:\Users\darre\.gradle\caches\transforms-3\76ffff8c3e6b890c233d03affd167375\transformed\jetified-firebase-firestore-24.11.1\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.11.1] C:\Users\darre\.gradle\caches\transforms-3\76ffff8c3e6b890c233d03affd167375\transformed\jetified-firebase-firestore-24.11.1\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\darre\.gradle\caches\transforms-3\1d75d4ae37d81b6024a4db16a0545796\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:21:5-23:64
@@ -190,6 +205,14 @@ MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\darre\.gradle\caches\tra
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\darre\.gradle\caches\transforms-3\74b3c5f59ed99ff7b94774ed3a141873\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\darre\.gradle\caches\transforms-3\a1bcea3840b8e042063a5df3206de9a7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\darre\.gradle\caches\transforms-3\a1bcea3840b8e042063a5df3206de9a7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\2932d7a6a6a8fb6286732e48a673bab7\transformed\jetified-exoplayer-hls-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\2932d7a6a6a8fb6286732e48a673bab7\transformed\jetified-exoplayer-hls-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\ac387c2d6d336dad2fb70652e9aea72e\transformed\jetified-exoplayer-dash-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\ac387c2d6d336dad2fb70652e9aea72e\transformed\jetified-exoplayer-dash-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\6b33d363f89ad57a8a3c7553897b5823\transformed\jetified-exoplayer-smoothstreaming-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\6b33d363f89ad57a8a3c7553897b5823\transformed\jetified-exoplayer-smoothstreaming-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\db60dacdf6b1929955b8d61fd2fe05f7\transformed\jetified-exoplayer-core-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\db60dacdf6b1929955b8d61fd2fe05f7\transformed\jetified-exoplayer-core-2.18.7\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\389f830bcb90ddfcc74be7cb2be43a0e\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\darre\.gradle\caches\transforms-3\389f830bcb90ddfcc74be7cb2be43a0e\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\darre\.gradle\caches\transforms-3\ba39060c86cec55c68920e80a345f9ee\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
@@ -236,6 +259,16 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\darre\.gradle\ca
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\darre\.gradle\caches\transforms-3\7561a626cf6e217f835de713faa86459\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\darre\.gradle\caches\transforms-3\7bf265b9453f5c6aba00f226fe1337df\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\darre\.gradle\caches\transforms-3\7bf265b9453f5c6aba00f226fe1337df\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\4b30044d08f910ee6042c5c1a58cfbbb\transformed\jetified-exoplayer-datasource-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\4b30044d08f910ee6042c5c1a58cfbbb\transformed\jetified-exoplayer-datasource-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\8a2f5cee84d7ff369497d82b211c510f\transformed\jetified-exoplayer-extractor-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\8a2f5cee84d7ff369497d82b211c510f\transformed\jetified-exoplayer-extractor-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\c97ef3df8717b12f54a13a9998df274a\transformed\jetified-exoplayer-decoder-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\c97ef3df8717b12f54a13a9998df274a\transformed\jetified-exoplayer-decoder-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\a503b5014e85d29e70ad623f260547e7\transformed\jetified-exoplayer-database-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\a503b5014e85d29e70ad623f260547e7\transformed\jetified-exoplayer-database-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\53cb9de013cd7ea79b09c49939ac1ef1\transformed\jetified-exoplayer-common-2.18.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\53cb9de013cd7ea79b09c49939ac1ef1\transformed\jetified-exoplayer-common-2.18.7\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\darre\.gradle\caches\transforms-3\3798784741dff053a1ba89fcce55d2d0\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\darre\.gradle\caches\transforms-3\3798784741dff053a1ba89fcce55d2d0\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\darre\.gradle\caches\transforms-3\acbd3215babe1266f04417f035a7aa45\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
@@ -376,6 +409,10 @@ MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\darre\.gradle
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\darre\.gradle\caches\transforms-3\89bd287bf1ba4c280373fe02b8a353e1\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\darre\.gradle\caches\transforms-3\dc2c99c81476f29cb6f21f3037e9a134\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:8:5-79
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\darre\.gradle\caches\transforms-3\dc2c99c81476f29cb6f21f3037e9a134\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\db60dacdf6b1929955b8d61fd2fe05f7\transformed\jetified-exoplayer-core-2.18.7\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\db60dacdf6b1929955b8d61fd2fe05f7\transformed\jetified-exoplayer-core-2.18.7\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\53cb9de013cd7ea79b09c49939ac1ef1\transformed\jetified-exoplayer-common-2.18.7\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.7] C:\Users\darre\.gradle\caches\transforms-3\53cb9de013cd7ea79b09c49939ac1ef1\transformed\jetified-exoplayer-common-2.18.7\AndroidManifest.xml:24:5-79
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\darre\.gradle\caches\transforms-3\5dd95257bdd94176bd4ee33bfee6ce43\transformed\jetified-grpc-android-1.57.2\AndroidManifest.xml:7:5-79
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\darre\.gradle\caches\transforms-3\5dd95257bdd94176bd4ee33bfee6ce43\transformed\jetified-grpc-android-1.57.2\AndroidManifest.xml:7:5-79
 	android:name

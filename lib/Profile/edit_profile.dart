@@ -21,8 +21,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
   late TextEditingController heightController;
   late TextEditingController weightController;
   late TextEditingController ageController;
+  late TextEditingController goalCalController;
   late String selectedGender;
   late String selectedGoal;
+  late int goalCal;
   File? _imageFile;
   String? _profileImageUrl;
 
@@ -37,6 +39,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
         TextEditingController(text: widget.userData['weight'].toString());
     ageController =
         TextEditingController(text: widget.userData['age'].toString());
+    goalCalController =
+        TextEditingController(text: widget.userData['goalCal'].toString());
     selectedGender = widget.userData['gender'] ?? '';
     selectedGoal = widget.userData['goal'] ?? '';
     _profileImageUrl = widget.userData['profileImageUrl'];
@@ -48,6 +52,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     heightController.dispose();
     weightController.dispose();
     ageController.dispose();
+    goalCalController.dispose();
     super.dispose();
   }
 
@@ -105,6 +110,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         'height': height,
         'weight': weight,
         'age': int.tryParse(ageController.text) ?? 0,
+        'goalCal': int.tryParse(goalCalController.text) ?? 0,
         'goal': selectedGoal,
         'bmi': bmi,
         'profileImageUrl': _profileImageUrl, // Update profile image URL
@@ -174,6 +180,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
               TextField(
                 controller: ageController,
                 decoration: _inputDecoration('Age'),
+                keyboardType: TextInputType.number,
+              ),
+               SizedBox(height: 15),
+              TextField(
+                controller: goalCalController,
+                decoration: _inputDecoration('Goal Calories Burnt per day'),
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 15),

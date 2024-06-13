@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:fitness_tracking/Profile/goal.dart';
 import 'package:fitness_tracking/services/auth.dart';
+import 'package:flutter/material.dart';
 
 class CompleteProfile extends StatefulWidget {
   final String uid;
@@ -14,6 +13,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
   String selectedGender = 'Male'; // Default selected gender
 
   final TextEditingController ageController = TextEditingController();
+  final TextEditingController goalCalController = TextEditingController();
   final TextEditingController weightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
 
@@ -51,7 +51,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                         });
                       }
                     },
-                    items: genderOptions.map<DropdownMenuItem<String>>((String value) {
+                    items: genderOptions
+                        .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -72,14 +73,16 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     controller: ageController,
                     decoration: InputDecoration(
                       hintText: 'Your Age',
-                      prefixIcon: Icon(Icons.calendar_month, color: Colors.black),
+                      prefixIcon:
+                          Icon(Icons.calendar_month, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
-                    keyboardType: TextInputType.number, // Allow only numeric input
+                    keyboardType:
+                        TextInputType.number, // Allow only numeric input
                   ),
                   SizedBox(height: 20),
                   TextField(
@@ -93,7 +96,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
-                    keyboardType: TextInputType.numberWithOptions(decimal: true), // Allow numeric input with decimals
+                    keyboardType: TextInputType.numberWithOptions(
+                        decimal: true), // Allow numeric input with decimals
                   ),
                   SizedBox(height: 20),
                   TextField(
@@ -107,7 +111,22 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       fillColor: Color(0xFFF7F8F8),
                       filled: true,
                     ),
-                    keyboardType: TextInputType.numberWithOptions(decimal: true), // Allow numeric input with decimals
+                    keyboardType: TextInputType.numberWithOptions(
+                        decimal: true), // Allow numeric input with decimals
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
+                    controller: goalCalController,
+                    decoration: InputDecoration(
+                      hintText: 'Your goal calories (k) to be burnt per day',
+                      prefixIcon: Icon(Icons.local_fire_department, color: Colors.black),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      fillColor: Color(0xFFF7F8F8),
+                      filled: true,
+                    ),
+                    keyboardType: TextInputType.number, // Allow numeric input with decimals
                   ),
                   SizedBox(height: 30),
                   ElevatedButton(
@@ -119,7 +138,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                         ageController.text,
                         weightController.text,
                         heightController.text,
-                        context,
+                        goalCalController.text,
+                       context,
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -130,7 +150,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 60, vertical: 10),
                       child: Text(
                         'Next',
                         style: TextStyle(fontSize: 18),

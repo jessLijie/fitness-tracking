@@ -132,9 +132,10 @@ class AuthService {
     String age,
     String weight,
     String height,
+    String goalCal, 
     BuildContext context,
   ) async {
-    DatabaseService().updateUserProfile(uid, gender, age, weight, height);
+    DatabaseService().updateUserProfile(uid, gender, age, weight, height, goalCal);
     
     // Navigate to the GoalPage after updating profile
     Navigator.push(
@@ -153,7 +154,7 @@ class AuthService {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => bottomNavigationBar(),
+          builder: (context) => bottomNavigationBarWidget(),
         ),
       );
     }

@@ -156,6 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ProfileBox(label: 'Weight', value: '${userData['weight']} kg'),
                       ProfileBox(label: 'BMI', value: '${userData['bmi']?.toStringAsFixed(2) ?? 'N/A'}'),
                       ProfileBox(label: 'Age', value: '${userData['age']} years old'),
+                      ProfileBox(label: 'Goal Calories', value: '${userData['goalCal']}k'),
                     ],
                   ),
                   SizedBox(height: 20),
