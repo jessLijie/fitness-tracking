@@ -154,7 +154,7 @@ class AuthService {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => bottomNavigationBar(),
+          builder: (context) => bottomNavigationBarWidget(),
         ),
       );
     }

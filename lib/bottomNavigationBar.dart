@@ -79,6 +79,7 @@ import 'package:flutter/foundation.dart';
 
 import 'router.dart';
 
+
 class CustomAlertDialog extends StatelessWidget {
   final String title;
   final String message;
@@ -102,7 +103,7 @@ class CustomAlertDialog extends StatelessWidget {
     return AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: BorderSide(color: Colors.amber),
+        side: const BorderSide(color: Colors.amber),
       ),
       backgroundColor: Colors.amber,
       title: Text(title, textAlign: TextAlign.justify),
@@ -116,7 +117,7 @@ class CustomAlertDialog extends StatelessWidget {
                 onPressed: confirmButtonPressed,
                 child: Text(
                   confirmButtonText!,
-                  style: TextStyle(color: Colors.amber),
+                  style: const TextStyle(color: Colors.amber),
                 ),
               )
             : Container(),
@@ -125,7 +126,7 @@ class CustomAlertDialog extends StatelessWidget {
                 onPressed: cancelButtonPressed,
                 child: Text(
                   cancelButtonText!,
-                  style: TextStyle(color: Colors.amber),
+                  style: const TextStyle(color: Colors.amber),
                 ),
               )
             : Container()
@@ -134,8 +135,7 @@ class CustomAlertDialog extends StatelessWidget {
   }
 }
 
-class BottomNavigationBarProvider with ChangeNotifier, DiagnosticableTreeMixin {
-//determine is it fullscreen to close the bottom navigation bar
+class BottomNavigationBarProvider with ChangeNotifier {
   bool _isFullScreen = false;
   bool get isFullScreen => _isFullScreen;
   void setFullScreen(bool value) {
@@ -144,64 +144,41 @@ class BottomNavigationBarProvider with ChangeNotifier, DiagnosticableTreeMixin {
   }
 }
 
-class bottomNavigationBar extends StatefulWidget {
-  //final User? user;
-  const bottomNavigationBar({Key? key}) : super(key: key);
+class bottomNavigationBarWidget extends StatefulWidget {
+  const bottomNavigationBarWidget({Key? key}) : super(key: key);
 
   @override
-  bottomNavigationBarState createState() => bottomNavigationBarState();
+  _bottomNavigationBarWidgetState createState() => _bottomNavigationBarWidgetState();
 }
 
-class bottomNavigationBarState extends State<bottomNavigationBar> {
+class _bottomNavigationBarWidgetState extends State<bottomNavigationBarWidget> {
   int _currentTabBar = 0;
   CupertinoTabController controller = CupertinoTabController(initialIndex: 0);
-  static final GlobalKey<NavigatorState> _homeKey = GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _marketplaceKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _addKey = GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _chatKey = GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _profileKey =
-      GlobalKey<NavigatorState>();
-  final List<GlobalKey<NavigatorState>> _userTabNavigators = [
-    _homeKey,
-    _marketplaceKey,
-    _addKey,
-    _chatKey,
-    _profileKey
-  ];
-  static final GlobalKey<NavigatorState> _registerKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _aduanKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> _adminProfileKey =
-      GlobalKey<NavigatorState>();
+  
+  final List<GlobalKey<NavigatorState>> _userTabNavigators = List.generate(5, (index) => GlobalKey<NavigatorState>());
 
   bool exit = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final provider =
-        Provider.of<BottomNavigationBarProvider>(context, listen: false);
-    final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
+    final provider = Provider.of<BottomNavigationBarProvider>(context, listen: false);
     return WillPopScope(
       onWillPop: () async {
-        if (_currentTabBar == 0 && _homeKey.currentState!.canPop()) {
-          _homeKey.currentState!.pop();
+        if (_currentTabBar == 0 && _userTabNavigators[0].currentState!.canPop()) {
+          _userTabNavigators[0].currentState!.pop();
           return false;
-        } else if (_currentTabBar == 1 &&
-            _marketplaceKey.currentState!.canPop()) {
-          _marketplaceKey.currentState!.pop();
+        } else if (_currentTabBar == 1 && _userTabNavigators[1].currentState!.canPop()) {
+          _userTabNavigators[1].currentState!.pop();
           return false;
-        } else if (_currentTabBar == 2 && _addKey.currentState!.canPop()) {
-          _addKey.currentState!.pop();
+        } else if (_currentTabBar == 2 && _userTabNavigators[2].currentState!.canPop()) {
+          _userTabNavigators[2].currentState!.pop();
           return false;
-        } else if (_currentTabBar == 3 && _chatKey.currentState!.canPop()) {
-          _chatKey.currentState!.pop();
+        } else if (_currentTabBar == 3 && _userTabNavigators[3].currentState!.canPop()) {
+          _userTabNavigators[3].currentState!.pop();
           return false;
         } else {
           return showDialog(
@@ -226,16 +203,12 @@ class bottomNavigationBarState extends State<bottomNavigationBar> {
                     },
                   )).then((value) => exit);
         }
-
-        // return false;
       },
       child: CupertinoTabScaffold(
         controller: controller,
         resizeToAvoidBottomInset: false,
         tabBar: CupertinoTabBar(
-          height: context.watch<BottomNavigationBarProvider>().isFullScreen
-              ? 0
-              : 60,
+          height: context.watch<BottomNavigationBarProvider>().isFullScreen ? 0 : 60,
           items: _userTabItems,
           inactiveColor: Colors.grey,
           activeColor: Colors.black,
@@ -266,7 +239,7 @@ class bottomNavigationBarState extends State<bottomNavigationBar> {
                       : (index == 1)
                           ? Visibility(
                               visible: (_currentTabBar == index),
-                              child: Center(child: DiscoverPage()))
+                              child: const Center(child: DiscoverPage()))
                           : (index == 2)
                               ? Visibility(
                                   visible: (_currentTabBar == index),
@@ -274,7 +247,7 @@ class bottomNavigationBarState extends State<bottomNavigationBar> {
                               : (index == 3)
                                   ? Visibility(
                                       visible: (_currentTabBar == index),
-                                      child: Center(child: ProfilePage()))
+                                      child:  Center(child: ProfilePage()))
                                   : Center(
                                       child: Container(),
                                     ));
@@ -312,12 +285,12 @@ class bottomNavigationBarState extends State<bottomNavigationBar> {
           // Handle tap if needed
         },
         child: Container(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               isSelected ? item.activeIcon : item.icon,
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 item.label ?? '',
                 style: TextStyle(
@@ -332,25 +305,29 @@ class bottomNavigationBarState extends State<bottomNavigationBar> {
   }
 
   final List<BottomNavigationBarItem> _userTabItems = [
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Center(
-        child: Icon(Icons.home)
+        child: Icon(Icons.home),
       ),
+      label: 'Home',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Center(
         child: Icon(Icons.explore),
       ),
+      label: 'Discover',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Center(
         child: Icon(Icons.forum),
       ),
+      label: 'Forum',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Center(
         child: Icon(Icons.person),
       ),
+      label: 'Profile',
     ),
   ];
 
