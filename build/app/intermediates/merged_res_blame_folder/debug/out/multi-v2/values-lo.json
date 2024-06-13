@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-26:/values-lo/values-lo.xml",
+            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-27:/values-lo/values-lo.xml",
             "map": [
                 {
                     "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\8286cbacf3ced0aeaed2eb7ee25064cd\\transformed\\jetified-play-services-base-18.1.0\\res\\values-lo\\values.xml",

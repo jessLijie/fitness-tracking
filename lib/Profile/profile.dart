@@ -1,8 +1,10 @@
+import 'package:fitness_tracking/Profile/reminder_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_tracking/Profile/edit_profile.dart';
 import 'package:fitness_tracking/services/auth.dart';
+import 'package:fitness_tracking/Profile/reminder_page.dart'; // Import the ReminderPage
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -168,6 +170,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: Color(0xFFC0FE87),
                     ),
                     child: Text('Register as Trainer'),
+                  ),
+                  SizedBox(height: 10),
+                  // Reminder Page Button
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ReminderPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue,
+                    ),
+                    child: Text('Reminders'),
                   ),
                 ],
               );
