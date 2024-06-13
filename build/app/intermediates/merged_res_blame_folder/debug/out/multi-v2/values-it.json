@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-26:/values-it/values-it.xml",
+            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-27:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "C:\\Users\\darre\\.gradle\\caches\\transforms-3\\db60dacdf6b1929955b8d61fd2fe05f7\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-it\\values-it.xml",

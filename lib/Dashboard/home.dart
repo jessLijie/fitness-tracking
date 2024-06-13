@@ -47,38 +47,35 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Card(
                 child: BmiCard(
                   BMI: userData['bmi'] != null
                       ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
                       : 0.0,
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
-                child: CaloryCard(burnt: 100, goal: userData['goalCal'] != null ? userData['goalCal'] as int : 0,),
+              SizedBox(height: 10.0),
+              Card(
+                child: CaloryCard(
+                  burnt: 100,
+                  goal: userData['goalCal'] != null ? userData['goalCal'] as int : 0,
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
+              SizedBox(height: 10.0),
+              Card(
                 child: Calculator(
                   height: (userData['height'] ?? 0).toDouble() * 100,
                   weight: (userData['weight'] ?? 0).toDouble(),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.0),
-              child: ButtonBar(
+              SizedBox(height: 10.0),
+              ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
@@ -92,7 +89,9 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
+                        vertical: 10.0,
+                        horizontal: 20.0,
+                      ),
                       backgroundColor: Color.fromARGB(255, 40, 138, 29),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -110,8 +109,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

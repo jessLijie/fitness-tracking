@@ -1,8 +1,10 @@
+import 'package:fitness_tracking/Profile/reminder_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_tracking/Profile/edit_profile.dart';
 import 'package:fitness_tracking/services/auth.dart';
-import 'package:fitness_tracking/services/database.dart';
+import 'package:fitness_tracking/Profile/reminder_page.dart'; // Import the ReminderPage
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   late Future<Map<String, dynamic>> _userProfileFuture;
   final AuthService _authService = AuthService();
-  final DatabaseService _databaseService = DatabaseService();
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -23,9 +25,25 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<Map<String, dynamic>> _getUserProfileData() async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      return _databaseService.getUserProfileData(user.uid);
+      DocumentSnapshot snapshot = await _db.collection('users').doc(user.uid).get();
+      return snapshot.data() as Map<String, dynamic>;
     }
     return {}; // Return an empty map if user is not authenticated
+  }
+
+  Future<void> _registerAsTrainer() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await _db.collection('users').doc(user.uid).update({'role': 'trainer'});
+      // Optionally, show a success message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registered as Trainer')),
+      );
+      // Refresh the profile data to reflect the new role
+      setState(() {
+        _userProfileFuture = _getUserProfileData();
+      });
+    }
   }
 
   @override
@@ -146,14 +164,27 @@ class _ProfilePageState extends State<ProfilePage> {
                   SizedBox(height: 20),
                   // Register as Trainer Button
                   ElevatedButton(
-                    onPressed: () {
-                      // Handle register as trainer button click
-                    },
+                    onPressed: _registerAsTrainer,
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Color(0xFFC0FE87),
                     ),
                     child: Text('Register as Trainer'),
+                  ),
+                  SizedBox(height: 10),
+                  // Reminder Page Button
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ReminderPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue,
+                    ),
+                    child: Text('Reminders'),
                   ),
                 ],
               );
