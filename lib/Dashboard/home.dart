@@ -5,6 +5,7 @@ import 'package:fitness_tracking/services/connection.dart';
 import 'package:flutter/material.dart';
 import 'package:gauge_indicator/gauge_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'dart:math';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,11 +15,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final Connection _connection = Connection();
   Map<String, dynamic> userData = {};
+  String recommendedRecipe = "Loading...";
+  String recommendedRecipeImage = "assets/image/recipe/loading.jpg";
 
   @override
   void initState() {
     super.initState();
     _fetchUserData();
+    _fetchRecommendedRecipe();
   }
 
   Future<void> _fetchUserData() async {
@@ -26,6 +30,66 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       userData = data;
     });
+  }
+
+  Future<void> _fetchRecommendedRecipe() async {
+    // Simulating fetching a recommended recipe
+    await Future.delayed(Duration(seconds: 1));
+    setState(() {
+      Map<String, String> recipeData = _getRandomRecipe();
+      recommendedRecipe = recipeData['name']!;
+      recommendedRecipeImage = recipeData['image']!;
+    });
+  }
+
+  Map<String, String> _getRandomRecipe() {
+    List<Map<String, String>> recipes = [
+      {
+        "name": "Grilled Chicken Salad!",
+        "image": "assets/image/recipe/grilledchickensalad.jpg"
+      },
+      {
+        "name": "Quinoa and Veggie Stir-Fry!",
+        "image": "assets/image/recipe/quinoa.jpg"
+      },
+      {
+        "name": "Avocado Toast with Egg!",
+        "image": "assets/image/recipe/avocado.jpg"
+      },
+      {"name": "Berry Smoothie!",
+       "image": "assets/image/recipe/berrysmoothie.jpg"},
+      {
+        "name": "Grilled Salmon with Asparagus!",
+        "image": "assets/image/recipe/salmonasparagus.jpg"
+      },
+      {
+        "name": "Pasta with Pesto Sauce!",
+        "image": "assets/image/recipe/pestopasta.jpg"
+      },
+      {
+        "name": "Greek Yogurt with Berries!",
+        "image": "assets/image/recipe/greek.jpg"
+      },
+      {
+        "name": "Oatmeal with Fruits!",
+        "image": "assets/image/recipe/oatmeal.jpg"
+      },
+      {"name": "Veggie Wrap!", "image": "assets/image/recipe/veggiewrap.jpg"},
+      {"name": "Tofu Stir-Fry!", "image": "assets/image/recipe/tofu.jpg"},
+      {"name": "Chia Seed Pudding!", "image": "assets/image/recipe/pudding.jpg"},
+      {"name": "Veggie Omelette!", "image": "assets/image/recipe/veggieomelette.jpg"},
+      {
+        "name": "Chicken and Veggie Skewers!",
+        "image": "assets/image/recipe/skewer.jpg"
+      },
+      {"name": "Veggie Burger!", "image": "assets/image/recipe/burger.jpg"},
+      {"name": "Tuna Salad!", "image": "assets/image/recipe/tunasalad.jpg"},
+      {
+        "name": "Pancakes with Berries and Maple Syrup!",
+        "image": "assets/image/recipe/pancake.jpg"
+      },
+    ];
+    return recipes[Random().nextInt(recipes.length)];
   }
 
   @override
@@ -56,7 +120,8 @@ class _HomePageState extends State<HomePage> {
               Card(
                 child: BmiCard(
                   BMI: userData['bmi'] != null
-                      ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
+                      ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ??
+                          0.0
                       : 0.0,
                 ),
               ),
@@ -64,7 +129,9 @@ class _HomePageState extends State<HomePage> {
               Card(
                 child: CaloryCard(
                   burnt: 100,
-                  goal: userData['goalCal'] != null ? userData['goalCal'] as int : 0,
+                  goal: userData['goalCal'] != null
+                      ? userData['goalCal'] as int
+                      : 0,
                 ),
               ),
               SizedBox(height: 10.0),
@@ -72,6 +139,15 @@ class _HomePageState extends State<HomePage> {
                 child: Calculator(
                   height: (userData['height'] ?? 0).toDouble() * 100,
                   weight: (userData['weight'] ?? 0).toDouble(),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Card(
+                child: RecipeCard(
+                  recipe: recommendedRecipe,
+                  onRefresh: _fetchRecommendedRecipe,
+                  imagePath:
+                      recommendedRecipeImage, // Use the recommended recipe image path
                 ),
               ),
               SizedBox(height: 10.0),
@@ -117,6 +193,85 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+class RecipeCard extends StatelessWidget {
+  final String recipe;
+  final Future<void> Function() onRefresh;
+  final String imagePath;
+
+  RecipeCard({
+    Key? key,
+    required this.recipe,
+    required this.onRefresh,
+    required this.imagePath,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          colors: [
+            Color.fromARGB(255, 200, 230, 201),
+            Color.fromARGB(255, 200, 230, 201),
+          ],
+        ),
+      ),
+      height: 290, // Increased height to accommodate the image
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 10),
+              Text(
+                "Idea of Recipe of the Day ~",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Image.asset(
+                imagePath,
+                height: 100, // Adjust the height as needed
+                width: 100, // Adjust the width as needed
+              ),
+              SizedBox(height: 10),
+              Text(
+                recipe,
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              TextButton(
+                onPressed: onRefresh,
+                style: TextButton.styleFrom(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  backgroundColor: Color.fromARGB(255, 40, 138, 29),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black26,
+                  elevation: 4,
+                ),
+                child: Text(
+                  "Refresh",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 200, 230, 201),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class CaloryCard extends StatefulWidget {
   final int burnt;
   final int goal;
@@ -128,7 +283,8 @@ class CaloryCard extends StatefulWidget {
   _CaloryCardState createState() => _CaloryCardState();
 }
 
-class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateMixin {
+class _CaloryCardState extends State<CaloryCard>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -140,12 +296,15 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0, end: widget.burnt.toDouble() / widget.goal.toDouble()).animate(CurvedAnimation(
+    _animation = Tween<double>(
+            begin: 0, end: widget.burnt.toDouble() / widget.goal.toDouble())
+        .animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
-    ))..addListener(() {
-      setState(() {});
-    });
+    ))
+      ..addListener(() {
+        setState(() {});
+      });
 
     _controller.forward();
   }
@@ -154,7 +313,8 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
   void didUpdateWidget(CaloryCard oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.burnt != widget.burnt || oldWidget.goal != widget.goal) {
-      _animation = Tween<double>(begin: 0, end: widget.burnt / widget.goal).animate(CurvedAnimation(
+      _animation = Tween<double>(begin: 0, end: widget.burnt / widget.goal)
+          .animate(CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOut,
       ));
@@ -172,7 +332,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-  final double progressPercent = _animation.value.clamp(0.0, 1.0);
+    final double progressPercent = _animation.value.clamp(0.0, 1.0);
 
     return Container(
       decoration: BoxDecoration(
@@ -213,7 +373,8 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
               AnimatedPositioned(
                 duration: Duration(milliseconds: 10),
                 curve: Curves.easeInOut,
-                left: (MediaQuery.of(context).size.width - 60) * progressPercent,
+                left:
+                    (MediaQuery.of(context).size.width - 60) * progressPercent,
                 top: 50,
                 child: Image.asset(
                   'assets/image/banana.png',
@@ -240,7 +401,7 @@ class BmiCard extends StatelessWidget {
   BmiCard({super.key, required this.BMI});
   final double BMI;
   final String imagePath = 'assets/image/meter.png';
- 
+
   String _getBMICategoryText(double bmi) {
     if (bmi >= 18.5 && bmi <= 25) {
       return "Normal";
@@ -276,64 +437,57 @@ class BmiCard extends StatelessWidget {
               // child: Image.asset(
               //   imagePath,
               // ),
-               padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10.0),
               child: AnimatedRadialGauge(
-                
-                duration: const Duration(seconds: 3),
-                curve: Curves.elasticOut,
-                radius: 100.0, 
-                value: BMI,
-                axis: GaugeAxis(
-                  
-                  min: 0,
-                  max: 35, 
-                  degrees: 270,
-                  style: const GaugeAxisStyle(
-                    thickness: 20,
-                    background: Color(0xFFDFE2EC),
-                    segmentSpacing: 0,
-                  ),
-                  pointer: GaugePointer.needle(
-                    height: 66,
-                    width: 10,
-                    color: Color.fromARGB(225, 0, 0, 0),
-                    borderRadius: 16,
-                  ),
-                  progressBar: GaugeProgressBar.rounded(
-                    color:Colors.transparent,
-                  ),
-                  segments: [
-                    GaugeSegment(
-                      from: 0,
-                      to: 18.5,
-                      color: Colors.blue,
-                      cornerRadius: Radius.circular(5),
+                  duration: const Duration(seconds: 3),
+                  curve: Curves.elasticOut,
+                  radius: 100.0,
+                  value: BMI,
+                  axis: GaugeAxis(
+                    min: 0,
+                    max: 35,
+                    degrees: 270,
+                    style: const GaugeAxisStyle(
+                      thickness: 20,
+                      background: Color(0xFFDFE2EC),
+                      segmentSpacing: 0,
                     ),
-                    GaugeSegment(
-                      from: 18.5,
-                      to: 25,
-                      color: Colors.green,
-                      cornerRadius: Radius.circular(5),
+                    pointer: GaugePointer.needle(
+                      height: 66,
+                      width: 10,
+                      color: Color.fromARGB(225, 0, 0, 0),
+                      borderRadius: 16,
                     ),
-                    GaugeSegment(
-                      from: 25,
-                      to: 30,
-                      color: Colors.orange,
-                      cornerRadius: Radius.circular(5),
+                    progressBar: GaugeProgressBar.rounded(
+                      color: Colors.transparent,
                     ),
-                    GaugeSegment(
-                      from: 30,
-                      to: 35,
-                      color: Colors.red,
-                      cornerRadius: Radius.circular(5),
-                    ),
-                    
-                  ],
-                  
-                  
-                  
-                )
-              ),
+                    segments: [
+                      GaugeSegment(
+                        from: 0,
+                        to: 18.5,
+                        color: Colors.blue,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 18.5,
+                        to: 25,
+                        color: Colors.green,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 25,
+                        to: 30,
+                        color: Colors.orange,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                      GaugeSegment(
+                        from: 30,
+                        to: 35,
+                        color: Colors.red,
+                        cornerRadius: Radius.circular(5),
+                      ),
+                    ],
+                  )),
             ),
             Expanded(
               child: Padding(
@@ -402,7 +556,7 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   void initState() {
-    super.initState();  
+    super.initState();
     _height = widget.height > 0.0 ? widget.height.clamp(0, 200.0) : 160.0;
     _weight = widget.weight > 0.0 ? widget.weight : 60.0;
   }
@@ -513,9 +667,8 @@ class _CalculatorState extends State<Calculator> {
   }
 
   String _calculateBMI(double height, double weight) {
-    
     double bmi = (weight / ((height / 100) * (height / 100)));
-    int bmiInt= 0;
+    int bmiInt = 0;
 
     if (bmi.isFinite) {
       bmiInt = bmi.round();
@@ -525,7 +678,7 @@ class _CalculatorState extends State<Calculator> {
       return "Normal";
     } else if (bmiInt > 25 && bmiInt <= 30) {
       return "Overweight";
-    } else if (bmiInt> 30) {
+    } else if (bmiInt > 30) {
       return "Obesity";
     } else if (!bmiInt.isFinite) {
       return "Invalid bmi";
