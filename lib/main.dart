@@ -127,9 +127,13 @@ import 'Discover/discover.dart';
 import 'Forum/forumPage.dart';
 import 'Forum/detailsPage.dart';
 
+import 'package:timezone/data/latest.dart' as tz;
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  tz.initializeTimeZones();
   runApp(MyApp());
 }
 

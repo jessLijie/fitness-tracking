@@ -1,7 +1,7 @@
+import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Profile/forgot_pw_page.dart';
-import 'package:fitness_tracking/bottomNavigationBar.dart';
 import 'package:fitness_tracking/main.dart';
 import 'package:fitness_tracking/services/auth.dart';
 
@@ -33,7 +33,7 @@ class _SignInPageState extends State<SignInPage> {
       Navigator.pop(context);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => bottomNavigationBar()),
+        MaterialPageRoute(builder: (context) => bottomNavigationBarWidget()),
       );
     } catch (e) {
       showErrorMessage(e.toString());

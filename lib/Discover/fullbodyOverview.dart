@@ -1,4 +1,5 @@
 import 'package:fitness_tracking/Providers/timer_provider.dart';
+import 'package:fitness_tracking/data/model/fullbody.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -140,9 +141,15 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
         width: MediaQuery.of(context).size.width * 0.9, // Set the desired width
         child: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.pushNamed(context, 'Discover/fullbodyWorkout');
-            timerProvider.startTimer();
-            
+            int initialIndex = 0;
+            Navigator.pushNamed(
+              context, 
+              'Discover/fullbodyWorkout',
+              arguments: {
+                'workouts': workouts,
+                'currentIndex': initialIndex,
+              });
+              timerProvider.startTimer();
           },
           backgroundColor: Colors.green[300],
           label: const Text(

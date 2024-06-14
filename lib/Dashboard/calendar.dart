@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Dashboard/progressbar.dart';
+import 'package:fitness_tracking/services/connection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:fitness_tracking/services/connection.dart';
 
 class Activity {
   final String name;
@@ -49,18 +51,28 @@ class CalendarPage extends StatefulWidget {
 
 class _CalendarPageState extends State<CalendarPage> {
   final Connection _connection = Connection();
+
   Map<String, dynamic> userData = {};
+  int totalCaloriesBurnt = 0;
 
   @override
   void initState() {
     super.initState();
     _fetchUserData();
+    _fetchTotalCaloriesBurnt();
   }
 
   Future<void> _fetchUserData() async {
     Map<String, dynamic> data = await _connection.getUserProfileData();
     setState(() {
       userData = data;
+    });
+  }
+
+  Future<void> _fetchTotalCaloriesBurnt() async {
+    int totalCalories = await getTotalCaloriesBurned() ?? 0;
+    setState(() {
+      totalCaloriesBurnt = totalCalories;
     });
   }
 
@@ -73,106 +85,93 @@ class _CalendarPageState extends State<CalendarPage> {
     }
     return disabledDates;
   }
+
   final EasyInfiniteDateTimelineController _controller =
       EasyInfiniteDateTimelineController();
   DateTime? _selectedDate =
       DateTime.now(); // Initialize with current date and time
 
   @override
- Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Row(
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
-        children: [
-          Text(
-            'Welcome back, ',
-            style: TextStyle(fontSize: 20),
-          ),
-          Text(
-            userData['full name'] ?? 'User',
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
-      ),
-    ),
-    body: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      child: SingleChildScrollView(
-        child: Column(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
           children: [
-            EasyDateTimeLine(
-              initialDate: DateTime.now(),
-              disabledDates: _generateDisabledDates(36525),
-              onDateChange: (selectedDate) {
-                setState(() {
-                  _selectedDate = selectedDate;
-                });
-              },
-              activeColor: const Color(0xff85A389),
-              dayProps: const EasyDayProps(
-                todayHighlightStyle: TodayHighlightStyle.withBackground,
-                todayHighlightColor: Color(0xffE1ECC8),
-                activeDayStyle: DayStyle(
-                  borderRadius: 32.0,
-                ),
-              ),
-              headerProps: const EasyHeaderProps(
-                monthPickerType: MonthPickerType.switcher,
-                dateFormatter: DateFormatter.fullDateMonthAsStrDY(),
-              ),
+            Text(
+              'Welcome back, ',
+              style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
-            if (_selectedDate != null) _buildSelectedDateActivities(),
-            SizedBox(height: 20),
-            SizedBox(
-              height: 300, // Adjust the height as needed
-              child: progressBar(),
+            Text(
+              userData['full name'] ?? 'User',
+              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
       ),
-    ),
-  );
-}
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              EasyDateTimeLine(
+                initialDate: DateTime.now(),
+                disabledDates: _generateDisabledDates(36525),
+                onDateChange: (selectedDate) {
+                  setState(() {
+                    _selectedDate = selectedDate;
+                  });
+                },
+                activeColor: const Color(0xff85A389),
+                dayProps: const EasyDayProps(
+                  todayHighlightStyle: TodayHighlightStyle.withBackground,
+                  todayHighlightColor: Color(0xffE1ECC8),
+                  activeDayStyle: DayStyle(
+                    borderRadius: 32.0,
+                  ),
+                ),
+                headerProps: const EasyHeaderProps(
+                  monthPickerType: MonthPickerType.switcher,
+                  dateFormatter: DateFormatter.fullDateMonthAsStrDY(),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Total calories burnt: $totalCaloriesBurnt kcal',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 300,
+                child: progressBar(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-  Widget _buildSelectedDateActivities() {
-    if (_selectedDate != null) {
-      final activities = MockData.activities[_selectedDate!] ?? [];
-      if (activities.isNotEmpty) {
-        int totalSets = 0;
-        int totalCaloriesBurnt = 0;
-        final activityWidgets = activities.map((activity) {
-          totalSets += activity.sets;
-          totalCaloriesBurnt += activity.caloriesBurnt;
-          return Text('${activity.sets} set(s) of ${activity.name}');
-        }).toList();
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'On ${DateFormat.yMMMMd().format(_selectedDate!)}, you have completed:',
-              style: TextStyle(fontSize: 16),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: activityWidgets,
-            ),
-            Text(
-              'Total calories burnt: $totalCaloriesBurnt',
-              style: TextStyle(fontSize: 16),
-            )
-          ],
-        );
-      } else {
-        return Text(
-          'On ${DateFormat.yMMMMd().format(_selectedDate!)}, You have completed:\n-- no activities done --\nTotal calories burnt: 0',
-          style: TextStyle(fontSize: 16),
-        );
-      }
-    } else {
-      return Container(); 
+  Future<int?> getTotalCaloriesBurned() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return 0; // No user logged in, return 0
     }
+
+    int totalCalories = 0;
+
+    // Query Firestore for documents where userId is equal to the current user's ID
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
+        .collection('workout')
+        .where('userid', isEqualTo: user.uid)
+        .get();
+
+    // Iterate over the documents and sum the caloriesBurned
+    for (var doc in querySnapshot.docs) {
+      totalCalories += (doc['caloriesBurned'] as num).toInt();
+    }
+
+    return totalCalories;
   }
 }

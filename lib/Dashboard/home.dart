@@ -47,38 +47,35 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Card(
                 child: BmiCard(
                   BMI: userData['bmi'] != null
                       ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
                       : 0.0,
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
-                child: CaloryCard(burnt: 100, goal: userData['goalCal']),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
-                child: Calculator(
-                  height: (userData['height']*100) ,
-                  weight: userData['weight'] ,
+              SizedBox(height: 10.0),
+              Card(
+                child: CaloryCard(
+                  burnt: 100,
+                  goal: userData['goalCal'] != null ? userData['goalCal'] as int : 0,
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.0),
-              child: ButtonBar(
+              SizedBox(height: 10.0),
+              Card(
+                child: Calculator(
+                  height: (userData['height'] ?? 0).toDouble() * 100,
+                  weight: (userData['weight'] ?? 0).toDouble(),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
@@ -92,7 +89,9 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
+                        vertical: 10.0,
+                        horizontal: 20.0,
+                      ),
                       backgroundColor: Color.fromARGB(255, 40, 138, 29),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -110,8 +109,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -141,12 +140,12 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0, end: widget.burnt / widget.goal).animate(CurvedAnimation(
+    _animation = Tween<double>(begin: 0, end: widget.burnt.toDouble() / widget.goal.toDouble()).animate(CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
     ))..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    });
 
     _controller.forward();
   }
@@ -173,7 +172,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    final double progressPercent = _animation.value;
+  final double progressPercent = _animation.value.clamp(0.0, 1.0);
 
     return Container(
       decoration: BoxDecoration(
@@ -190,7 +189,7 @@ class _CaloryCardState extends State<CaloryCard> with SingleTickerProviderStateM
       height: 120,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Stack(
             children: [
               Column(
@@ -403,9 +402,9 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   void initState() {
-    super.initState();
-    _height = widget.height;
-    _weight = widget.weight;
+    super.initState();  
+    _height = widget.height > 0.0 ? widget.height.clamp(0, 200.0) : 160.0;
+    _weight = widget.weight > 0.0 ? widget.weight : 60.0;
   }
 
   @override
@@ -514,13 +513,22 @@ class _CalculatorState extends State<Calculator> {
   }
 
   String _calculateBMI(double height, double weight) {
-    int bmi = (weight / ((height / 100) * (height / 100))).round().toInt();
-    if (bmi >= 18.5 && bmi <= 25) {
+    
+    double bmi = (weight / ((height / 100) * (height / 100)));
+    int bmiInt= 0;
+
+    if (bmi.isFinite) {
+      bmiInt = bmi.round();
+    }
+
+    if (bmiInt >= 18.5 && bmiInt <= 25) {
       return "Normal";
-    } else if (bmi > 25 && bmi <= 30) {
+    } else if (bmiInt > 25 && bmiInt <= 30) {
       return "Overweight";
-    } else if (bmi > 30) {
+    } else if (bmiInt> 30) {
       return "Obesity";
+    } else if (!bmiInt.isFinite) {
+      return "Invalid bmi";
     } else {
       return "Underweight";
     }
