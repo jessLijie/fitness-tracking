@@ -1,537 +1,12 @@
-// // // import 'dart:io';
-
-// // // import 'package:flutter/material.dart';
-// // // import 'package:image_picker/image_picker.dart';
-
-// // // class AddForumPostPage extends StatefulWidget {
-// // //   @override
-// // //   _AddForumPostPageState createState() => _AddForumPostPageState();
-// // // }
-
-// // // class _AddForumPostPageState extends State<AddForumPostPage> {
-// // //   final _formKey = GlobalKey<FormState>();
-// // //   String title = '';
-// // //   String description = '';
-// // //   File? imageFile;
-
-// // //   @override
-// // //   Widget build(BuildContext context) {
-// // //     return Scaffold(
-// // //       appBar: AppBar(title: Text('Add Forum Post')),
-// // //       body: Form(
-// // //         key: _formKey,
-// // //         child: Column(
-// // //           children: [
-// // //             TextFormField(
-// // //               decoration: InputDecoration(labelText: 'Title'),
-// // //               onSaved: (value) => title = value!,
-// // //               validator: (value) =>
-// // //                   value!.isEmpty ? 'Please enter a title' : null,
-// // //             ),
-// // //             TextFormField(
-// // //               decoration: InputDecoration(labelText: 'Description'),
-// // //               onSaved: (value) => description = value!,
-// // //               validator: (value) =>
-// // //                   value!.isEmpty ? 'Please enter a description' : null,
-// // //             ),
-// // //             // Add buttons for image/video upload
-// // //             Row(
-// // //               children: [
-// // //                 TextButton(
-// // //                   onPressed: () => _selectMedia(),
-// // //                   child: Text('Upload Media'),
-// // //                 ),
-// // //                 TextButton(
-// // //                   onPressed: () {
-// // //                     if (_formKey.currentState!.validate()) {
-// // //                       _formKey.currentState!.save();
-// // //                       _uploadPost(context);
-// // //                     }
-// // //                   },
-// // //                   child: Text('Submit Post'),
-// // //                 )
-// // //               ],
-// // //             )
-// // //           ],
-// // //         ),
-// // //       ),
-// // //     );
-// // //   }
-
-// // //     // Use image_picker or similar package to select media
-// // //     List<File> mediaFiles = [];
-
-// // // Future<void> _selectMedia() async {
-// // //   final ImagePicker _picker = ImagePicker();
-// // //   final List<XFile>? selectedFiles = await _picker.pickMultipleMedia(); // For selecting multiple images
-
-// // //   if (selectedFiles != null && selectedFiles.isNotEmpty) {
-// // //     for (var file in selectedFiles) {
-// // //       mediaFiles.add(File(file.path));
-// // //     }
-// // //   }
-
-// // //   // To allow video selection as well
-// // //   final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
-// // //   if (video != null) {
-// // //     mediaFiles.add(File(video.path));
-// // //   }
-
-// // //   setState(() {});
-// // // }
-
-// // //   void _uploadPost(BuildContext context) async {
-// // //     // Upload media to Firebase Storage and then save post data to Firestore
-// // //   }
-
-// // // }
-// // import 'dart:io';
-// // import 'package:fitness_tracking/bottomNavigationBar.dart';
-// // import 'package:flutter/material.dart';
-// // import 'package:image_picker/image_picker.dart';
-// // import 'package:firebase_storage/firebase_storage.dart';
-// // import 'package:cloud_firestore/cloud_firestore.dart';
-// // import 'package:path/path.dart' as path;
-
-// // class AddForumPostPage extends StatefulWidget {
-// //   @override
-// //   _AddForumPostPageState createState() => _AddForumPostPageState();
-// // }
-
-// // class _AddForumPostPageState extends State<AddForumPostPage> {
-// //   final _formKey = GlobalKey<FormState>();
-// //   List<File> mediaFiles = [];
-// //   final ImagePicker _picker = ImagePicker();
-// //   String title = '';
-// //   String description = '';
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       //bottomNavigationBar: NavigationBarApp(),
-// //       backgroundColor: Color.fromRGBO(239, 255, 224, 1),
-// //       appBar: AppBar(
-// //         title: Text(
-// //           "Add Forum",
-// //           style: TextStyle(fontFamily: "Inika", fontWeight: FontWeight.bold),
-// //         ),
-// //         backgroundColor: Color.fromRGBO(239, 255, 224, 1),
-// //       ),
-// //       body: SingleChildScrollView(
-// //         child: Form(
-// //           key: _formKey,
-// //           child: Column(
-// //             children: <Widget>[
-// //               TextFormField(
-// //                 decoration: InputDecoration(labelText: 'Title'),
-// //                 onSaved: (value) => title = value!,
-// //                 validator: (value) => value!.isEmpty ? 'Please enter a title' : null,
-// //               ),
-// //               TextFormField(
-// //                 decoration: InputDecoration(labelText: 'Description'),
-// //                 onSaved: (value) => description = value!,
-// //                 validator: (value) => value!.isEmpty ? 'Please enter a description' : null,
-// //               ),
-// //               ElevatedButton(
-// //                 onPressed: _selectMedia,
-// //                 child: Text('Upload Media'),
-// //               ),
-// //               ElevatedButton(
-// //                 onPressed: _uploadPost,
-// //                 child: Text('Submit Post'),
-// //               ),
-// //             ],
-// //           ),
-// //         ),
-// //       ),
-// //     );
-// //   }
-
-// //   Future<void> _selectMedia() async {
-// //     final XFile? selectedImages = await _picker.pickImage(source: ImageSource.gallery);
-
-// //     final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
-// //     if (video != null) {
-// //       mediaFiles.add(File(video.path));
-// //     }
-
-// //     setState(() {});
-// //   }
-
-// //   Future<void> _uploadPost() async {
-// //     if (_formKey.currentState!.validate()) {
-// //       _formKey.currentState!.save();
-// //       List<String> downloadUrls = [];
-// //       for (var file in mediaFiles) {
-// //         String fileName = path.basename(file.path);
-// //         Reference ref = FirebaseStorage.instance.ref().child('forum_media/$fileName');
-// //         UploadTask task = ref.putFile(file);
-// //         TaskSnapshot snapshot = await task;
-// //         String url = await snapshot.ref.getDownloadURL();
-// //         downloadUrls.add(url);
-// //       }
-
-// //       Map<String, dynamic> uploadedData = {
-// //         'title': title,
-// //         'description': description,
-// //         'mediaUrls': downloadUrls,
-// //         'timestamp': FieldValue.serverTimestamp(),
-
-// //       };
-
-// //       Navigator.of(context).pop();
-// //     }
-// //   }
-// // }
-
-// // import 'dart:io';
-// // import 'package:flutter/material.dart';
-// // import 'package:image_picker/image_picker.dart';
-// // import 'package:firebase_storage/firebase_storage.dart';
-// // import 'package:cloud_firestore/cloud_firestore.dart';
-// // import 'package:path/path.dart' as path;
-
-// // class AddForumPostPage extends StatefulWidget {
-// //   @override
-// //   _AddForumPostPageState createState() => _AddForumPostPageState();
-// // }
-
-// // class _AddForumPostPageState extends State<AddForumPostPage> {
-// //   final _formKey = GlobalKey<FormState>();
-// //   List<File> mediaFiles = [];
-// //   final ImagePicker _picker = ImagePicker();
-// //   String title = '';
-// //   String description = '';
-
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     return Scaffold(
-// //       backgroundColor: Colors.white,
-// //       appBar: AppBar(
-// //         title: Text("Add a Forum Post"),
-// //         backgroundColor: Colors.green,
-// //       ),
-// //       body: SingleChildScrollView(
-// //         padding: EdgeInsets.all(20),
-// //         child: Form(
-// //           key: _formKey,
-// //           child: Column(
-// //             crossAxisAlignment: CrossAxisAlignment.start,
-// //             children: <Widget>[
-// //               // Media selection button and display area
-// //               Row(
-// //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-// //                 children: [
-// //                   ElevatedButton(
-// //                     onPressed: _selectMedia,
-// //                     child: Text('Upload Media'),
-// //                   ),
-// //                   if (mediaFiles.isNotEmpty)
-// //                     Text('${mediaFiles.length} file(s) selected'),
-// //                 ],
-// //               ),
-// //               SizedBox(height: 20),
-// //               // Title field
-// //               TextFormField(
-// //                 decoration: InputDecoration(
-// //                   labelText: 'Title',
-// //                   border: OutlineInputBorder(),
-// //                   hintText: 'Enter the title of your post',
-// //                 ),
-// //                 onSaved: (value) => title = value!,
-// //                 validator: (value) => value!.isEmpty ? 'Please enter a title' : null,
-// //               ),
-// //               SizedBox(height: 20),
-// //               // Description field
-// //               TextFormField(
-// //                 decoration: InputDecoration(
-// //                   labelText: 'Description',
-// //                   border: OutlineInputBorder(),
-// //                   hintText: 'Enter a description',
-// //                 ),
-// //                 onSaved: (value) => description = value!,
-// //                 validator: (value) => value!.isEmpty ? 'Please enter a description' : null,
-// //                 maxLines: 5,
-// //               ),
-// //               SizedBox(height: 20),
-// //               // Submit button
-// //               Center(
-// //                 child: ElevatedButton(
-// //                   onPressed: _uploadPost,
-// //                   child: Text('Submit Post'),
-// //                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-// //                 ),
-// //               ),
-// //             ],
-// //           ),
-// //         ),
-// //       ),
-// //     );
-// //   }
-
-// //   Future<void> _selectMedia() async {
-// //     final List<XFile>? selectedFiles = await _picker.pickMultiImage();
-
-// //     if (selectedFiles != null) {
-// //       for (var file in selectedFiles) {
-// //         mediaFiles.add(File(file.path));
-// //       }
-// //     }
-
-// //     final XFile? video = await _picker.pickVideo(source: ImageSource.gallery);
-// //     if (video != null) {
-// //       mediaFiles.add(File(video.path));
-// //     }
-
-// //     setState(() {});
-// //   }
-
-// //   Future<void> _uploadPost() async {
-// //     if (_formKey.currentState!.validate()) {
-// //       _formKey.currentState!.save();
-// //       List<String> downloadUrls = [];
-// //       for (var file in mediaFiles) {
-// //         String fileName = path.basename(file.path);
-// //         Reference ref = FirebaseStorage.instance.ref().child('forum_media/$fileName');
-// //         UploadTask task = ref.putFile(file);
-// //         TaskSnapshot snapshot = await task;
-// //         String url = await snapshot.ref.getDownloadURL();
-// //         downloadUrls.add(url);
-// //       }
-
-// //       Map<String, dynamic> uploadedData = {
-// //         'title': title,
-// //         'description': description,
-// //         'mediaUrls': downloadUrls,
-// //         'timestamp': FieldValue.serverTimestamp(),
-// //       };
-
-// //       FirebaseFirestore.instance.collection('forums').add(uploadedData);
-// //       Navigator.of(context).pop();
-// //     }
-// //   }
-// // }
-
-
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'dart:io';
-
-// import 'package:provider/provider.dart';
-
-// import '../bottomNavigationBar.dart';
-
-// class AddForumPage extends StatefulWidget {
-//   @override
-//   _AddForumPageState createState() => _AddForumPageState();
-// }
-
-// class _AddForumPageState extends State<AddForumPage> {
-//   final TextEditingController _titleController = TextEditingController();
-//   final TextEditingController _descriptionController = TextEditingController();
-//   final List<File> _mediaFiles = [];
-//   bool _isLoading = false;
-
-//   Future<void> _pickMedia() async {
-//     final ImagePicker picker = ImagePicker();
-//     final List<XFile>? images = await picker.pickMultiImage();
-//     final XFile? video = await picker.pickVideo(source: ImageSource.gallery);
-
-//     if (images != null) {
-//       setState(() {
-//         _mediaFiles.addAll(images.map((image) => File(image.path)).toList());
-//       });
-//     }
-
-//     if (video != null) {
-//       setState(() {
-//         _mediaFiles.add(File(video.path));
-//       });
-//     }
-//   }
-
-//   Future<void> _uploadAndSubmit() async {
-//     if (_titleController.text.isEmpty ||
-//         _descriptionController.text.isEmpty ||
-//         _mediaFiles.isEmpty) {
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//           content: Text('Please fill all fields and select files to upload.')));
-//       return;
-//     }
-
-//     setState(() {
-//       _isLoading = true;
-//     });
-
-//     try {
-//       List<String> fileUrls = [];
-
-//       for (File file in _mediaFiles) {
-//         String fileName = file.path.split('/').last;
-//         Reference storageRef =
-//             FirebaseStorage.instance.ref().child('forum_uploads/$fileName');
-//         UploadTask uploadTask = storageRef.putFile(file);
-//         TaskSnapshot taskSnapshot = await uploadTask;
-//         String downloadUrl = await taskSnapshot.ref.getDownloadURL();
-//         fileUrls.add(downloadUrl);
-//       }
-
-//       await FirebaseFirestore.instance.collection('forums').add({
-//         'title': _titleController.text,
-//         'description': _descriptionController.text,
-//         'fileUrls': fileUrls,
-//         'timestamp': FieldValue.serverTimestamp(),
-//       });
-
-//       ScaffoldMessenger.of(context).showSnackBar(
-//           SnackBar(content: Text('Forum post created successfully!')));
-//       _titleController.clear();
-//       _descriptionController.clear();
-//       setState(() {
-//         _mediaFiles.clear();
-//       });
-//     } catch (e) {
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//           content: Text('Failed to create forum post. Please try again.')));
-//     }
-
-//     setState(() {
-//       _isLoading = false;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       resizeToAvoidBottomInset: false,
-//       backgroundColor: Color.fromRGBO(239, 255, 224, 1),
-//       appBar: AppBar(
-//         title: Text('Add Forum'),
-//         backgroundColor: Color.fromRGBO(239, 255, 224, 1),
-//       ),
-//       body: _isLoading
-//           ? Center(child: CircularProgressIndicator())
-//           : Padding(
-//               padding: const EdgeInsets.all(16.0),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   GestureDetector(
-//                     onTap: _pickMedia,
-//                     child: Container(
-//                       height: 150,
-//                       width: double.infinity,
-//                       decoration: BoxDecoration(
-//                         border: Border.all(color: Colors.black26),
-//                         borderRadius: BorderRadius.circular(10),
-//                       ),
-//                       child: _mediaFiles.isEmpty
-//                           ? Center(
-//                               child: Column(
-//                                 mainAxisAlignment: MainAxisAlignment.center,
-//                                 children: [
-//                                   Icon(Icons.add_a_photo,
-//                                       size: 50, color: Colors.black26),
-//                                   SizedBox(height: 8),
-//                                   Text('Click to upload images or videos',
-//                                       style: TextStyle(color: Colors.black26)),
-//                                 ],
-//                               ),
-//                             )
-//                           : ListView.builder(
-//                               scrollDirection: Axis.horizontal,
-//                               itemCount: _mediaFiles.length,
-//                               itemBuilder: (context, index) {
-//                                 return Padding(
-//                                   padding: const EdgeInsets.all(8.0),
-//                                   child: Image.file(_mediaFiles[index],
-//                                       width: 100,
-//                                       height: 100,
-//                                       fit: BoxFit.cover),
-//                                 );
-//                               },
-//                             ),
-//                     ),
-//                   ),
-//                   SizedBox(height: 20),
-//                   TextField(
-//                     onTap: () {
-//                       FocusScope.of(context).unfocus();
-//                       context
-//                           .read<BottomNavigationBarProvider>()
-//                           .setFullScreen(true);
-//                     },
-//                     onEditingComplete: () {
-//                       FocusScope.of(context).unfocus();
-//                       context
-//                           .read<BottomNavigationBarProvider>()
-//                           .setFullScreen(false);
-//                     },
-//                     controller: _titleController,
-//                     decoration: InputDecoration(
-//                       labelText: 'Title',
-//                       border: OutlineInputBorder(),
-//                     ),
-//                   ),
-//                   SizedBox(height: 20),
-//                   TextField(
-//                     onTap: () {
-//                       FocusScope.of(context).unfocus();
-//                       context
-//                           .read<BottomNavigationBarProvider>()
-//                           .setFullScreen(true);
-//                     },
-//                     onEditingComplete: () {
-//                       FocusScope.of(context).unfocus();
-//                       context
-//                           .read<BottomNavigationBarProvider>()
-//                           .setFullScreen(false);
-//                     },
-//                     controller: _descriptionController,
-//                     decoration: InputDecoration(
-//                       labelText: 'Description',
-//                       border: OutlineInputBorder(),
-//                     ),
-//                     maxLines: 3,
-//                   ),
-//                   // SizedBox(height: 20),
-//                   // ElevatedButton(
-//                   //   onPressed: _uploadAndSubmit,
-//                   //   child: Text(
-//                   //     'Post',
-//                   //     style: TextStyle(
-//                   //       color: Color.fromRGBO(239, 255, 224, 1),
-//                   //     ),
-//                   //   ),
-//                   //   style: ElevatedButton.styleFrom(
-//                   //     backgroundColor: Color.fromRGBO(161, 221, 104, 1),
-//                   //     minimumSize: Size(double.infinity, 50),
-//                   //   ),
-//                   // ),
-//                 ],
-//               ),
-//             ),
-//       floatingActionButton: FloatingActionButton(
-//         backgroundColor: Color.fromRGBO(161, 221, 104, 1),
-//         onPressed: _uploadAndSubmit,
-//         child: Icon(
-//           Icons.check,
-//           color: Color.fromRGBO(239, 255, 224, 1),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io';
-
+import 'dart:typed_data';
 import 'package:provider/provider.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 
 import '../bottomNavigationBar.dart';
 
@@ -543,54 +18,135 @@ class AddForumPage extends StatefulWidget {
 class _AddForumPageState extends State<AddForumPage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _tagController = TextEditingController();
   final List<File> _mediaFiles = [];
+  final List<String> _tags = [];
   bool _isLoading = false;
+  final FocusNode _titleFocusNode = FocusNode();
   final FocusNode _descriptionFocusNode = FocusNode();
+  final FocusNode _tagFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    _descriptionFocusNode.addListener(() {
-      if (!_descriptionFocusNode.hasFocus) {
-        context.read<BottomNavigationBarProvider>().setFullScreen(false);
-      }
-    });
+    _descriptionFocusNode.addListener(_handleFocusChange);
+    _titleFocusNode.addListener(_handleFocusChange);
+    _tagFocusNode.addListener(_handleFocusChange);
   }
 
   @override
   void dispose() {
+    _descriptionFocusNode.removeListener(_handleFocusChange);
+    _titleFocusNode.removeListener(_handleFocusChange);
+    _tagFocusNode.removeListener(_handleFocusChange);
     _descriptionFocusNode.dispose();
+    _titleFocusNode.dispose();
+    _tagFocusNode.dispose();
     _titleController.dispose();
     _descriptionController.dispose();
+    _tagController.dispose();
     super.dispose();
   }
 
+  void _handleFocusChange() {
+    if (_titleFocusNode.hasFocus ||
+        _descriptionFocusNode.hasFocus ||
+        _tagFocusNode.hasFocus) {
+      context.read<BottomNavigationBarProvider>().setFullScreen(true);
+    } else {
+      context.read<BottomNavigationBarProvider>().setFullScreen(false);
+    }
+  }
+
   Future<void> _pickMedia() async {
-    final ImagePicker picker = ImagePicker();
-    final List<XFile>? images = await picker.pickMultiImage();
-    final XFile? video = await picker.pickVideo(source: ImageSource.gallery);
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: Icon(Icons.photo_library),
+              title: Text(
+                'Photo',
+                style: TextStyle(
+                  fontFamily: "Inika",
+                ),
+              ),
+              onTap: () async {
+                Navigator.of(context).pop(); // Close the bottom sheet
+                final List<XFile>? images =
+                    await ImagePicker().pickMultiImage();
+                if (images != null) {
+                  setState(() {
+                    for (var image in images) {
+                      File file = File(image.path);
+                      if (!_mediaFiles.contains(file)) {
+                        _mediaFiles.add(file);
+                      }
+                    }
+                  });
+                }
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.video_library),
+              title: Text(
+                'Video',
+                style: TextStyle(
+                  fontFamily: "Inika",
+                ),
+              ),
+              onTap: () async {
+                Navigator.of(context).pop(); // Close the bottom sheet
+                final XFile? video =
+                    await ImagePicker().pickVideo(source: ImageSource.gallery);
+                if (video != null) {
+                  File file = File(video.path);
+                  if (!_mediaFiles.contains(file)) {
+                    setState(() {
+                      _mediaFiles.add(file);
+                    });
+                  }
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-    if (images != null) {
-      setState(() {
-        _mediaFiles.addAll(images.map((image) => File(image.path)).toList());
-      });
-    }
-
-    if (video != null) {
-      setState(() {
-        _mediaFiles.add(File(video.path));
-      });
-    }
+  Future<Uint8List?> _generateThumbnail(File file) async {
+    final Uint8List? thumbnail = await VideoThumbnail.thumbnailData(
+      video: file.path,
+      imageFormat: ImageFormat.JPEG,
+      maxWidth: 128,
+      quality: 25,
+    );
+    return thumbnail;
   }
 
   Future<void> _uploadAndSubmit() async {
     if (_titleController.text.isEmpty ||
         _descriptionController.text.isEmpty ||
-        _mediaFiles.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Please fill all fields and select files to upload.')));
+        _mediaFiles.isEmpty ||
+        _tags.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Please fill all fields, add tags, and select files to upload.',
+            style: TextStyle(
+              fontFamily: "Inika",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
       return;
     }
+
+    FocusScope.of(context).unfocus();
+    context.read<BottomNavigationBarProvider>().setFullScreen(false);
 
     setState(() {
       _isLoading = true;
@@ -598,39 +154,178 @@ class _AddForumPageState extends State<AddForumPage> {
 
     try {
       List<String> fileUrls = [];
+      List<String> thumbnailUrls = [];
+      final User? currentUser =
+          FirebaseAuth.instance.currentUser; // Get the current user
+      final String? uid = currentUser?.uid; // Get the current user's UID
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
 
       for (File file in _mediaFiles) {
-        String fileName = file.path.split('/').last;
-        Reference storageRef =
-            FirebaseStorage.instance.ref().child('forum_uploads/$fileName');
+        String fileName = '${timestamp}_${file.path.split('/').last}';
+        String filePath =
+            'forum_media/$uid/$fileName'; // Create file path with UID and timestamp
+        Reference storageRef = FirebaseStorage.instance.ref().child(filePath);
         UploadTask uploadTask = storageRef.putFile(file);
         TaskSnapshot taskSnapshot = await uploadTask;
         String downloadUrl = await taskSnapshot.ref.getDownloadURL();
         fileUrls.add(downloadUrl);
+
+        if (file.path.endsWith('.mp4') || file.path.endsWith('.mov')) {
+          Uint8List? thumbnailData = await _generateThumbnail(file);
+          if (thumbnailData != null) {
+            Reference thumbnailRef = FirebaseStorage.instance.ref().child(
+                'forum_media/$uid/thumbnails/${timestamp}_${file.path.split('/').last}.jpg');
+            UploadTask thumbnailUploadTask =
+                thumbnailRef.putData(thumbnailData);
+            TaskSnapshot thumbnailTaskSnapshot = await thumbnailUploadTask;
+            String thumbnailUrl =
+                await thumbnailTaskSnapshot.ref.getDownloadURL();
+            thumbnailUrls.add(thumbnailUrl);
+          } else {
+            thumbnailUrls.add(
+                downloadUrl); // Add the original URL if thumbnail generation fails
+          }
+        } else {
+          thumbnailUrls
+              .add(downloadUrl); // Use the original image URL as the thumbnail
+        }
       }
 
       await FirebaseFirestore.instance.collection('forums').add({
         'title': _titleController.text,
         'description': _descriptionController.text,
         'fileUrls': fileUrls,
+        'thumbnailUrls': thumbnailUrls,
         'timestamp': FieldValue.serverTimestamp(),
+        'uid': uid, // Add the UID to the document data
+        'tags': _tags, // Add tags
+        'likes': 0,
+        'likeId': [],
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Forum post created successfully!')));
+        SnackBar(
+          content: Text(
+            'Forum post created successfully!',
+            style: TextStyle(
+              fontFamily: "Inika",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
       _titleController.clear();
       _descriptionController.clear();
+      _tagController.clear();
       setState(() {
         _mediaFiles.clear();
+        _tags.clear();
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Failed to create forum post. Please try again.')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Failed to create forum post. Please try again.',
+            style: TextStyle(
+              fontFamily: "Inika",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
     }
 
     setState(() {
       _isLoading = false;
     });
+  }
+
+  void _addTag() {
+    final String tag = _tagController.text.trim();
+    if (tag.isNotEmpty && !_tags.contains(tag)) {
+      setState(() {
+        _tags.add(tag);
+        _tagController.clear();
+      });
+    }
+  }
+
+  Widget _buildMediaPreview(File file) {
+    final isVideo = file.path.endsWith('.mp4') || file.path.endsWith('.mov');
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: isVideo
+              ? FutureBuilder<String?>(
+                  future: VideoThumbnail.thumbnailFile(
+                    video: file.path,
+                    imageFormat: ImageFormat.JPEG,
+                    maxWidth: 128,
+                    quality: 25,
+                  ),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done &&
+                        snapshot.hasData) {
+                      return Image.file(
+                        File(snapshot.data!),
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      );
+                    } else {
+                      return Container(
+                        width: 100,
+                        height: 100,
+                        color: Colors.black26,
+                        child: Center(
+                          child: Icon(
+                            Icons.videocam,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                )
+              : Image.file(
+                  file,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+        ),
+        Positioned(
+          right: 0,
+          top: 0,
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _mediaFiles.remove(file);
+              });
+            },
+            child: Container(
+              color: Colors.black54,
+              child: Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTagChip(String tag) {
+    return Chip(
+      label: Text(tag),
+      onDeleted: () {
+        setState(() {
+          _tags.remove(tag);
+        });
+      },
+    );
   }
 
   @override
@@ -639,7 +334,12 @@ class _AddForumPageState extends State<AddForumPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(239, 255, 224, 1),
       appBar: AppBar(
-        title: Text('Add Forum'),
+        title: Text(
+          'Add Forum',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(239, 255, 224, 1),
       ),
       body: _isLoading
@@ -666,8 +366,13 @@ class _AddForumPageState extends State<AddForumPage> {
                                   Icon(Icons.add_a_photo,
                                       size: 50, color: Colors.black26),
                                   SizedBox(height: 8),
-                                  Text('Click to upload images or videos',
-                                      style: TextStyle(color: Colors.black26)),
+                                  Text(
+                                    'Click to upload images or videos',
+                                    style: TextStyle(
+                                      color: Colors.black26,
+                                      fontFamily: "Inika",
+                                    ),
+                                  ),
                                 ],
                               ),
                             )
@@ -675,50 +380,47 @@ class _AddForumPageState extends State<AddForumPage> {
                               scrollDirection: Axis.horizontal,
                               itemCount: _mediaFiles.length,
                               itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.file(_mediaFiles[index],
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover),
-                                );
+                                return _buildMediaPreview(_mediaFiles[index]);
                               },
                             ),
                     ),
                   ),
                   SizedBox(height: 20),
                   TextField(
-                    onTap: () {
-                      context
-                          .read<BottomNavigationBarProvider>()
-                          .setFullScreen(true);
-                    },
-                    onEditingComplete: () {
-                      FocusScope.of(context).unfocus();
-                      context
-                          .read<BottomNavigationBarProvider>()
-                          .setFullScreen(false);
-                    },
+                    focusNode: _titleFocusNode,
                     controller: _titleController,
                     decoration: InputDecoration(
-                      labelText: 'Title',
+                      labelText: 'Enter your title',
                       border: OutlineInputBorder(),
                     ),
                   ),
                   SizedBox(height: 20),
                   TextField(
                     focusNode: _descriptionFocusNode,
-                    onTap: () {
-                      context
-                          .read<BottomNavigationBarProvider>()
-                          .setFullScreen(true);
-                    },
                     controller: _descriptionController,
                     decoration: InputDecoration(
-                      labelText: 'Description',
+                      labelText: 'Description here',
                       border: OutlineInputBorder(),
                     ),
                     maxLines: 3,
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
+                    focusNode: _tagFocusNode,
+                    controller: _tagController,
+                    decoration: InputDecoration(
+                      labelText: 'Add a tag',
+                      border: OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: _addTag,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8.0,
+                    children: _tags.map((tag) => _buildTagChip(tag)).toList(),
                   ),
                 ],
               ),

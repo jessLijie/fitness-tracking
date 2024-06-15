@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-25:/values-ml/values-ml.xml",
+            "outputFile": "com.example.fitness_tracking.app-mergeDebugResources-26:/values-ml/values-ml.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\8f817bf59c6fda79d34296a1089a25ac\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-ml\\values.xml",
@@ -47,11 +47,11 @@
                         "endOffsets": "152,255,357,461,564,665,787,888"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,31",
+                        "startLines": "2,3,4,5,6,7,8,40",
                         "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,157,260,362,466,569,670,3580",
+                        "startOffsets": "55,157,260,362,466,569,670,4290",
                         "endColumns": "101,102,101,103,102,100,121,100",
-                        "endOffsets": "152,255,357,461,564,665,787,3676"
+                        "endOffsets": "152,255,357,461,564,665,787,4386"
                     }
                 },
                 {
@@ -64,11 +64,28 @@
                         "endOffsets": "159,262,373,477"
                     },
                     "to": {
-                        "startLines": "27,28,29,30",
+                        "startLines": "27,37,38,39",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "3153,3262,3365,3476",
+                        "startOffsets": "3153,3972,4075,4186",
                         "endColumns": "108,102,110,103",
-                        "endOffsets": "3257,3360,3471,3575"
+                        "endOffsets": "3257,4070,4181,4285"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Jason Tan\\.gradle\\caches\\transforms-3\\c50315d0fc4ffe75fe05de2f74b8936f\\transformed\\jetified-exoplayer-core-2.18.7\\res\\values-ml\\values-ml.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,126,187,259,329,406,487,590,687",
+                        "endColumns": "70,60,71,69,76,80,102,96,77",
+                        "endOffsets": "121,182,254,324,401,482,585,682,760"
+                    },
+                    "to": {
+                        "startLines": "28,29,30,31,32,33,34,35,36",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3262,3333,3394,3466,3536,3613,3694,3797,3894",
+                        "endColumns": "70,60,71,69,76,80,102,96,77",
+                        "endOffsets": "3328,3389,3461,3531,3608,3689,3792,3889,3967"
                     }
                 }
             ]
