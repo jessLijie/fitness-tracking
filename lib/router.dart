@@ -25,7 +25,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => HomePage(),
         );
-      case '/discover':
+      case '/Discover/discover':
         return MaterialPageRoute(
           builder: (_) => DiscoverPage(),
         );
