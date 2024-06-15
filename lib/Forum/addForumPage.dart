@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -21,31 +18,40 @@ class AddForumPage extends StatefulWidget {
 class _AddForumPageState extends State<AddForumPage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _tagController = TextEditingController();
   final List<File> _mediaFiles = [];
+  final List<String> _tags = [];
   bool _isLoading = false;
   final FocusNode _titleFocusNode = FocusNode();
   final FocusNode _descriptionFocusNode = FocusNode();
+  final FocusNode _tagFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _descriptionFocusNode.addListener(_handleFocusChange);
     _titleFocusNode.addListener(_handleFocusChange);
+    _tagFocusNode.addListener(_handleFocusChange);
   }
 
   @override
   void dispose() {
     _descriptionFocusNode.removeListener(_handleFocusChange);
     _titleFocusNode.removeListener(_handleFocusChange);
+    _tagFocusNode.removeListener(_handleFocusChange);
     _descriptionFocusNode.dispose();
     _titleFocusNode.dispose();
+    _tagFocusNode.dispose();
     _titleController.dispose();
     _descriptionController.dispose();
+    _tagController.dispose();
     super.dispose();
   }
 
   void _handleFocusChange() {
-    if (_titleFocusNode.hasFocus || _descriptionFocusNode.hasFocus) {
+    if (_titleFocusNode.hasFocus ||
+        _descriptionFocusNode.hasFocus ||
+        _tagFocusNode.hasFocus) {
       context.read<BottomNavigationBarProvider>().setFullScreen(true);
     } else {
       context.read<BottomNavigationBarProvider>().setFullScreen(false);
@@ -68,7 +74,8 @@ class _AddForumPageState extends State<AddForumPage> {
               ),
               onTap: () async {
                 Navigator.of(context).pop(); // Close the bottom sheet
-                final List<XFile>? images = await ImagePicker().pickMultiImage();
+                final List<XFile>? images =
+                    await ImagePicker().pickMultiImage();
                 if (images != null) {
                   setState(() {
                     for (var image in images) {
@@ -91,7 +98,8 @@ class _AddForumPageState extends State<AddForumPage> {
               ),
               onTap: () async {
                 Navigator.of(context).pop(); // Close the bottom sheet
-                final XFile? video = await ImagePicker().pickVideo(source: ImageSource.gallery);
+                final XFile? video =
+                    await ImagePicker().pickVideo(source: ImageSource.gallery);
                 if (video != null) {
                   File file = File(video.path);
                   if (!_mediaFiles.contains(file)) {
@@ -119,11 +127,14 @@ class _AddForumPageState extends State<AddForumPage> {
   }
 
   Future<void> _uploadAndSubmit() async {
-    if (_titleController.text.isEmpty || _descriptionController.text.isEmpty || _mediaFiles.isEmpty) {
+    if (_titleController.text.isEmpty ||
+        _descriptionController.text.isEmpty ||
+        _mediaFiles.isEmpty ||
+        _tags.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Please fill all fields and select files to upload.',
+            'Please fill all fields, add tags, and select files to upload.',
             style: TextStyle(
               fontFamily: "Inika",
               fontWeight: FontWeight.bold,
@@ -144,13 +155,15 @@ class _AddForumPageState extends State<AddForumPage> {
     try {
       List<String> fileUrls = [];
       List<String> thumbnailUrls = [];
-      final User? currentUser = FirebaseAuth.instance.currentUser; // Get the current user
+      final User? currentUser =
+          FirebaseAuth.instance.currentUser; // Get the current user
       final String? uid = currentUser?.uid; // Get the current user's UID
       final timestamp = DateTime.now().millisecondsSinceEpoch;
 
       for (File file in _mediaFiles) {
         String fileName = '${timestamp}_${file.path.split('/').last}';
-        String filePath = 'forum_media/$uid/$fileName'; // Create file path with UID and timestamp
+        String filePath =
+            'forum_media/$uid/$fileName'; // Create file path with UID and timestamp
         Reference storageRef = FirebaseStorage.instance.ref().child(filePath);
         UploadTask uploadTask = storageRef.putFile(file);
         TaskSnapshot taskSnapshot = await uploadTask;
@@ -160,18 +173,21 @@ class _AddForumPageState extends State<AddForumPage> {
         if (file.path.endsWith('.mp4') || file.path.endsWith('.mov')) {
           Uint8List? thumbnailData = await _generateThumbnail(file);
           if (thumbnailData != null) {
-            Reference thumbnailRef = FirebaseStorage.instance
-                .ref()
-                .child('forum_media/$uid/thumbnails/${timestamp}_${file.path.split('/').last}.jpg');
-            UploadTask thumbnailUploadTask = thumbnailRef.putData(thumbnailData);
+            Reference thumbnailRef = FirebaseStorage.instance.ref().child(
+                'forum_media/$uid/thumbnails/${timestamp}_${file.path.split('/').last}.jpg');
+            UploadTask thumbnailUploadTask =
+                thumbnailRef.putData(thumbnailData);
             TaskSnapshot thumbnailTaskSnapshot = await thumbnailUploadTask;
-            String thumbnailUrl = await thumbnailTaskSnapshot.ref.getDownloadURL();
+            String thumbnailUrl =
+                await thumbnailTaskSnapshot.ref.getDownloadURL();
             thumbnailUrls.add(thumbnailUrl);
           } else {
-            thumbnailUrls.add(downloadUrl); // Add the original URL if thumbnail generation fails
+            thumbnailUrls.add(
+                downloadUrl); // Add the original URL if thumbnail generation fails
           }
         } else {
-          thumbnailUrls.add(downloadUrl); // Use the original image URL as the thumbnail
+          thumbnailUrls
+              .add(downloadUrl); // Use the original image URL as the thumbnail
         }
       }
 
@@ -182,6 +198,7 @@ class _AddForumPageState extends State<AddForumPage> {
         'thumbnailUrls': thumbnailUrls,
         'timestamp': FieldValue.serverTimestamp(),
         'uid': uid, // Add the UID to the document data
+        'tags': _tags, // Add tags
         'likes': 0,
         'likeId': [],
       });
@@ -199,8 +216,10 @@ class _AddForumPageState extends State<AddForumPage> {
       );
       _titleController.clear();
       _descriptionController.clear();
+      _tagController.clear();
       setState(() {
         _mediaFiles.clear();
+        _tags.clear();
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -219,6 +238,16 @@ class _AddForumPageState extends State<AddForumPage> {
     setState(() {
       _isLoading = false;
     });
+  }
+
+  void _addTag() {
+    final String tag = _tagController.text.trim();
+    if (tag.isNotEmpty && !_tags.contains(tag)) {
+      setState(() {
+        _tags.add(tag);
+        _tagController.clear();
+      });
+    }
   }
 
   Widget _buildMediaPreview(File file) {
@@ -288,6 +317,17 @@ class _AddForumPageState extends State<AddForumPage> {
     );
   }
 
+  Widget _buildTagChip(String tag) {
+    return Chip(
+      label: Text(tag),
+      onDeleted: () {
+        setState(() {
+          _tags.remove(tag);
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -297,7 +337,6 @@ class _AddForumPageState extends State<AddForumPage> {
         title: Text(
           'Add Forum',
           style: TextStyle(
-            
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -324,7 +363,8 @@ class _AddForumPageState extends State<AddForumPage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.add_a_photo, size: 50, color: Colors.black26),
+                                  Icon(Icons.add_a_photo,
+                                      size: 50, color: Colors.black26),
                                   SizedBox(height: 8),
                                   Text(
                                     'Click to upload images or videos',
@@ -363,6 +403,24 @@ class _AddForumPageState extends State<AddForumPage> {
                       border: OutlineInputBorder(),
                     ),
                     maxLines: 3,
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
+                    focusNode: _tagFocusNode,
+                    controller: _tagController,
+                    decoration: InputDecoration(
+                      labelText: 'Add a tag',
+                      border: OutlineInputBorder(),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: _addTag,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8.0,
+                    children: _tags.map((tag) => _buildTagChip(tag)).toList(),
                   ),
                 ],
               ),
