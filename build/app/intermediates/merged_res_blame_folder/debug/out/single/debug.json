@@ -12,10 +12,6 @@
         "source": "com.example.fitness_tracking.app-main-21:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.fitness_tracking.app-merged_res-28:/drawable_launch_background.xml.flat",
-        "source": "com.example.fitness_tracking.app-main-21:/drawable/launch_background.xml"
-    },
-    {
         "merged": "com.example.fitness_tracking.app-merged_res-28:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.fitness_tracking.app-main-21:/mipmap-xhdpi/ic_launcher.png"
     },
