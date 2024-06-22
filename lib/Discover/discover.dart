@@ -57,7 +57,7 @@ class Workout extends StatelessWidget {
             title: "ABS Body Workout",
             description: "14 Exercises | 20 mins",
             image: "assets/image/Discover/abs.png",
-            route: '/fullbodyOverview',
+            route: '/absOverview',
           ),
         ],
       ),
@@ -83,7 +83,7 @@ class WithEquipment extends StatelessWidget {
           SizedBox(height: 30),
           WorkoutCard(
             title: "Exercise Ball Workout",
-            description: "12 Exercises | 40 mins",
+            description: "12 Exercises | 30 mins",
             image: "assets/image/Discover/ExerciseBall.png",
             route: '/dumbbellOverview',
           ),

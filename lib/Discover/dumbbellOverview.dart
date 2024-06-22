@@ -1,5 +1,5 @@
 import 'package:fitness_tracking/Providers/timer_provider.dart';
-import 'package:fitness_tracking/data/model/fullbody.dart';
+import 'package:fitness_tracking/data/model/dumbbell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -156,7 +156,7 @@ class _DumbbellOverviewState extends State<DumbbellOverview> {
             int initialIndex = 0;
             Navigator.pushNamed(
               context, 
-              'Discover/dumbbellWorkout',
+              '/dumbbellWorkout',
               arguments: {
                 'workouts': workouts,
                 'currentIndex': initialIndex,

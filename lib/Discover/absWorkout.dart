@@ -7,20 +7,20 @@ import 'package:fitness_tracking/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DumbbellWorkout extends StatefulWidget {
+class AbsWorkout extends StatefulWidget {
   // final Fullbody fullbodyWorkout;
   final List<Dumbbell> dumbbellWorkout;
   int currentIndex;
 
-  DumbbellWorkout(
+  AbsWorkout(
       {Key? key, required this.dumbbellWorkout, required this.currentIndex})
       : super(key: key);
 
   @override
-  State<DumbbellWorkout> createState() => _DumbbellWorkoutState();
+  State<AbsWorkout> createState() => _AbsWorkoutState();
 }
 
-class _DumbbellWorkoutState extends State<DumbbellWorkout> {
+class _AbsWorkoutState extends State<AbsWorkout> {
   Color green = const Color.fromRGBO(239, 255, 224, 1.0);
   bool isPaused = false;
 
@@ -30,7 +30,7 @@ class _DumbbellWorkoutState extends State<DumbbellWorkout> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Dumbbell Workout'),
+          title: const Text('Abs Body Workout'),
           leading: IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
