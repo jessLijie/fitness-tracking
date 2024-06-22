@@ -82,10 +82,10 @@ class WithEquipment extends StatelessWidget {
           ),
           SizedBox(height: 30),
           WorkoutCard(
-            title: "Exercise Ball Workout",
+            title: "Exercise Ball",
             description: "12 Exercises | 30 mins",
-            image: "assets/image/Discover/ExerciseBall.png",
-            route: '/dumbbellOverview',
+            image: "assets/image/Discover/ExerciseBall .png",
+            route: '/exerciseBallOverview',
           ),
         ],
       ),

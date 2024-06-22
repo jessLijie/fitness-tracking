@@ -3,6 +3,7 @@ import 'package:fitness_tracking/Discover/absOverview.dart';
 import 'package:fitness_tracking/Discover/discover.dart';
 import 'package:fitness_tracking/Discover/dumbbellOverview.dart';
 import 'package:fitness_tracking/Discover/dumbbellWorkout.dart';
+import 'package:fitness_tracking/Discover/exerciseBallOverview.dart';
 import 'package:fitness_tracking/Discover/fullbodyOverview.dart';
 import 'package:fitness_tracking/Discover/fullbodyWorkout.dart';
 import 'package:fitness_tracking/Discover/lowerbodyOverview.dart';
@@ -95,6 +96,20 @@ class AppRouter {
           builder: (context) => const AbsOverview(),
         );
       case '/absWorkout':
+        final Map<String, dynamic> args = routeSettings.arguments as Map<String, dynamic>;
+        final List<Dumbbell> workouts = args['workouts'] as List<Dumbbell>;
+        final int currentIndex = args['currentIndex'] as int;
+        return MaterialPageRoute(
+          builder: (context) => DumbbellWorkout(
+            dumbbellWorkout: workouts,
+            currentIndex: currentIndex,
+          ),
+        );
+      case '/exerciseBallOverview':
+        return MaterialPageRoute(
+          builder: (context) => const ExerciseBallOverview(),
+        );
+      case '/exerciseBallWorkout':
         final Map<String, dynamic> args = routeSettings.arguments as Map<String, dynamic>;
         final List<Dumbbell> workouts = args['workouts'] as List<Dumbbell>;
         final int currentIndex = args['currentIndex'] as int;
