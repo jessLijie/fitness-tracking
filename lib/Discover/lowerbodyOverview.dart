@@ -1,16 +1,16 @@
 import 'package:fitness_tracking/Providers/timer_provider.dart';
-import 'package:fitness_tracking/data/model/fullbody.dart';
+import 'package:fitness_tracking/data/model/lowerbody.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FullbodyOverview extends StatefulWidget {
-  const FullbodyOverview({super.key});
+class LowerbodyOverview extends StatefulWidget {
+  const  LowerbodyOverview({super.key});
 
   @override
-  State<FullbodyOverview> createState() => _FullbodyOverviewState();
+  State< LowerbodyOverview> createState() => _LowerbodyOverviewState();
 }
 
-class _FullbodyOverviewState extends State<FullbodyOverview> {
+class _LowerbodyOverviewState extends State<LowerbodyOverview> {
   @override
   Widget build(BuildContext context) {
     final TimerProvider timerProvider = Provider.of<TimerProvider>(context);
@@ -37,77 +37,71 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 25),
-                        Text("Full Body Workout", 
+                        Text("Lower Body Workout", 
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18
                           ),
                         ),
-                        Text("10 Exercises | 10 mins | 220 Calories Burned", 
+                        Text("9 Exercises | 10 mins | 220 Calories Burned", 
                           style: TextStyle(
                             color: Colors.grey
                           )
                         ),
                         SizedBox(height: 25),
-                        FullBodyCard(
-                          title: "VCrunch", 
+                        LowerbodyCard(
+                          title: "Squats",   
                           amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/VCrunch.png"
+                          image: "assets/image/Discover/Lowerbody/Squats.png"
                         ),
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Reverse Crunches", 
-                         amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/ReverseCrunch.png"
+                        LowerbodyCard(
+                          title: "Side Leg Raises", 
+                         amount: "x 20", 
+                          image: "assets/image/Discover/Lowerbody/workout.png"
                         ),
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Legs It Out", 
+                        LowerbodyCard(
+                          title: "Squat Jumps", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/LegsItOut.png"
+                          image: "assets/image/Discover/Lowerbody/Squat Jumps.png"
                         ),  
                         SizedBox(height: 25),
-                        FullBodyCard(
-                          title: "Plank to Pike", 
+                        LowerbodyCard(
+                          title: "Bicycle Crunches", 
                           amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/plank_to_pike.png"
+                          image: "assets/image/Discover/Lowerbody/Bicycle Crunches.png"
                         ),
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Mountain Climbers", 
+                        LowerbodyCard(
+                          title: "Crunches", 
                          amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/mountain_climber.png"
+                          image: "assets/image/Discover/Lowerbody/Crunches.png"
                         ),
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Plank Leg Up", 
+                        LowerbodyCard(
+                          title: "Curtsy Lunges", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/plank_leg_up.png"
+                          image: "assets/image/Discover/Lowerbody/Curtsy Lunges.png"
                         ), 
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Flutter Kicks", 
+                        LowerbodyCard(
+                          title: "Plie Squats", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/flutter_kicks.png"
+                          image: "assets/image/Discover/Lowerbody/Plie Squats.png"
                         ),  
                         SizedBox(height: 25),
-                        FullBodyCard(
-                          title: "Hyper Extension Exercise", 
+                       LowerbodyCard(
+                          title: "Side Lunges", 
                           amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/hyper_extension_exercise.png"
+                          image: "assets/image/Discover/Lowerbody/Side Lunges.png"
                         ),
                         SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Prone Flutter Kicks", 
+                        LowerbodyCard(
+                          title: "Sit Ups", 
                          amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/prone_flutter_kicks.png"
-                        ),
-                        SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Superman Exercise", 
-                          amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/superman_exercise.png"
-                        ),   
+                          image: "assets/image/Discover/Lowerbody/Sit Ups.png"
+                        ),  
                         SizedBox(height: 80),                                                                              
                       ],
                     ),
@@ -144,7 +138,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
             int initialIndex = 0;
             Navigator.pushNamed(
               context, 
-              '/fullbodyWorkout',
+              '/lowerbodyWorkout',
               arguments: {
                 'workouts': workouts,
                 'currentIndex': initialIndex,
@@ -165,10 +159,10 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
   }
 }
 
-class FullBodyCard extends StatelessWidget {
+class LowerbodyCard extends StatelessWidget {
   final String title, amount, image;
 
-  const FullBodyCard({ Key? key, required this.title, required this.amount, required this.image})
+  const LowerbodyCard({ Key? key, required this.title, required this.amount, required this.image})
     :super(key: key);
   
   @override
