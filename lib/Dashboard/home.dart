@@ -27,19 +27,23 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _fetchUserData() async {
     Map<String, dynamic> data = await _connection.getUserProfileData();
-    setState(() {
-      userData = data;
-    });
+    if (mounted) {
+      setState(() {
+        userData = data;
+      });
+    }
   }
 
   Future<void> _fetchRecommendedRecipe() async {
     // Simulating fetching a recommended recipe
     await Future.delayed(Duration(seconds: 1));
-    setState(() {
-      Map<String, String> recipeData = _getRandomRecipe();
-      recommendedRecipe = recipeData['name']!;
-      recommendedRecipeImage = recipeData['image']!;
-    });
+    if (mounted) {
+      setState(() {
+        Map<String, String> recipeData = _getRandomRecipe();
+        recommendedRecipe = recipeData['name']!;
+        recommendedRecipeImage = recipeData['image']!;
+      });
+    }
   }
 
   Map<String, String> _getRandomRecipe() {
@@ -56,8 +60,7 @@ class _HomePageState extends State<HomePage> {
         "name": "Avocado Toast with Egg!",
         "image": "assets/image/recipe/avocado.jpg"
       },
-      {"name": "Berry Smoothie!",
-       "image": "assets/image/recipe/berrysmoothie.jpg"},
+      {"name": "Berry Smoothie!", "image": "assets/image/recipe/berrysmoothie.jpg"},
       {
         "name": "Grilled Salmon with Asparagus!",
         "image": "assets/image/recipe/salmonasparagus.jpg"
@@ -120,8 +123,7 @@ class _HomePageState extends State<HomePage> {
               Card(
                 child: BmiCard(
                   BMI: userData['bmi'] != null
-                      ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ??
-                          0.0
+                      ? double.tryParse(userData['bmi'].toStringAsFixed(2)) ?? 0.0
                       : 0.0,
                 ),
               ),
@@ -146,8 +148,7 @@ class _HomePageState extends State<HomePage> {
                 child: RecipeCard(
                   recipe: recommendedRecipe,
                   onRefresh: _fetchRecommendedRecipe,
-                  imagePath:
-                      recommendedRecipeImage, // Use the recommended recipe image path
+                  imagePath: recommendedRecipeImage,
                 ),
               ),
               SizedBox(height: 10.0),
@@ -192,6 +193,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 
 class RecipeCard extends StatelessWidget {
   final String recipe;
