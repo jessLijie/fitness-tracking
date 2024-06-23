@@ -4,6 +4,7 @@ class Forum {
   late DateTime timestamp;
   late String title;
   late String? description;
+  late String? tags;
   late List<String> mediaUrls;
   late List<String> likeIds;
   late int likes;
@@ -37,16 +38,27 @@ class Forum {
 
   static Forum fromMap(Map<String, dynamic> map) {
     return Forum(
-        id: map['id'],
-        userId: map['userId'],
-        timestamp: DateTime.parse(map['timestamp']),
-        title: map['title'],
-        description: map['description'] ?? '',
-        mediaUrls: List<String>.from(map['mediaUrls']),
-        likeIds: map['likeIds'],
-        likes: map['likes'] ?? 0,
-        comments: List<Map<String, dynamic>>.from(map['comments'] ?? []),
-        
+      id: map['id'],
+      userId: map['userId'],
+      timestamp: DateTime.parse(map['timestamp']),
+      title: map['title'],
+      description: map['description'] ?? '',
+      mediaUrls: List<String>.from(map['mediaUrls']),
+      likeIds: map['likeIds'],
+      likes: map['likes'] ?? 0,
+      comments: List<Map<String, dynamic>>.from(map['comments'] ?? []),
     );
+  }
+
+  void toggleLike(String userId) {
+    if (likeIds.contains(userId)) {
+      // If the user already liked the post, unlike it
+      likeIds.remove(userId);
+      likes--;
+    } else {
+      // If the user hasn't liked the post, like it
+      likeIds.add(userId);
+      likes++;
+    }
   }
 }
