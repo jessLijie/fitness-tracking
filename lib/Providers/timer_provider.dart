@@ -55,4 +55,11 @@ class TimerProvider extends ChangeNotifier{
     notifyListeners();
 
   }
+
+  void exitTimer(){
+    _timer!.cancel();
+    _seconds = 0;
+    notifyListeners();
+    dispose();
+  }
 }

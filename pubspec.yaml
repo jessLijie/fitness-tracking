@@ -86,6 +86,11 @@ flutter:
     - assets/image/Discover/FullBody/
     - assets/image/Discover/FullBody_GIF/
     - assets/image/salad.jpg
+    - assets/image/Discover/Dumbbell/
+    - assets/image/Discover/Dumbbell_GIF/
+    - assets/image/Discover/Lowerbody/
+    - assets/image/Discover/Lowerbody_GIF/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

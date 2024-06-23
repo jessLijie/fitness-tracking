@@ -1,23 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Providers/timer_provider.dart';
-import 'package:fitness_tracking/data/model/fullbody.dart';
+import 'package:fitness_tracking/data/model/lowerbody.dart';
 import 'package:fitness_tracking/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FullbodyWorkout extends StatefulWidget {
-  final List<Fullbody> fullbodyWorkout;
+class LowerbodyWorkout extends StatefulWidget {
+  final List<Lowerbody> lowerbodyWorkout;
   int currentIndex;
 
-  FullbodyWorkout({Key? key, required this.fullbodyWorkout, required this.currentIndex})
+   LowerbodyWorkout({Key? key, required this.lowerbodyWorkout, required this.currentIndex})
       : super(key: key);
 
   @override
-  State<FullbodyWorkout> createState() => _FullbodyWorkoutState();
+  State<LowerbodyWorkout> createState() => _LowerbodyWorkoutState();
 }
 
-class _FullbodyWorkoutState extends State<FullbodyWorkout> {
+class _LowerbodyWorkoutState extends State<LowerbodyWorkout> {
   Color green = const Color.fromRGBO(239, 255, 224, 1.0);
   bool isPaused = false;
 
@@ -28,7 +28,7 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fullbody Workout'),
+        title: const Text('Lowerbody Workout'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -41,14 +41,14 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
           const SizedBox(height: 50),
           Center(
             child: Image.asset(
-              widget.fullbodyWorkout[widget.currentIndex].gif,
+              widget.lowerbodyWorkout[widget.currentIndex].gif,
               height: 250,
               width: 250,
             ),
           ),
           const SizedBox(height: 40),
           Text(
-            widget.fullbodyWorkout[widget.currentIndex].name,
+            widget.lowerbodyWorkout[widget.currentIndex].name,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -132,12 +132,12 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
                 GestureDetector(
                   onTap: () {
                     int nextIndex = widget.currentIndex + 1;
-                    if (nextIndex < widget.fullbodyWorkout.length) {
+                    if (nextIndex < widget.lowerbodyWorkout.length) {
                       Navigator.pushNamed(
                         context,
-                        '/fullbodyWorkout',
+                        '/lowerbodyWorkout',
                         arguments: {
-                          'workouts': widget.fullbodyWorkout,
+                          'workouts': widget.lowerbodyWorkout,
                           'currentIndex': nextIndex,
                         },
                       );
@@ -219,7 +219,7 @@ class _FullbodyWorkoutState extends State<FullbodyWorkout> {
                 //   // Replace 'ScreenName' with the name of the route you want to stop at
                 //   return route.settings.name == '/fullbodyOverview';
                 // });      
-                Navigator.pushNamedAndRemoveUntil(context, '/fullbodyOverview', (route) => true);       
+                Navigator.pushNamedAndRemoveUntil(context, '/lowerbodyOverview', (route) => true);       
                },
               child: Text('Confirm', style: TextStyle(color: Colors.green[500])),
             ),

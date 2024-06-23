@@ -117,8 +117,9 @@ import 'package:fitness_tracking/Profile/profile.dart';
 import 'package:fitness_tracking/Providers/timer_provider.dart';
 import 'package:fitness_tracking/Router/router.dart' as myRouter;
 import 'package:fitness_tracking/bottomNavigationBar.dart';
-import 'package:fitness_tracking/router.dart';
+import 'package:fitness_tracking/Router/router.dart';
 import 'package:fitness_tracking/Forum/forumPage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -138,7 +139,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final myRouter.Router _router = myRouter.Router();
+  final myRouter.AppRouter _router = myRouter.AppRouter();
 
   @override
   Widget build(BuildContext context) {

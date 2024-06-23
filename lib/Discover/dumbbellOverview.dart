@@ -3,14 +3,14 @@ import 'package:fitness_tracking/data/model/dumbbell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FullbodyOverview extends StatefulWidget {
-  const FullbodyOverview({super.key});
+class DumbbellOverview extends StatefulWidget {
+  const DumbbellOverview({super.key});
 
   @override
-  State<FullbodyOverview> createState() => _FullbodyOverviewState();
+  State<DumbbellOverview> createState() => _DumbbellOverviewState();
 }
 
-class _FullbodyOverviewState extends State<FullbodyOverview> {
+class _DumbbellOverviewState extends State<DumbbellOverview> {
   @override
   Widget build(BuildContext context) {
     final TimerProvider timerProvider = Provider.of<TimerProvider>(context);
@@ -25,7 +25,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
                   height: 300, 
                   width: MediaQuery.of(context).size.width,
                   child: Image.asset(
-                    'assets/image/Discover/full_body_bg.png', 
+                    'assets/image/Discover/Dumbbell_bg.png', 
                     fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -37,77 +37,89 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 25),
-                        Text("Full Body Workout", 
+                        Text("Dumbbell Workout", 
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18
                           ),
                         ),
-                        Text("10 Exercises | 10 mins | 220 Calories Burned", 
+                        Text("12 Exercises | 15 mins | 320 Calories Burned", 
                           style: TextStyle(
                             color: Colors.grey
                           )
                         ),
                         SizedBox(height: 25),
                         FullBodyCard(
-                          title: "VCrunch", 
-                          amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/VCrunch.png"
+                          title: "Dumbbell Punch", 
+                          amount: "x 25", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Punch.png"
                         ),
                         SizedBox(height: 15),
                         FullBodyCard(
-                          title: "Reverse Crunches", 
+                          title: "Dumbbell Squat Clean and Press", 
                          amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/ReverseCrunch.png"
+                          image: "assets/image/Discover/Dumbbell/Dumbell Squat.png"
                         ),
                         SizedBox(height: 15),
                         FullBodyCard(
-                          title: "Legs It Out", 
+                          title: "Dumbbell Rear Delt Row", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/LegsItOut.png"
+                          image: "assets/image/Discover/Dumbbell/Dumbell Rear Delt.png"
                         ),  
                         SizedBox(height: 25),
                         FullBodyCard(
-                          title: "Plank to Pike", 
+                          title: "Dumbbell Lunges", 
                           amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/plank_to_pike.png"
+                          image: "assets/image/Discover/Dumbbell/Dumbell Lunges.png"
                         ),
                         SizedBox(height: 15),
                         FullBodyCard(
-                          title: "Mountain Climbers", 
-                         amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/mountain_climber.png"
-                        ),
-                        SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Plank Leg Up", 
-                          amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/plank_leg_up.png"
+                          title: "Dumbbell Crunch and Punches", 
+                          amount: "x 15", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Crunch and Punches.png"
                         ), 
                         SizedBox(height: 15),
                         FullBodyCard(
-                          title: "Flutter Kicks", 
+                          title: "Dumbbell Kickbacks", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/flutter_kicks.png"
+                          image: "assets/image/Discover/Dumbbell/Dumbell Kickback.png"
                         ),  
                         SizedBox(height: 25),
                         FullBodyCard(
-                          title: "Hyper Extension Exercise", 
-                          amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/hyper_extension_exercise.png"
-                        ),
-                        SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Prone Flutter Kicks", 
-                         amount: "x 15", 
-                          image: "assets/image/Discover/FullBody/prone_flutter_kicks.png"
-                        ),
-                        SizedBox(height: 15),
-                        FullBodyCard(
-                          title: "Superman Exercise", 
+                          title: "Dumbbell Triceps Extension", 
                           amount: "x 20", 
-                          image: "assets/image/Discover/FullBody/superman_exercise.png"
+                          image: "assets/image/Discover/Dumbbell/Dumbell Tricep Extension.png"
+                        ),
+                        SizedBox(height: 15),
+                        FullBodyCard(
+                          title: "Dumbell Decline Floor Press", 
+                         amount: "x 15", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Decline Floor Press.png"
+                        ),
+                        SizedBox(height: 15),
+                        FullBodyCard(
+                          title: "Dumbbell Plie Squat", 
+                          amount: "x 20", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Plie Squat.png"
+                        ), 
+                        SizedBox(height: 15),
+                        FullBodyCard(
+                          title: "Dumbbell Donkey Kicks", 
+                          amount: "x 15", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Donkey KIcks.png"
                         ),   
+                        SizedBox(height: 15),
+                        FullBodyCard(
+                          title: "Dumbbell Torrture Tucks", 
+                          amount: "x 15", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Torrture Tucks.png"
+                        ),    
+                        SizedBox(height: 15),
+                        FullBodyCard(
+                          title: "Dumbbell Hip Hinge", 
+                          amount: "x 15", 
+                          image: "assets/image/Discover/Dumbbell/Dumbell Hip Hinge.png"
+                        ),                                                                            
                         SizedBox(height: 80),                                                                              
                       ],
                     ),
@@ -144,7 +156,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
             int initialIndex = 0;
             Navigator.pushNamed(
               context, 
-              '/fullbodyWorkout',
+              '/dumbbellWorkout',
               arguments: {
                 'workouts': workouts,
                 'currentIndex': initialIndex,
@@ -176,6 +188,9 @@ class FullBodyCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GestureDetector(
+      onTap: (){
+        // Navigator.pushNamed(context, route);
+      },
       child: Row(
         children: [
           Container(

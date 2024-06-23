@@ -3,14 +3,14 @@ import 'package:fitness_tracking/data/model/dumbbell.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FullbodyOverview extends StatefulWidget {
-  const FullbodyOverview({super.key});
+class AbsOverview extends StatefulWidget {
+  const AbsOverview({super.key});
 
   @override
-  State<FullbodyOverview> createState() => _FullbodyOverviewState();
+  State<AbsOverview> createState() => _AbsOverviewState();
 }
 
-class _FullbodyOverviewState extends State<FullbodyOverview> {
+class _AbsOverviewState extends State<AbsOverview> {
   @override
   Widget build(BuildContext context) {
     final TimerProvider timerProvider = Provider.of<TimerProvider>(context);
@@ -37,7 +37,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 25),
-                        Text("Full Body Workout", 
+                        Text("ABS Body Workout", 
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18
@@ -144,7 +144,7 @@ class _FullbodyOverviewState extends State<FullbodyOverview> {
             int initialIndex = 0;
             Navigator.pushNamed(
               context, 
-              '/fullbodyWorkout',
+              '/absWorkout',
               arguments: {
                 'workouts': workouts,
                 'currentIndex': initialIndex,

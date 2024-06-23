@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_tracking/Dashboard/progressbar.dart';
 import 'package:fitness_tracking/services/connection.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Activity {
   final String name;
@@ -18,31 +17,31 @@ class Activity {
   });
 }
 
-class MockData {
-  static final Map<DateTime, List<Activity>> activities = {
-    DateTime(2024, 5, 16): [
-      Activity(name: 'Yoga', sets: 2, caloriesBurnt: 15),
-      Activity(name: 'Stretching', sets: 1, caloriesBurnt: 7),
-    ],
-    DateTime(2024, 5, 17): [
-      Activity(name: 'Yoga', sets: 1, caloriesBurnt: 10),
-      Activity(name: 'Walking', sets: 1, caloriesBurnt: 5),
-      Activity(name: 'Stretching', sets: 1, caloriesBurnt: 7),
-    ],
-    DateTime(2024, 5, 18): [
-      Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
-      Activity(name: 'Walking', sets: 1, caloriesBurnt: 5),
-    ],
-    DateTime(2024, 5, 19): [
-      Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
-      Activity(name: 'Swim', sets: 1, caloriesBurnt: 5),
-    ],
-    DateTime(2024, 5, 20): [
-      Activity(name: 'Gym', sets: 5, caloriesBurnt: 5),
-    ],
-    
-  };
-}
+// class MockData {
+//   static final Map<DateTime, List<Activity>> activities = {
+//     DateTime(2024, 5, 16): [
+//       Activity(name: 'Yoga', sets: 2, caloriesBurnt: 15),
+//       Activity(name: 'Stretching', sets: 1, caloriesBurnt: 7),
+//     ],
+//     DateTime(2024, 5, 17): [
+//       Activity(name: 'Yoga', sets: 1, caloriesBurnt: 10),
+//       Activity(name: 'Walking', sets: 1, caloriesBurnt: 5),
+//       Activity(name: 'Stretching', sets: 1, caloriesBurnt: 7),
+//     ],
+//     DateTime(2024, 5, 18): [
+//       Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
+//       Activity(name: 'Walking', sets: 1, caloriesBurnt: 5),
+//     ],
+//     DateTime(2024, 5, 19): [
+//       Activity(name: 'Yoga', sets: 2, caloriesBurnt: 10),
+//       Activity(name: 'Swim', sets: 1, caloriesBurnt: 5),
+//     ],
+//     DateTime(2024, 5, 20): [
+//       Activity(name: 'Gym', sets: 5, caloriesBurnt: 5),
+//     ],
+
+//   };
+// }
 
 class CalendarPage extends StatefulWidget {
   @override
@@ -54,6 +53,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   Map<String, dynamic> userData = {};
   int totalCaloriesBurnt = 0;
+  DateTime _selectedDate = DateTime.now();
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Future<void> _fetchTotalCaloriesBurnt() async {
-    int totalCalories = await getTotalCaloriesBurned() ?? 0;
+    int totalCalories = await getTotalCaloriesBurned(_selectedDate) ?? 0;
     setState(() {
       totalCaloriesBurnt = totalCalories;
     });
@@ -86,10 +86,7 @@ class _CalendarPageState extends State<CalendarPage> {
     return disabledDates;
   }
 
-  final EasyInfiniteDateTimelineController _controller =
-      EasyInfiniteDateTimelineController();
-  DateTime? _selectedDate =
-      DateTime.now(); // Initialize with current date and time
+  final EasyInfiniteDateTimelineController _controller = EasyInfiniteDateTimelineController();
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +119,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   setState(() {
                     _selectedDate = selectedDate;
                   });
+                  _fetchTotalCaloriesBurnt();
                 },
                 activeColor: const Color(0xff85A389),
                 dayProps: const EasyDayProps(
@@ -153,7 +151,7 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 
-  Future<int?> getTotalCaloriesBurned() async {
+  Future<int?> getTotalCaloriesBurned(DateTime date) async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       return 0; // No user logged in, return 0
@@ -161,10 +159,16 @@ class _CalendarPageState extends State<CalendarPage> {
 
     int totalCalories = 0;
 
-    // Query Firestore for documents where userId is equal to the current user's ID
+    // Get the start and end of the specified date
+    DateTime startOfDay = DateTime(date.year, date.month, date.day);
+    DateTime endOfDay = DateTime(date.year, date.month, date.day, 23, 59, 59);
+
+    // Query Firestore for documents where userId is equal to the current user's ID and date is within the specified range
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
         .collection('workout')
         .where('userid', isEqualTo: user.uid)
+        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
+        .where('date', isLessThanOrEqualTo: Timestamp.fromDate(endOfDay))
         .get();
 
     // Iterate over the documents and sum the caloriesBurned
